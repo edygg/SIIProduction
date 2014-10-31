@@ -38,6 +38,8 @@
         </div>
 
         @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.CreatedAt)
+        @Html.HiddenFor(model => model.CreatedBy)
 
         <p>
             <input type="submit" value="Save" />

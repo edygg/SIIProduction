@@ -15,6 +15,6 @@ namespace SII.Models
         public String UpdatedBy { get; set; }
         [Column(TypeName = "DateTime2")]
         public DateTime? UpdatedAt { get; set; }
-
+        public bool Dropped { get; set; }
     }
 }

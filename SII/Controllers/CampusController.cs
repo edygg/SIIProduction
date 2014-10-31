@@ -18,7 +18,7 @@ namespace SII.Controllers
 
         public ActionResult Index()
         {
-            return View(db.Campus.ToList());
+            return View(db.Campus.Where(i => i.Dropped == false).ToList());
         }
 
         //
@@ -109,7 +109,7 @@ namespace SII.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Campus campus = db.Campus.Find(id);
-            db.Campus.Remove(campus);
+            campus.Dropped = true;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

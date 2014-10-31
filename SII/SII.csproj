@@ -200,6 +200,10 @@
     <Compile Include="Migrations\201410310442043_DateTime2ColumnsBaseModel.Designer.cs">
       <DependentUpon>201410310442043_DateTime2ColumnsBaseModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201410311514009_AddDroppedFieldToBaseModel.cs" />
+    <Compile Include="Migrations\201410311514009_AddDroppedFieldToBaseModel.Designer.cs">
+      <DependentUpon>201410311514009_AddDroppedFieldToBaseModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\BaseModel.cs" />
@@ -339,6 +343,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201410310442043_DateTime2ColumnsBaseModel.resx">
       <DependentUpon>201410310442043_DateTime2ColumnsBaseModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201410311514009_AddDroppedFieldToBaseModel.resx">
+      <DependentUpon>201410311514009_AddDroppedFieldToBaseModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
