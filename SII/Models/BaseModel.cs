@@ -11,7 +11,7 @@ namespace SII.Models
         public String CreatedBy { get; set; }
         public DateTime CreatedAt { get; set; }
         public String UpdatedBy { get; set; }
-        public DateTime UpdatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
 
     }
 }

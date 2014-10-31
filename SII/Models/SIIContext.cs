@@ -39,6 +39,13 @@ namespace SII.Models
                     {
                         property.SetValue(entry.Entity, DateTime.Now, null);
                     }
+
+                    property = type.GetProperty("CreatedBy");
+                    if (property != null) 
+                    {
+                        property.SetValue(entry.Entity, HttpContext.Current.User.Identity.Name, null);
+                    }
+
                 }
  
                 property = type.GetProperty("UpdatedAt");
@@ -46,6 +53,13 @@ namespace SII.Models
                 {
                     property.SetValue(entry.Entity, DateTime.Now, null);
                 }
+
+                property = type.GetProperty("UpdatedBy");
+                if (property != null)
+                {
+                    property.SetValue(entry.Entity, HttpContext.Current.User.Identity.Name, null);
+                }
+
             }
  
             return base.SaveChanges(); //save the updates;
