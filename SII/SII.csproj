@@ -192,6 +192,14 @@
     <Compile Include="Migrations\201410302137203_InitialCreate.Designer.cs">
       <DependentUpon>201410302137203_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201410310416527_SolveUpdateAtException.cs" />
+    <Compile Include="Migrations\201410310416527_SolveUpdateAtException.Designer.cs">
+      <DependentUpon>201410310416527_SolveUpdateAtException.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201410310442043_DateTime2ColumnsBaseModel.cs" />
+    <Compile Include="Migrations\201410310442043_DateTime2ColumnsBaseModel.Designer.cs">
+      <DependentUpon>201410310442043_DateTime2ColumnsBaseModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\BaseModel.cs" />
@@ -325,6 +333,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201410302137203_InitialCreate.resx">
       <DependentUpon>201410302137203_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201410310416527_SolveUpdateAtException.resx">
+      <DependentUpon>201410310416527_SolveUpdateAtException.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201410310442043_DateTime2ColumnsBaseModel.resx">
+      <DependentUpon>201410310442043_DateTime2ColumnsBaseModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
