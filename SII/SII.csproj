@@ -189,8 +189,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AnnouncementController.cs" />
     <Compile Include="Controllers\CampusController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\VisitController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -215,13 +217,19 @@
     <Compile Include="Migrations\201411010305533_CampusModelValidations.Designer.cs">
       <DependentUpon>201411010305533_CampusModelValidations.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411012001001_CreateTablesVisitAndAnnouncement.cs" />
+    <Compile Include="Migrations\201411012001001_CreateTablesVisitAndAnnouncement.Designer.cs">
+      <DependentUpon>201411012001001_CreateTablesVisitAndAnnouncement.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Announcement.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\Campus.cs" />
     <Compile Include="Models\EFCampusRepository.cs" />
     <Compile Include="Models\ICampusRepository.cs" />
     <Compile Include="Models\SIIContext.cs" />
+    <Compile Include="Models\Visit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -622,6 +630,16 @@
     <Content Include="Views\Campus\Delete.cshtml" />
     <Content Include="Views\Shared\_HeaderWithLogo.cshtml" />
     <Content Include="Views\Shared\_TopBar.cshtml" />
+    <Content Include="Views\Visit\Index.cshtml" />
+    <Content Include="Views\Visit\Details.cshtml" />
+    <Content Include="Views\Visit\Create.cshtml" />
+    <Content Include="Views\Visit\Edit.cshtml" />
+    <Content Include="Views\Visit\Delete.cshtml" />
+    <Content Include="Views\Announcement\Index.cshtml" />
+    <Content Include="Views\Announcement\Details.cshtml" />
+    <Content Include="Views\Announcement\Create.cshtml" />
+    <Content Include="Views\Announcement\Edit.cshtml" />
+    <Content Include="Views\Announcement\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -644,6 +662,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411010305533_CampusModelValidations.resx">
       <DependentUpon>201411010305533_CampusModelValidations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411012001001_CreateTablesVisitAndAnnouncement.resx">
+      <DependentUpon>201411012001001_CreateTablesVisitAndAnnouncement.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -12,6 +12,8 @@ namespace SII.Models
     public class SIIContext : DbContext
     {
         public DbSet<Campus> Campus { get; set; }
+        public DbSet<Visit> Visits { get; set; }
+        public DbSet<Announcement> Announcements { get; set; }
 
         public override int SaveChanges()
         {
