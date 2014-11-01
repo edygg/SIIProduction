@@ -20,18 +20,13 @@ namespace SII.Controllers
             this.CampusRepo =  CampusRepo;
         }
 
-        /*public CampusController()
-        {
-            this.CampusRepo = new EFCampusRepository();
-        }*/
-
         //
         // GET: /Campus/
 
         public ViewResult Index()
         {
 
-            return View(db.Campus.Where(i => i.Dropped == false).ToList());
+            return View(CampusRepo.Campus.Where(i => i.Dropped == false).ToList());
         }
 
         //

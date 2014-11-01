@@ -95,7 +95,7 @@ namespace SII.Tests.Controllers
 
 
             //Assert
-            Assert.AreEqual("Create", result.ViewName);
+            Assert.AreEqual("", result.ViewName);
         }
     }
 }
