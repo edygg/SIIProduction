@@ -1,0 +1,49 @@
+﻿<nav class="top-bar" data-topbar role="navigation">
+    <ul class="title-area">
+        <li class="name">
+            <h1>@Html.ActionLink("Inicio", "Index", "Home")</h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+    </ul>
+
+    <section class="top-bar-section">
+        <!-- Right Nav Section -->
+        <ul class="right">
+            @if (User.Identity.IsAuthenticated)
+            {
+                <li class="has-dropdown">
+                    <a href="#">@User.Identity.Name</a>
+                    <ul class="dropdown">
+                        <li>
+                            <a href="javascript:document.getElementById('logoutForm').submit()">Cerrar Sesión</a>
+                            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                            {
+                                @Html.AntiForgeryToken()
+                            }
+                        </li>
+                    </ul>
+                </li>
+            }
+        </ul>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <!-- Left Nav Section -->
+            <ul class="left">
+                <li class="has-dropdown">
+                    <a>Usuarios</a>
+                    <ul class="dropdown">
+                        <li>@Html.ActionLink("Crear", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                    </ul>
+                </li>
+                <li class="has-dropdown">
+                    <a>Campus</a>
+                    <ul class="dropdown">
+                        <li>@Html.ActionLink("Crear", "Create", "Campus")</li>
+                        <li>@Html.ActionLink("Administrar", "Index", "Campus")</li>
+                    </ul>
+                </li>
+                >
+            </ul>
+        }
+    </section>
+</nav>

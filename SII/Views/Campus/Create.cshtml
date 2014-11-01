@@ -1,52 +1,59 @@
 ﻿@model SII.Models.Campus
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Crear campus";
 }
 
-<h2>Create</h2>
+<div class="row">
+    <div class="small-8 small-offset-2 columns">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
 
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
+            <fieldset>
+                <legend>Campus</legend>
+                <div class="row">
+                    <div class="small-2 columns">
+                        @Html.LabelFor(model => model.Code, new { @class = "right inline" })
+                    </div>
+                    <div class="small-10 columns">
+                        @Html.EditorFor(model => model.Code)
+                        @Html.ValidationMessageFor(model => model.Code)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-2 columns">
+                        @Html.LabelFor(model => model.Name, new { @class = "right inline" })
+                    </div>
+                    <div class="small-10 columns">
+                        @Html.EditorFor(model => model.Name)
+                        @Html.ValidationMessageFor(model => model.Name)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-2 columns">
+                        @Html.LabelFor(model => model.Details, new { @class = "right inline" })
+                    </div>
+                    <div class="small-10 columns">
+                        @Html.EditorFor(model => model.Details)
+                        @Html.ValidationMessageFor(model => model.Details)
+                    </div>
+                </div>
 
-    <fieldset>
-        <legend>Campus</legend>
+                <div class="row">
+                    <div class="small-6 small-offset-1">
+                        <ul class="button-group">
+                            <li><input type="submit" value="Crear" class="small button" /></li>
+                            <li>@Html.ActionLink("Regresar a la Lista", "Index", "Campus", htmlAttributes: new { @class = "small button" })</li>
+                        </ul>
+                    </div>
+                </div>
+            </fieldset>
+        }
+    </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Code)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Code)
-            @Html.ValidationMessageFor(model => model.Code)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Name)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Name)
-            @Html.ValidationMessageFor(model => model.Name)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Details)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Details)
-            @Html.ValidationMessageFor(model => model.Details)
-        </div>
-
-        <p>
-            <input type="submit" value="Create" />
-        </p>
-    </fieldset>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

@@ -1,64 +1,84 @@
 ﻿@model SII.Models.Campus
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalle de campus";
 }
 
-<h2>Details</h2>
+<div class="row">
+    <div class="small-8 small-offset-2 columns">
+        <h4>¿Está seguro que desea eliminar el campus?</h4>
+        <fieldset>
+            <legend>Campus</legend>
+            <div class="row">
+                <div class="small-4 columns">
+                    <span class="label">@Html.DisplayNameFor(model => model.Code)</span>
+                </div>
+                <div class="small-8 columns">
+                    @Html.DisplayFor(model => model.Code)
+                </div>
+            </div>
 
-<fieldset>
-    <legend>Campus</legend>
+            <div class="row">
+                <div class="small-4 columns">
+                    <span class="label">@Html.DisplayNameFor(model => model.Name)</span>
+                </div>
+                <div class="small-8 columns">
+                    @Html.DisplayFor(model => model.Name)
+                </div>
+            </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Code)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Code)
-    </div>
+            <div class="row">
+                <div class="small-4 columns">
+                    <span class="label">@Html.DisplayNameFor(model => model.Details)</span>
+                </div>
+                <div class="small-8 columns">
+                    @Html.DisplayFor(model => model.Details)
+                </div>
+            </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Name)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Name)
-    </div>
+            <div class="row">
+                <div class="small-4 columns">
+                    <span class="label">@Html.DisplayNameFor(model => model.CreatedBy)</span>
+                </div>
+                <div class="small-8 columns">
+                    @Html.DisplayFor(model => model.CreatedBy)
+                </div>
+            </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Details)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Details)
-    </div>
+            <div class="row">
+                <div class="small-4 columns">
+                    <span class="label">@Html.DisplayNameFor(model => model.CreatedAt)</span>
+                </div>
+                <div class="small-8 columns">
+                    @Html.DisplayFor(model => model.CreatedAt)
+                </div>
+            </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.CreatedBy)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.CreatedBy)
-    </div>
+            <div class="row">
+                <div class="small-4 columns">
+                    <span class="label">@Html.DisplayNameFor(model => model.UpdatedBy)</span>
+                </div>
+                <div class="small-8 columns">
+                    @Html.DisplayFor(model => model.UpdatedBy)
+                </div>
+            </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.CreatedAt)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.CreatedAt)
-    </div>
+            <div class="row">
+                <div class="small-4 columns">
+                    <span class="label">@Html.DisplayNameFor(model => model.UpdatedAt)</span>
+                </div>
+                <div class="small-8 columns">
+                    @Html.DisplayFor(model => model.UpdatedAt)
+                </div>
+            </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.UpdatedBy)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.UpdatedBy)
-    </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.UpdatedAt)
+        </fieldset>
+
+        <ul class="button-group">
+            <li>@Html.ActionLink("Editar", "Edit", "Campus", new { id = Model.Id }, htmlAttributes: new { @class = "small button" })</li>
+            <li>@Html.ActionLink("Regresar a la lista", "Index", "Campus", htmlAttributes: new { @class = "small button" })</li>
+        </ul>
+
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.UpdatedAt)
-    </div>
-</fieldset>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+</div>
