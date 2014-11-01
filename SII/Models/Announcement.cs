@@ -7,6 +7,7 @@ namespace SII.Models
 {
     public class Announcement : BaseModel
     {
+        public int CampusId { get; set; }
         public DateTime InitialDate { get; set; }
         public DateTime FinalDate { get; set; }
         public String Observations { get; set; }
