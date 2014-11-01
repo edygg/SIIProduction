@@ -12,13 +12,25 @@ namespace SII.Controllers
     public class CampusController : Controller
     {
         private SIIContext db = new SIIContext();
+        private ICampusRepository CampusRepo;
+
+      
+        public CampusController(ICampusRepository CampusRepo)
+        {
+            this.CampusRepo =  CampusRepo;
+        }
+
+        /*public CampusController()
+        {
+            this.CampusRepo = new EFCampusRepository();
+        }*/
 
         //
         // GET: /Campus/
 
-        public ActionResult Index()
+        public ViewResult Index()
         {
-            return View(db.Campus.ToList());
+            return View(CampusRepo.Campus.ToList());
         }
 
         //
