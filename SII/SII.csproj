@@ -211,6 +211,10 @@
     <Compile Include="Migrations\201410311514009_AddDroppedFieldToBaseModel.Designer.cs">
       <DependentUpon>201410311514009_AddDroppedFieldToBaseModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411010305533_CampusModelValidations.cs" />
+    <Compile Include="Migrations\201411010305533_CampusModelValidations.Designer.cs">
+      <DependentUpon>201411010305533_CampusModelValidations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\BaseModel.cs" />
@@ -637,6 +641,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201410311514009_AddDroppedFieldToBaseModel.resx">
       <DependentUpon>201410311514009_AddDroppedFieldToBaseModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411010305533_CampusModelValidations.resx">
+      <DependentUpon>201411010305533_CampusModelValidations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

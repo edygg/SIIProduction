@@ -52,7 +52,7 @@ namespace SII.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirmar nueva contraseña")]
-        [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+        [Compare("NewPassword", ErrorMessage = "Las contraseñas no coinciden.")]
         public string ConfirmPassword { get; set; }
     }
 
