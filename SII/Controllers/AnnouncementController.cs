@@ -13,6 +13,15 @@ namespace SII.Controllers
     {
         private SIIContext db = new SIIContext();
 
+
+        //Registro de visitas
+
+        public ActionResult Register()
+        {
+            ViewBag.Title = "Registro de Visitas";
+            ViewBag.Campus = new SelectList(db.Campus.ToList(),"Code","Name");
+            return View();
+        }
         //
         // GET: /Announcement/
 

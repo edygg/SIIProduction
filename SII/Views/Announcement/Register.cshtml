@@ -1,0 +1,133 @@
+﻿@model SII.Models.Announcement
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        
+        <div class="parte1">
+
+           <div class="row">
+               <div class="large-12 columns">
+                    <fieldset>
+                        <legend>Seleccione un campus:</legend>
+                        @Html.DropDownList("Campus")    
+                    </fieldset>        
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-12 columns">
+                    <fieldset>
+                        <legend>Tipo de Fechas:</legend>
+                        <input class="fecha_unica" type="radio" name="tipo_fecha" value="Fecha_unica" checked="checked">
+                        <label>Fecha Unica</label>
+                        <input class="fecha_multi" type="radio" name="tipo_fecha" value="Multiples_fechas">
+                        <label>Múltiples Fechas</label>
+                    </fieldset>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-6 columns">
+                    <fieldset>
+                        <legend>Desde</legend>
+                        <input class="text-box single-line" data-val="true" data-val-date="La fecha inicial debe ser en formato válido DD/MM/AAAA" data-val-required="El campos de fecha no puee estar vacío." id="InitialDate" name="InitialDate" type="date" value="">
+                        @Html.ValidationMessageFor(model => model.InitialDate)
+                    </fieldset>
+                </div>
+                <div class="large-6 columns">
+                    <fieldset>
+                        <legend>Hasta</legend>
+                        <input class="text-box single-line" data-val="true" data-val-date="The field FinalDate must be a date." data-val-required="The FinalDate field is required." id="FinalDate" name="FinalDate" type="date" value="">
+                        @Html.ValidationMessageFor(model => model.FinalDate)
+                    </fieldset>
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-12 columns">
+
+                    <fieldset>
+                        <legend>Días</legend>
+                        <input class="semana" type="checkbox" name="dia" value="T" />
+                        <label>Todos los días</label>
+
+                        <input class="dia" type="checkbox" name="dia" value="L" />
+                        <label>Lunes</label>
+
+                        <input class="dia" type="checkbox" name="dia" value="M" />
+                        <label>Martes</label>
+
+                        <input class="dia" type="checkbox" name="dia" value="X" />
+                        <label>Miércoles</label>
+
+                        <input class="dia" type="checkbox" name="dia" value="J" />
+                        <label>Jueves</label>
+
+                        <input class="dia" type="checkbox" name="dia" value="V" />
+                        <label>Viernes</label>
+
+                        <input class="dia" type="checkbox" name="dia" value="S" />
+                        <label>Sábado</label>
+
+                        <input class="dia" type="checkbox" name="dia" value="D" />
+                        <label>Domingo</label>
+                    </fieldset>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-12 columns">
+                    <a class="next button">Siguiente</a>
+                </div>
+            </div>
+
+        </div>
+        <div class="parte2">
+            <div class="row">
+                <div class="large-12 columns">
+                    <fieldset>
+                        <legend>Ingrese Nombre(s)</legend>
+                        <div class="row duplicate">
+                            <div class="medium-7 columns">
+                                <label>Nombre: </label>
+                                <input class="nombres" type="text" name="nombre" />
+                            </div>
+                    
+                            <div class="medium-3 columns">
+                                <label>Tipo de entrada:</label>
+                                <input type="radio" name="tipo_entrada" value="Vehicular" checked="checked">
+                                <label>Vehicular</label>
+                                <input type="radio" name="tipo_entrada" value="Peatonal">
+                                <label>Peatonal</label>
+                            </div>
+                            <div class="medium-2 columns">
+                                <a class="button tiny agregar"><i class="fi-plus"></i> Agregar</a>
+                            </div>
+                        </div>    
+                    </fieldset>
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-12 columns">
+                    <fieldset>
+                        <legend>Observaciones:</legend>
+                        @Html.TextAreaFor(model => model.Observations)
+                        @Html.ValidationMessageFor(model => model.Observations)
+                    </fieldset>
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-12 columns">
+                    <a class="back button">Atrás</a>
+                    <a class="button guardar">Guardar</a>
+                </div>
+            </div>
+        </div>
+
+    }
+
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/rva.js")
+}
