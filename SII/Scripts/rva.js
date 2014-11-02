@@ -46,10 +46,13 @@ $('.agregar').on('click', function ()
 });
 
 $('.guardar').on('click', function () {
+    $('.parte2').hide();
+    $('.resumen').show();
+
     $('.campus').text($('select option:selected').text());
     $('.initial_date').text($('#InitialDate').val());
     $('.final_date').text($('#FinalDate').val());
-
+    $('.dias').text($(''));
     $('.observaciones').text($('#Observations').val());
 });
 
