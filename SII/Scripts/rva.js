@@ -46,6 +46,7 @@ $('.agregar').on('click', function ()
 });
 
 $('.guardar').on('click', function () {
-
+    $('.initial_date').text($('#InitialDate').val());
+    $('.final_date').text($('#FinalDate').val());
 });
 
