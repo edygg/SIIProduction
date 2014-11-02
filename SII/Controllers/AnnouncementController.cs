@@ -15,13 +15,33 @@ namespace SII.Controllers
 
 
         //Registro de visitas
-
+        //GET
         public ActionResult Register()
         {
             ViewBag.Title = "Registro de Visitas";
             ViewBag.Campus = new SelectList(db.Campus.ToList(),"Code","Name");
             return View();
         }
+
+        //Post, para almacenar
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Register(string campus, string tipo_fecha, string IntialDate, string FinalDate, string[] names, string[] dias, string tipo_entrada, string observaciones)
+        {
+            
+            Response.Write(Request["campus"]);
+            Response.Write(Request["tipo_fecha"]);
+            Response.Write(Request["InitialDate"]);
+            Response.Write(Request["FinalDate"]);
+            Response.Write(Request["dia"]);
+            Response.Write(Request["nombre"]);
+            Response.Write(Request["tipo_entrada"]);
+            Response.Write(Request["Observations"]);
+            ViewBag.Campus = new SelectList(db.Campus.ToList(), "Code", "Name");
+
+            return View();
+        }
+
         //
         // GET: /Announcement/
 
