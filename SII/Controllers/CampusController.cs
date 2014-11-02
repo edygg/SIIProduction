@@ -34,7 +34,7 @@ namespace SII.Controllers
 
         public ActionResult Details(int id = 0)
         {
-            Campus campus = db.Campus.Find(id);
+            Campus campus = CampusRepo.Find(id);
             if (campus == null)
             {
                 return HttpNotFound();
@@ -59,8 +59,7 @@ namespace SII.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Campus.Add(campus);
-                db.SaveChanges();
+                CampusRepo.save(campus);
                 return RedirectToAction("Index");
             }
 
@@ -72,7 +71,7 @@ namespace SII.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            Campus campus = db.Campus.Find(id);
+            Campus campus = CampusRepo.Find(id);
             if (campus == null)
             {
                 return HttpNotFound();
@@ -88,9 +87,8 @@ namespace SII.Controllers
         public ActionResult Edit(Campus campus)
         {
             if (ModelState.IsValid)
-            {
-                db.Entry(campus).State = EntityState.Modified;
-                db.SaveChanges();
+            {               
+                CampusRepo.save(campus);
                 return RedirectToAction("Index");
             }
             return View(campus);
@@ -101,7 +99,7 @@ namespace SII.Controllers
 
         public ActionResult Delete(int id = 0)
         {
-            Campus campus = db.Campus.Find(id);
+            Campus campus = CampusRepo.Find(id);
             if (campus == null)
             {
                 return HttpNotFound();
@@ -115,10 +113,8 @@ namespace SII.Controllers
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
-        {
-            Campus campus = db.Campus.Find(id);
-            campus.Dropped = true;
-            db.SaveChanges();
+        {            
+            CampusRepo.delete(id);
             return RedirectToAction("Index");
         }
 

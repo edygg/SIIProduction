@@ -31,11 +31,17 @@ namespace SII.Models
             return campus;
         }
 
-        public void delete(Campus campus)
+        public void delete(int id )
         {
-            context.Campus.Remove(campus);
-            context.SaveChanges();
+           Campus campus = context.Campus.Find(id);        
+           context.Campus.Remove(campus);
+           context.SaveChanges();
+              
+        }
 
+        public Campus Find(int id = 0)
+        {
+            return context.Campus.Find(id);       
         }
     }
 }
