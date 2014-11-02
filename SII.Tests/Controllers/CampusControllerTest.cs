@@ -87,15 +87,81 @@ namespace SII.Tests.Controllers
 
 
             CampusController controller = new CampusController(mock.Object);
-            controller.ModelState.AddModelError("Code","Code is required");
+           controller.ModelState.AddModelError("Code","Code is required");
             //CampusCreate  
 
             //Act
-            var result = controller.Create(new Campus { Code ="TGU"} ) as ViewResult;
-
+            var result = controller.Create(new Campus { Id = 0, Code ="001TGU"} ) as ViewResult;
+            
 
             //Assert
             Assert.AreEqual("", result.ViewName);
+        }
+
+        [Test]
+        public void Campus_Create_Record()
+        {
+            //Arrange
+            Campus campus = new Campus { Id = 1, Name = "Testing", Code = "TGTGUP" };
+            Mock<ICampusRepository> mock = new Mock<ICampusRepository>();
+            mock.Setup(mu => mu.save(campus)).Returns(campus);         
+            CampusController controller = new CampusController(mock.Object);
+          
+            //Act
+            var result = controller.Create(campus) as RedirectToRouteResult;
+            
+        
+            //Assert
+            Assert.IsNotNull( result );
+            Assert.AreEqual(result.RouteValues["action"], "Index" );
+        }
+
+        [Test]
+        public void Campus_Delete_Record()
+        {
+            //Arrange          
+            Mock<ICampusRepository> mock = new Mock<ICampusRepository>();
+            mock.Setup(mu => mu.delete(1));
+            CampusController controller = new CampusController(mock.Object);
+
+            //Act
+            var result = controller.Delete(1);
+
+            //Assert
+            Assert.IsNotNull(result);
+        }
+
+        [Test]
+        public void Campus_DeleteConfirmed_Record()
+        {
+            //Arrange          
+            Mock<ICampusRepository> mock = new Mock<ICampusRepository>();
+            mock.Setup(mu => mu.delete(1));
+            CampusController controller = new CampusController(mock.Object);
+
+            //Act
+            var result = controller.DeleteConfirmed(1) as RedirectToRouteResult;
+
+            //Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(result.RouteValues["action"], "Index");
+        }
+
+        [Test]
+        public void Campus_Edit_Record()
+        {
+            //Arrange
+            Campus campus = new Campus { Id = 1, Name = "Testing", Code = "TGTGUP" };
+            Mock<ICampusRepository> mock = new Mock<ICampusRepository>();
+            mock.Setup(mu => mu.save(campus)).Returns(campus);
+            CampusController controller = new CampusController(mock.Object);
+          
+            //Act
+            var result = controller.Edit(campus) as RedirectToRouteResult;
+
+            //Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(result.RouteValues["action"], "Index");
         }
     }
 }

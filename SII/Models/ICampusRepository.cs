@@ -9,6 +9,7 @@ namespace SII.Models
     {
         IQueryable<Campus> Campus { get; }
         Campus save(Campus campus);
-        void delete(Campus campus);
+        void delete(int id);
+        Campus Find(int id);
     }
 }
