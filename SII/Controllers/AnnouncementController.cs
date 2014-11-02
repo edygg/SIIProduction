@@ -12,6 +12,12 @@ namespace SII.Controllers
     public class AnnouncementController : Controller
     {
         private SIIContext db = new SIIContext();
+        private IAnnouncementRepository AnnouncementRepo;
+
+        public AnnouncementController(IAnnouncementRepository AnnouncementRepo)
+        {
+            this.AnnouncementRepo = AnnouncementRepo;
+        }
 
         //
         // GET: /Announcement/

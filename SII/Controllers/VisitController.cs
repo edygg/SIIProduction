@@ -12,6 +12,12 @@ namespace SII.Controllers
     public class VisitController : Controller
     {
         private SIIContext db = new SIIContext();
+        private IVisitRepository VisitRepo;
+
+        public VisitController(IVisitRepository VisitRepo)
+        {
+            this.VisitRepo = VisitRepo;
+        }
 
         //
         // GET: /Visit/

@@ -230,8 +230,12 @@
     <Compile Include="Models\Announcement.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\Campus.cs" />
+    <Compile Include="Models\EFAnnouncementRepository.cs" />
     <Compile Include="Models\EFCampusRepository.cs" />
+    <Compile Include="Models\EFVisitRepository.cs" />
+    <Compile Include="Models\IAnnouncementRepository.cs" />
     <Compile Include="Models\ICampusRepository.cs" />
+    <Compile Include="Models\IVisitRepository.cs" />
     <Compile Include="Models\SIIContext.cs" />
     <Compile Include="Models\Visit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
