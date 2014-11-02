@@ -142,6 +142,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\CampusControllerTest.cs" />
+    <Compile Include="Controllers\AnnouncementTest.cs" />
+    <Compile Include="Controllers\VisitControllerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
   </ItemGroup>
