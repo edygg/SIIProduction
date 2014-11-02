@@ -46,7 +46,10 @@ $('.agregar').on('click', function ()
 });
 
 $('.guardar').on('click', function () {
+    $('.campus').text($('select option:selected').text());
     $('.initial_date').text($('#InitialDate').val());
     $('.final_date').text($('#FinalDate').val());
+
+    $('.observaciones').text($('#Observations').val());
 });
 
