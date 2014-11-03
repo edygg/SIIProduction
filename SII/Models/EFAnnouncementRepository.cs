@@ -10,7 +10,7 @@ namespace SII.Models
     {
         SIIContext context = new SIIContext();
 
-        public IQueryable<Announcement> Announcement
+        public IQueryable<Announcement> Announcements
         {
             get { return context.Announcements; }
         }

@@ -24,7 +24,7 @@ namespace SII.Controllers
 
         public ActionResult Index()
         {
-            return View(db.Announcements.ToList());
+            return View(AnnouncementRepo.Announcements.ToList());
         }
 
         //

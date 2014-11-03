@@ -10,7 +10,7 @@ namespace SII.Models
     {
         SIIContext context = new SIIContext();
 
-        public IQueryable<Visit> Visit
+        public IQueryable<Visit> Visits
         {
             get { return context.Visits; }
         }

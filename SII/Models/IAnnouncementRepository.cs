@@ -7,7 +7,7 @@ namespace SII.Models
 {
     public interface IAnnouncementRepository
     {
-        IQueryable<Announcement> Announcement { get; }
+        IQueryable<Announcement> Announcements { get; }
         Announcement save(Announcement announcement);
         void delete(int id);
         Announcement Find(int id);
