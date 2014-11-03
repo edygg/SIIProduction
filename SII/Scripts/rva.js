@@ -1,5 +1,7 @@
 ﻿
 $('.parte2').hide();
+$('.resumen').hide();
+$('#FinalDate').attr('disabled', true);
 
 $('.next').on('click', function () {
     if ($('.parte2').css('display') === "none") {
@@ -12,6 +14,15 @@ $('.back').on('click', function () {
     if ($('.parte1').css('display') === "none") {
         $('.parte2').hide();
         $('.parte1').show();
+    }
+});
+
+$('#InitialDate').on('change', function ()
+{
+    var self = this;
+    if ($('#FinalDate').attr('disabled') === "disabled")
+    {
+        $('#FinalDate').val($(self).val());
     }
 });
 
@@ -52,7 +63,33 @@ $('.guardar').on('click', function () {
     $('.campus').text($('select option:selected').text());
     $('.initial_date').text($('#InitialDate').val());
     $('.final_date').text($('#FinalDate').val());
-    $('.dias').text($(''));
+
+    if ($('input.semana').is(':checked')) {
+        $('.dias').text('Todos los días');
+    } else
+    {
+        var el = $('.dias_semana input:checked').next();
+        var txt = " ";
+        $(el).each(function (index, el)
+        {
+            if (index === $(el).length)
+            {
+                txt += $(el).text();
+
+            } else
+            {
+                txt += $(el).text() + ", ";
+            }
+        })
+        $('.dias').text(txt);
+    }
+
     $('.observaciones').text($('#Observations').val());
 });
 
+$('.cancelar').on('click', function ()
+{
+    $('.parte1').show();
+    $('.parte2').hide();
+    $('.resumen').hide();
+});
