@@ -12,13 +12,19 @@ namespace SII.Controllers
     public class VisitController : Controller
     {
         private SIIContext db = new SIIContext();
+        private IVisitRepository VisitRepo;
+
+        public VisitController(IVisitRepository VisitRepo)
+        {
+            this.VisitRepo = VisitRepo;
+        }
 
         //
         // GET: /Visit/
 
-        public ActionResult Index()
+        public ViewResult Index()
         {
-            return View(db.Visits.ToList());
+            return View(VisitRepo.Visits.ToList());
         }
 
         //
@@ -26,7 +32,7 @@ namespace SII.Controllers
 
         public ActionResult Details(int id = 0)
         {
-            Visit visit = db.Visits.Find(id);
+            Visit visit = VisitRepo.Find(id);
             if (visit == null)
             {
                 return HttpNotFound();
@@ -51,8 +57,7 @@ namespace SII.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Visits.Add(visit);
-                db.SaveChanges();
+                VisitRepo.save(visit);
                 return RedirectToAction("Index");
             }
 
@@ -64,7 +69,7 @@ namespace SII.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            Visit visit = db.Visits.Find(id);
+            Visit visit = VisitRepo.Find(id);
             if (visit == null)
             {
                 return HttpNotFound();
@@ -81,8 +86,7 @@ namespace SII.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(visit).State = EntityState.Modified;
-                db.SaveChanges();
+                VisitRepo.save(visit);
                 return RedirectToAction("Index");
             }
             return View(visit);
@@ -93,7 +97,7 @@ namespace SII.Controllers
 
         public ActionResult Delete(int id = 0)
         {
-            Visit visit = db.Visits.Find(id);
+            Visit visit = VisitRepo.Find(id);
             if (visit == null)
             {
                 return HttpNotFound();
@@ -108,9 +112,7 @@ namespace SII.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Visit visit = db.Visits.Find(id);
-            db.Visits.Remove(visit);
-            db.SaveChanges();
+            VisitRepo.delete(id);
             return RedirectToAction("Index");
         }
 
