@@ -53,7 +53,7 @@ $('form').on('submit', function () {
 $('.agregar').on('click', function ()
 {
     var to_d = $('.duplicate').html()
-    $('.row.duplicate').parent().append("<div class='row duplicate'>" + to_d + "</div>");
+    $('.duplicate').parent().append("<div class='duplicate'>" + to_d + "</div>");
 });
 
 $('.guardar').on('click', function () {

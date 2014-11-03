@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SII.Models;
+using System.Globalization;
 
 namespace SII.Controllers
 {
@@ -16,27 +17,48 @@ namespace SII.Controllers
 
         //Registro de visitas
         //GET
+        [HttpGet]
         public ActionResult Register()
         {
             ViewBag.Title = "Registro de Visitas";
-            ViewBag.Campus = new SelectList(db.Campus.ToList(),"Code","Name");
+            ViewBag.Campus = new SelectList(db.Campus.ToList(),"Id","Name");
             return View();
         }
 
         //Post, para almacenar
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(string campus, string tipo_fecha, string IntialDate, string FinalDate, string[] names, string[] dias, string tipo_entrada, string observaciones)
+        public ActionResult Register(string id)
         {
-            
-            Response.Write(Request["campus"]);
-            Response.Write(Request["tipo_fecha"]);
+            //salvar 1 persona
+
+
             Response.Write(Request["InitialDate"]);
             Response.Write(Request["FinalDate"]);
-            Response.Write(Request["dia"]);
-            Response.Write(Request["nombre"]);
-            Response.Write(Request["tipo_entrada"]);
-            Response.Write(Request["Observations"]);
+
+
+            Announcement an = new Announcement();
+
+            an.CampusId = Convert.ToInt32(Request["campus"]);
+
+            an.InitialDate = DateTime.ParseExact(Request["InitialDate"], "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                //Convert.ToDateTime(Request["InitialDate"]);
+            an.FinalDate = DateTime.ParseExact(Request["FinalDate"],"yyyy-MM-dd", CultureInfo.InvariantCulture);
+            
+            an.Observations = Request["Observations"];
+            an.SpecificDays = Request["dia"];
+
+            db.Announcements.Add(an);
+            db.SaveChanges();
+
+            Visit visit = new Visit();
+            visit.AnnouncementId = an.Id;
+            visit.FullName = Request["nombre"];
+            visit.TypeEntrance = Request["tipo_entrada"];
+
+            db.Visits.Add(visit);
+            db.SaveChanges();
+            
             ViewBag.Campus = new SelectList(db.Campus.ToList(), "Code", "Name");
 
             return View();
