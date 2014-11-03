@@ -13,6 +13,12 @@ namespace SII.Controllers
     public class AnnouncementController : Controller
     {
         private SIIContext db = new SIIContext();
+        private IAnnouncementRepository AnnouncementRepo;
+
+        public AnnouncementController(IAnnouncementRepository AnnouncementRepo)
+        {
+            this.AnnouncementRepo = AnnouncementRepo;
+        }
 
 
         //Registro de visitas
@@ -69,7 +75,7 @@ namespace SII.Controllers
 
         public ActionResult Index()
         {
-            return View(db.Announcements.ToList());
+            return View(AnnouncementRepo.Announcements.ToList());
         }
 
         //
