@@ -1,7 +1,11 @@
-﻿
-$('.parte2').hide();
-$('.resumen').hide();
-$('#FinalDate').attr('disabled', true);
+﻿$(function () {
+    $('.parte2').hide();
+    $('.resumen').hide();
+    $('#FinalDate').attr('disabled', true);
+    $('#FinalDate').datepicker();
+    $('#InitialDate').datepicker();
+    console.log(1);
+});
 
 $('.next').on('click', function () {
     if ($('.parte2').css('display') === "none") {
