@@ -73,7 +73,7 @@ namespace SII.Controllers
         //
         // GET: /Announcement/
 
-        public ActionResult Index()
+        public ViewResult Index()
         {
             return View(AnnouncementRepo.Announcements.ToList());
         }
@@ -83,7 +83,7 @@ namespace SII.Controllers
 
         public ActionResult Details(int id = 0)
         {
-            Announcement announcement = db.Announcements.Find(id);
+            Announcement announcement = AnnouncementRepo.Find(id);
             if (announcement == null)
             {
                 return HttpNotFound();
@@ -108,8 +108,7 @@ namespace SII.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Announcements.Add(announcement);
-                db.SaveChanges();
+                AnnouncementRepo.save(announcement);
                 return RedirectToAction("Index");
             }
 
@@ -121,7 +120,7 @@ namespace SII.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            Announcement announcement = db.Announcements.Find(id);
+            Announcement announcement = AnnouncementRepo.Find(id);
             if (announcement == null)
             {
                 return HttpNotFound();
@@ -138,8 +137,7 @@ namespace SII.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(announcement).State = EntityState.Modified;
-                db.SaveChanges();
+                AnnouncementRepo.save(announcement);
                 return RedirectToAction("Index");
             }
             return View(announcement);
@@ -150,7 +148,7 @@ namespace SII.Controllers
 
         public ActionResult Delete(int id = 0)
         {
-            Announcement announcement = db.Announcements.Find(id);
+            Announcement announcement = AnnouncementRepo.Find(id);
             if (announcement == null)
             {
                 return HttpNotFound();
@@ -165,9 +163,7 @@ namespace SII.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Announcement announcement = db.Announcements.Find(id);
-            db.Announcements.Remove(announcement);
-            db.SaveChanges();
+            AnnouncementRepo.delete(id);
             return RedirectToAction("Index");
         }
 
