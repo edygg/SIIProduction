@@ -11,8 +11,12 @@
 
 $('.next').on('click', function () {
     if ($('.parte2').css('display') === "none") {
-        $('.parte1').hide();
-        $('.parte2').show();
+        if ($('#InitialDate').val() != "") {
+            $('.parte1').hide();
+            $('.parte2').show();
+        } else {
+            alert("Ingrese una fecha para la visita");
+        }
     }
 });
 
@@ -39,8 +43,9 @@ $('#InitialDate').on('change', function ()
         weekday[4] = "V";
         weekday[5] = "S";
         weekday[6] = "D";
-
-        var n = weekday[d.getDay()];
+        var dayOfWeek = d.getDay() - 1 < 0 ? 6 : d.getDay() - 1;
+        console.log(dayOfWeek);
+        var n = weekday[dayOfWeek];
         $('input.dia').attr('checked', false);
         $('input[value^=' + n + ']').attr('checked', true);
         $('input[value^=' + n + ']').attr('disables', false);
