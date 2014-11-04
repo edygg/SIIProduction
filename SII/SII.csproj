@@ -225,6 +225,10 @@
     <Compile Include="Migrations\201411012009139_AddCampusToAnnouncement.Designer.cs">
       <DependentUpon>201411012009139_AddCampusToAnnouncement.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411040357145_AddUniqueIndexCodeCampus.cs" />
+    <Compile Include="Migrations\201411040357145_AddUniqueIndexCodeCampus.Designer.cs">
+      <DependentUpon>201411040357145_AddUniqueIndexCodeCampus.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Announcement.cs" />
@@ -678,6 +682,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411012009139_AddCampusToAnnouncement.resx">
       <DependentUpon>201411012009139_AddCampusToAnnouncement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411040357145_AddUniqueIndexCodeCampus.resx">
+      <DependentUpon>201411040357145_AddUniqueIndexCodeCampus.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
