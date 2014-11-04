@@ -3,9 +3,10 @@
     $('.resumen').hide();
     $('#FinalDate').attr('disabled', true);
     if ($.browser.msie) {
-        $('#FinalDate').datepicker();
-        $('#InitialDate').datepicker();
+        $('input#FinalDate').datepicker();
+        $('input#InitialDate').datepicker();
     }
+    $('.dias_semana input').attr('disabled', true);
 });
 
 $('.next').on('click', function () {
@@ -28,6 +29,21 @@ $('#InitialDate').on('change', function ()
     if ($('#FinalDate').attr('disabled') === "disabled")
     {
         $('#FinalDate').val($(self).val());
+
+        var d = new Date($('#InitialDate').val());
+        var weekday = new Array(7);
+        weekday[0] = "L";
+        weekday[1] = "M";
+        weekday[2] = "X";
+        weekday[3] = "J";
+        weekday[4] = "V";
+        weekday[5] = "S";
+        weekday[6] = "D";
+
+        var n = weekday[d.getDay()];
+        $('input.dia').attr('checked', false);
+        $('input[value^=' + n + ']').attr('checked', true);
+        $('input[value^=' + n + ']').attr('disables', false);
     }
 });
 
@@ -35,8 +51,17 @@ var $tipo_fecha = $('input[name^=tipo_fecha]')
 $tipo_fecha.on('change', function () {
     if ($($tipo_fecha).filter('.fecha_unica').is(':checked') === true) {
         $('#FinalDate').val($('#InitialDate').val()).attr('disabled', true);
+        $('.dias_semana input').attr('disabled', true);
+        $('.dias_semana input').attr('checked', false);
     } else {
         $('#FinalDate').attr('disabled', false);
+        $('.dias_semana input').attr('disabled', false);
+        $('.dia').each(function (index, el) {
+            if (index >= 0 && index <= 4)
+            {
+                $($('.dia')[index]).attr('checked', true);
+            }
+        })
     }
 });
 

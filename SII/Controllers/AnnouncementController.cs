@@ -38,21 +38,26 @@ namespace SII.Controllers
         {
             //salvar 1 persona
 
-
-            Response.Write(Request["InitialDate"]);
-            Response.Write(Request["FinalDate"]);
-
-
             Announcement an = new Announcement();
 
             an.CampusId = Convert.ToInt32(Request["campus"]);
 
             an.InitialDate = DateTime.ParseExact(Request["InitialDate"], "yyyy-MM-dd", CultureInfo.InvariantCulture);
                 //Convert.ToDateTime(Request["InitialDate"]);
-            an.FinalDate = DateTime.ParseExact(Request["FinalDate"],"yyyy-MM-dd", CultureInfo.InvariantCulture);
+            if (String.IsNullOrEmpty(Request["FinalDate"]))
+            {
+                an.FinalDate = DateTime.ParseExact(Request["InitialDate"], "yyyy-MM-dd", CultureInfo.InvariantCulture);
+            }
+            else
+            {
+                an.FinalDate = DateTime.ParseExact(Request["FinalDate"],"yyyy-MM-dd", CultureInfo.InvariantCulture);
+            }
+            
             
             an.Observations = Request["Observations"];
-            an.SpecificDays = Request["dia"];
+                
+                an.SpecificDays = Request["dia"];
+            
 
             db.Announcements.Add(an);
             db.SaveChanges();
