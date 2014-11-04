@@ -14,7 +14,7 @@ namespace SII.Tests.Controllers
     public class VisitControllerTest
     {
         [Test]
-        public void Visit_Index_View_Contains_ListOfCampus_Model()
+        public void Visit_Index_View_Contains_ListOfVisit_Model()
         {
             //Arrange
             Mock<IVisitRepository> mock = new Mock<IVisitRepository>();
