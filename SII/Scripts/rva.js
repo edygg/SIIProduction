@@ -133,6 +133,7 @@ $('.autorizar').on('click', function ()
 {
     if (confirm("Al momento autorizar la entrada a estas personas se hacer responsable de los daños que pudiesen causar"))
     {
-        $($('form')[1]).submit();
+        console.log("Entre");
+        $('form').submit();
     }
 });
