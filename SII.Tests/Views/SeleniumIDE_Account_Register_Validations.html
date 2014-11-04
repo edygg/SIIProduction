@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:32657/Account/Register" />
+<title>SeleniumIDE_Account_Register_Validations</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">SeleniumIDE_Account_Register_Validations</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/Account/Register</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=UserName</td>
+	<td>user</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=input.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=div.validation-summary-errors &gt; ul &gt; li</td>
+	<td>The Contraseña field is required.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=UserName</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Password</td>
+	<td>asdfgh</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=ConfirmPassword</td>
+	<td>asdfgh</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=input.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=div.validation-summary-errors &gt; ul &gt; li</td>
+	<td>The Usuario field is required.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=UserName</td>
+	<td>user</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Password</td>
+	<td>asdfg</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=ConfirmPassword</td>
+	<td>asdfg</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=input.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=div.validation-summary-errors &gt; ul &gt; li</td>
+	<td>La Contraseña debe tener al menos 6 caracteres de largo.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=UserName</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Password</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=ConfirmPassword</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=input.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=div.validation-summary-errors &gt; ul &gt; li</td>
+	<td>The Usuario field is required.</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//section[@id='body']/div/section/div/div/form/div/ul/li[2]</td>
+	<td>The Contraseña field is required.</td>
+</tr>
+
+</tbody></table>
+</body>
+</html>
