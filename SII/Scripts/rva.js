@@ -2,9 +2,10 @@
     $('.parte2').hide();
     $('.resumen').hide();
     $('#FinalDate').attr('disabled', true);
-    $('#FinalDate').datepicker();
-    $('#InitialDate').datepicker();
-    console.log(1);
+    if ($.browser.msie) {
+        $('#FinalDate').datepicker();
+        $('#InitialDate').datepicker();
+    }
 });
 
 $('.next').on('click', function () {
