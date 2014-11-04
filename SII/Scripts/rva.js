@@ -93,3 +93,11 @@ $('.cancelar').on('click', function ()
     $('.parte2').hide();
     $('.resumen').hide();
 });
+
+$('.autorizar').on('click', function ()
+{
+    if (confirm("Al momento autorizar la entrada a estas personas se hacer responsable de los daños que pudiesen causar"))
+    {
+        $($('form')[1]).submit();
+    }
+});
