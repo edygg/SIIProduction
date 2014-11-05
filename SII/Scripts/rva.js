@@ -2,10 +2,6 @@
     $('.parte2').hide();
     $('.resumen').hide();
     $('#FinalDate').attr('disabled', true);
-    if ($.browser.msie) {
-        $('input#FinalDate').datepicker();
-        $('input#InitialDate').datepicker();
-    }
     $('.dias_semana input').attr('disabled', true);
 });
 
