@@ -24,6 +24,7 @@ namespace SII.Controllers
         //Registro de visitas
         //GET
         [HttpGet]
+        [Authorize]
         public ActionResult Register()
         {
             ViewBag.Title = "Registro de Visitas";
@@ -34,6 +35,7 @@ namespace SII.Controllers
         //Post, para almacenar
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Register(string id)
         {
             //salvar 1 persona
@@ -42,15 +44,15 @@ namespace SII.Controllers
 
             an.CampusId = Convert.ToInt32(Request["campus"]);
 
-            an.InitialDate = DateTime.ParseExact(Request["InitialDate"], "yyyy-MM-dd", CultureInfo.InvariantCulture);
+            an.InitialDate = DateTime.ParseExact(Request["InitialDate"], "dd MMMM, yyyy", CultureInfo.InvariantCulture);
                 //Convert.ToDateTime(Request["InitialDate"]);
             if (String.IsNullOrEmpty(Request["FinalDate"]))
             {
-                an.FinalDate = DateTime.ParseExact(Request["InitialDate"], "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                an.FinalDate = DateTime.ParseExact(Request["InitialDate"], "dd MMMM, yyyy", CultureInfo.InvariantCulture);
             }
             else
             {
-                an.FinalDate = DateTime.ParseExact(Request["FinalDate"],"yyyy-MM-dd", CultureInfo.InvariantCulture);
+                an.FinalDate = DateTime.ParseExact(Request["FinalDate"], "dd MMMM, yyyy", CultureInfo.InvariantCulture);
             }
             
             
