@@ -89,12 +89,14 @@ $('form').on('submit', function () {
 
 $('.agregar').on('click', function ()
 {
+    if ($('.agregar').attr("disabled") == "disabled") return;
 
     $($('.duplicate')[0]).clone().appendTo($('.duplicate').parent());
     var current = $('.duplicate').data('current');
     current++;
     var $to_d = $($('.duplicate')[current]);
     $($('.duplicate')[current]).find('input.tipo_entrada').attr('name', 'tipo_entrada[' + current + ']');
+    $($('.duplicate')[current]).find('input.nombres').attr('disabled', 'disabled');
     $($($('.duplicate')[0]).find('input.tipo_entrada')[0]).attr('checked', true);
     $($($('.duplicate')[0]).find('input.nombres')[0]).val("");
     $('.duplicate').data('current', current);
@@ -167,4 +169,21 @@ $('.autorizar').on('click', function ()
     {
         $('form').submit();
     }
+});
+
+$(document).ready(function () {
+    $('.nombres').on('blur', function () {
+        var currentName = $(this).val();
+        var regexp = /^[a-z\s]{5,100}$/i;
+        if (!regexp.test(currentName)) {
+            $(this).parent().children('small.error').remove();
+            $(this).addClass("error");
+            $(this).parent().append('<small class="error">Soy un error</small>');
+            $('.agregar').attr("disabled", "disabled");
+        } else {
+            $(this).removeClass("error");
+            $(this).parent().children('small.error').remove();
+            $('.agregar').removeAttr("disabled", "disabled");
+        }
+    });
 });
