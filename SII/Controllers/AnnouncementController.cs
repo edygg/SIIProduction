@@ -7,6 +7,9 @@ using System.Web;
 using System.Web.Mvc;
 using SII.Models;
 using System.Globalization;
+using System.Net.Http;
+using System.Net;
+using System.Text;
 
 namespace SII.Controllers
 {
@@ -36,45 +39,52 @@ namespace SII.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public ActionResult Register(string id)
+        public HttpResponseMessage Register(string id)
         {
             //salvar 1 persona
 
-            Announcement an = new Announcement();
 
-            an.CampusId = Convert.ToInt32(Request["campus"]);
+            string result = Request["nombre[0]"] + Request["nombre[1]"]; 
 
-            an.InitialDate = DateTime.ParseExact(Request["InitialDate_submit"], "yyyy-mm-dd", CultureInfo.InvariantCulture);
 
-            if (String.IsNullOrEmpty(Request["FinalDate_submit"]))
-            {
-                an.FinalDate = DateTime.ParseExact(Request["InitialDate_submit"], "yyyy-mm-dd", CultureInfo.InvariantCulture);
-            }
-            else
-            {
-                an.FinalDate = DateTime.ParseExact(Request["FinalDate_submit"], "yyyy-mm-dd", CultureInfo.InvariantCulture);
-            }
+            var resp = new HttpResponseMessage(HttpStatusCode.OK);
+            resp.Content = new StringContent(result, Encoding.UTF8, "text/plain");
+            return resp;
+            //Announcement an = new Announcement();
+
+            //an.CampusId = Convert.ToInt32(Request["campus"]);
+
+            //an.InitialDate = DateTime.ParseExact(Request["InitialDate_submit"], "yyyy-mm-dd", CultureInfo.InvariantCulture);
+
+            //if (String.IsNullOrEmpty(Request["FinalDate_submit"]))
+            //{
+            //    an.FinalDate = DateTime.ParseExact(Request["InitialDate_submit"], "yyyy-mm-dd", CultureInfo.InvariantCulture);
+            //}
+            //else
+            //{
+            //    an.FinalDate = DateTime.ParseExact(Request["FinalDate_submit"], "yyyy-mm-dd", CultureInfo.InvariantCulture);
+            //}
             
             
-            an.Observations = Request["Observations"];
+            //an.Observations = Request["Observations"];
                 
-                an.SpecificDays = Request["dia"];
+            //    an.SpecificDays = Request["dia"];
             
 
-            db.Announcements.Add(an);
-            db.SaveChanges();
+            //db.Announcements.Add(an);
+            //db.SaveChanges();
 
-            Visit visit = new Visit();
-            visit.AnnouncementId = an.Id;
-            visit.FullName = Request["nombre"];
-            visit.TypeEntrance = Request["tipo_entrada"];
+            //Visit visit = new Visit();
+            //visit.AnnouncementId = an.Id;
+            //visit.FullName = Request["nombre"];
+            //visit.TypeEntrance = Request["tipo_entrada"];
 
-            db.Visits.Add(visit);
-            db.SaveChanges();
+            //db.Visits.Add(visit);
+            //db.SaveChanges();
             
-            ViewBag.Campus = new SelectList(db.Campus.ToList(), "Code", "Name");
+            //ViewBag.Campus = new SelectList(db.Campus.ToList(), "Code", "Name");
 
-            return View();
+            //return View();
         }
 
         //

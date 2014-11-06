@@ -1,8 +1,15 @@
-﻿$(function () {
+﻿var init = 0;
+$(function () {
     $('.parte2').hide();
     $('.resumen').hide();
     $('#FinalDate').attr('disabled', true);
     $('.dias_semana input').attr('disabled', true);
+
+    $('.tipo_entrada').attr('name', 'tipo_entrada[' + init + ']');
+    $('.nombres').attr('name', 'nombre[' + init + ']');
+    $('.duplicate').data('current', init);
+
+
 });
 
 $('.next').on('click', function () {
@@ -78,13 +85,24 @@ $('.semana').on('change', function () {
 });
 
 $('form').on('submit', function () {
-    console.log(1);
+    
 });
 
 $('.agregar').on('click', function ()
 {
-    var to_d = $('.duplicate').html()
-    $('.duplicate').parent().append("<div class='duplicate'>" + to_d + "</div>");
+
+    $($('.duplicate')[0]).clone().appendTo($('.duplicate').parent());
+    var current = $('.duplicate').data('current');
+    current++;
+    console.log('current: '+current);
+    var $to_d = $($('.duplicate')[current]);
+    console.log($($('.duplicate')[current]));
+
+    $($('.duplicate')[current]).find('input.nombres').attr('name', 'nombre[' + current + ']');
+    $($('.duplicate')[current]).find('input.tipo_entrada').attr('name', 'tipo_entrada[' + current + ']');
+
+    $('.duplicate').data('current', current);
+
 });
 
 $('.guardar').on('click', function () {
