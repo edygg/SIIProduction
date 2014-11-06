@@ -6,7 +6,7 @@ $(function () {
     $('.dias_semana input').attr('disabled', true);
 
     $('.tipo_entrada').attr('name', 'tipo_entrada[' + init + ']');
-    $('.nombres').attr('name', 'nombre[' + init + ']');
+   // $('.nombres').attr('name', 'nombre[' + init + ']');
     $('.duplicate').data('current', init);
 
 
@@ -98,7 +98,7 @@ $('.agregar').on('click', function ()
     var $to_d = $($('.duplicate')[current]);
     console.log($($('.duplicate')[current]));
 
-    $($('.duplicate')[current]).find('input.nombres').attr('name', 'nombre[' + current + ']');
+    //$($('.duplicate')[current]).find('input.nombres').attr('name', 'nombre[' + current + ']');
     $($('.duplicate')[current]).find('input.tipo_entrada').attr('name', 'tipo_entrada[' + current + ']');
 
     $('.duplicate').data('current', current);

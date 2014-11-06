@@ -44,11 +44,16 @@ namespace SII.Controllers
             //salvar 1 persona
 
 
-            string result = Request["nombre[0]"] + Request["nombre[1]"]; 
+            string[] result = Request["nombre"].Split(',');
+            string[] tipo = new string[result.Length];
+            for (int i = 0; i < result.Length; i++)
+            {
+                tipo[i] = Request["tipo_entrada[" + i + "]"];
+            }
 
 
             var resp = new HttpResponseMessage(HttpStatusCode.OK);
-            resp.Content = new StringContent(result, Encoding.UTF8, "text/plain");
+            resp.Content = new StringContent(result.ToString(), Encoding.UTF8, "text/plain");
             return resp;
             //Announcement an = new Announcement();
 
