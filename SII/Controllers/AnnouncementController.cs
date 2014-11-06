@@ -39,57 +39,79 @@ namespace SII.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public HttpResponseMessage Register(string id)
+        public ActionResult Register(string id)
         {
             //salvar 1 persona
 
-
-            string[] result = Request["nombre"].Split(',');
-            string[] tipo = new string[result.Length];
-            for (int i = 0; i < result.Length; i++)
+            if (Request["nombre"].Split(',').Length <= 1)
             {
-                tipo[i] = Request["tipo_entrada[" + i + "]"];
+                Announcement an = new Announcement();
+                an.CampusId = Convert.ToInt32(Request["campus"]);
+                an.InitialDate = DateTime.ParseExact(Request["InitialDate_submit"], "yyyy/mm/dd", CultureInfo.InvariantCulture);
+                if (String.IsNullOrEmpty(Request["FinalDate_submit"]))
+                {
+                    an.FinalDate = DateTime.ParseExact(Request["InitialDate_submit"], "yyyy/mm/dd", CultureInfo.InvariantCulture);
+                }
+                else
+                {
+                    an.FinalDate = DateTime.ParseExact(Request["FinalDate_submit"], "yyyy/mm/dd", CultureInfo.InvariantCulture);
+                }
+
+                an.Observations = Request["Observations"];
+                if(!String.IsNullOrEmpty(Request["dia"])){
+                    an.SpecificDays = Request["dia"];
+                }
+
+                db.Announcements.Add(an);
+                db.SaveChanges();
+
+                Visit visit = new Visit();
+                visit.AnnouncementId = an.Id;
+                visit.FullName = Request["nombre"];
+                visit.TypeEntrance = Request["tipo_entrada[0]"];
+
+                db.Visits.Add(visit);
+                db.SaveChanges();
             }
+            else
+            {
+                //caso de muchas personas
+
+                Announcement an = new Announcement();
+                an.CampusId = Convert.ToInt32(Request["campus"]);
+                an.InitialDate = DateTime.ParseExact(Request["InitialDate_submit"], "yyyy/mm/dd", CultureInfo.InvariantCulture);
+                if (String.IsNullOrEmpty(Request["FinalDate_submit"]))
+                {
+                    an.FinalDate = DateTime.ParseExact(Request["InitialDate_submit"], "yyyy/mm/dd", CultureInfo.InvariantCulture);
+                }
+                else
+                {
+                    an.FinalDate = DateTime.ParseExact(Request["FinalDate_submit"], "yyyy/mm/dd", CultureInfo.InvariantCulture);
+                }
+                an.Observations = Request["Observations"];
+                if (!String.IsNullOrEmpty(Request["dia"]))
+                {
+                    an.SpecificDays = Request["dia"];
+                }
+                db.Announcements.Add(an);
+                db.SaveChanges();
 
 
-            var resp = new HttpResponseMessage(HttpStatusCode.OK);
-            resp.Content = new StringContent(result.ToString(), Encoding.UTF8, "text/plain");
-            return resp;
-            //Announcement an = new Announcement();
+                string[] result = Request["nombre"].Split(',');
+                string[] tipo = new string[result.Length];
+                for (int i = 0; i < result.Length; i++)
+                {
+                    Visit visit = new Visit();
+                    visit.AnnouncementId = an.Id;
+                    visit.FullName = result[i];
+                    visit.TypeEntrance = Request["tipo_entrada[" + i + "]"]; ;
+                    db.Visits.Add(visit);
+                    db.SaveChanges();
+                }
 
-            //an.CampusId = Convert.ToInt32(Request["campus"]);
-
-            //an.InitialDate = DateTime.ParseExact(Request["InitialDate_submit"], "yyyy-mm-dd", CultureInfo.InvariantCulture);
-
-            //if (String.IsNullOrEmpty(Request["FinalDate_submit"]))
-            //{
-            //    an.FinalDate = DateTime.ParseExact(Request["InitialDate_submit"], "yyyy-mm-dd", CultureInfo.InvariantCulture);
-            //}
-            //else
-            //{
-            //    an.FinalDate = DateTime.ParseExact(Request["FinalDate_submit"], "yyyy-mm-dd", CultureInfo.InvariantCulture);
-            //}
+            }
             
-            
-            //an.Observations = Request["Observations"];
-                
-            //    an.SpecificDays = Request["dia"];
-            
-
-            //db.Announcements.Add(an);
-            //db.SaveChanges();
-
-            //Visit visit = new Visit();
-            //visit.AnnouncementId = an.Id;
-            //visit.FullName = Request["nombre"];
-            //visit.TypeEntrance = Request["tipo_entrada"];
-
-            //db.Visits.Add(visit);
-            //db.SaveChanges();
-            
-            //ViewBag.Campus = new SelectList(db.Campus.ToList(), "Code", "Name");
-
-            //return View();
+            return RedirectToAction("Index");
         }
 
         //
