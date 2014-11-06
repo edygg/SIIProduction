@@ -104,7 +104,7 @@ namespace SII.Controllers
                     Visit visit = new Visit();
                     visit.AnnouncementId = an.Id;
                     visit.FullName = result[i];
-                    visit.TypeEntrance = Request["tipo_entrada[" + i + "]"]; ;
+                    visit.TypeEntrance = Request["tipo_entrada[" + i + "]"];
                     db.Visits.Add(visit);
                 }
                     db.SaveChanges();
