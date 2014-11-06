@@ -52,7 +52,7 @@ namespace SII.Controllers
             }
             else
             {
-                an.FinalDate = DateTime.ParseExact(Request["FinalDate_submit"], "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                an.FinalDate = DateTime.ParseExact(Request["FinalDate_submit"], "yyyy-mm-dd", CultureInfo.InvariantCulture);
             }
             
             
