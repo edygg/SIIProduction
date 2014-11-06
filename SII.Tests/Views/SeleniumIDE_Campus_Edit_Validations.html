@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:32657/Campus/Edit/5" />
+<title>SeleniumIDE_Campus_Edit_Validations</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">SeleniumIDE_Campus_Edit_Validations</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/Campus/Edit/5</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Code</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=input.small.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=span.field-validation-error &gt; span</td>
+	<td>The Código field is required.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Code</td>
+	<td>UNISPS</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Name</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=input.small.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=span.field-validation-error &gt; span</td>
+	<td>The Nombre field is required.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Code</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=input.small.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=span.field-validation-error &gt; span</td>
+	<td>The Código field is required.</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//section[@id='body']/div/div/form/fieldset/div[2]/div[2]/span/span</td>
+	<td>The Nombre field is required.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Name</td>
+	<td>Unitec San Pedro Sula</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Code</td>
+	<td>unisps</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=input.small.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=span.field-validation-error &gt; span</td>
+	<td>Ingrese un código de 6 caracteres que contenga solo letras mayúsculas.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Code</td>
+	<td>unisp3</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=input.small.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=span.field-validation-error &gt; span</td>
+	<td>Ingrese un código de 6 caracteres que contenga solo letras mayúsculas.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Code</td>
+	<td>UNISPSR</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=input.small.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=span.field-validation-error &gt; span</td>
+	<td>Ingrese un código de 6 caracteres que contenga solo letras mayúsculas.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Code</td>
+	<td>UNISPS</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Name</td>
+	<td>1234</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=input.small.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=span.field-validation-error &gt; span</td>
+	<td>Ingrese hasta 50 caracteres, que pueden ser letras mayúsculas o minúsculas.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Name</td>
+	<td>Unitec San Pedro Sula 2</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=input.small.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=span.field-validation-error &gt; span</td>
+	<td>Ingrese hasta 50 caracteres, que pueden ser letras mayúsculas o minúsculas.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Name</td>
+	<td>Unitec San Pedro Sula</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Details</td>
+	<td>123;#%</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=input.small.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=span.field-validation-error &gt; span</td>
+	<td>Ingrese hasta 150 caracteres, que pueden ser letras, puntos o comas</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Details</td>
+	<td>Campus San Pedro Sula</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Code</td>
+	<td>UNITEG</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.small.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//section[@id='body']/div/div/div</td>
+	<td>El código de campus ya existe. ×</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Code</td>
+	<td>UNISPS</td>
+</tr>
+
+</tbody></table>
+</body>
+</html>
