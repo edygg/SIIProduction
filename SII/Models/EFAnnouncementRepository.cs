@@ -32,7 +32,8 @@ namespace SII.Models
         public void delete(int id)
         {
             Announcement announcement = context.Announcements.Find(id);
-            context.Announcements.Remove(announcement);
+            announcement.Dropped = true;
+            context.Entry(announcement).State = EntityState.Modified;
             context.SaveChanges();
         }
 

@@ -32,7 +32,8 @@ namespace SII.Models
         public void delete(int id)
         {
             Visit visit = context.Visits.Find(id);
-            context.Visits.Remove(visit);
+            visit.Dropped = true;
+            context.Entry(visit).State = EntityState.Modified;
             context.SaveChanges();
               
         }
