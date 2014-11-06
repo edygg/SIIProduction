@@ -7,6 +7,9 @@ using System.Web;
 using System.Web.Mvc;
 using SII.Models;
 using System.Globalization;
+using System.Net.Http;
+using System.Net;
+using System.Text;
 
 namespace SII.Controllers
 {
@@ -40,41 +43,75 @@ namespace SII.Controllers
         {
             //salvar 1 persona
 
-            Announcement an = new Announcement();
-
-            an.CampusId = Convert.ToInt32(Request["campus"]);
-
-            an.InitialDate = DateTime.ParseExact(Request["InitialDate"], "dd MMMM, yyyy", CultureInfo.InvariantCulture);
-                //Convert.ToDateTime(Request["InitialDate"]);
-            if (String.IsNullOrEmpty(Request["FinalDate"]))
+            if (Request["nombre"].Split(',').Length <= 1)
             {
-                an.FinalDate = DateTime.ParseExact(Request["InitialDate"], "dd MMMM, yyyy", CultureInfo.InvariantCulture);
+                Announcement an = new Announcement();
+                an.CampusId = Convert.ToInt32(Request["campus"]);
+                an.InitialDate = DateTime.ParseExact(Request["InitialDate_submit"], "yyyy/mm/dd", CultureInfo.InvariantCulture);
+                if (String.IsNullOrEmpty(Request["FinalDate_submit"]))
+                {
+                    an.FinalDate = DateTime.ParseExact(Request["InitialDate_submit"], "yyyy/mm/dd", CultureInfo.InvariantCulture);
+                }
+                else
+                {
+                    an.FinalDate = DateTime.ParseExact(Request["FinalDate_submit"], "yyyy/mm/dd", CultureInfo.InvariantCulture);
+                }
+
+                an.Observations = Request["Observations"];
+                if(!String.IsNullOrEmpty(Request["dia"])){
+                    an.SpecificDays = Request["dia"];
+                }
+
+                db.Announcements.Add(an);
+                db.SaveChanges();
+
+                Visit visit = new Visit();
+                visit.AnnouncementId = an.Id;
+                visit.FullName = Request["nombre"];
+                visit.TypeEntrance = Request["tipo_entrada[0]"];
+
+                db.Visits.Add(visit);
+                db.SaveChanges();
             }
             else
             {
-                an.FinalDate = DateTime.ParseExact(Request["FinalDate"], "dd MMMM, yyyy", CultureInfo.InvariantCulture);
+                //caso de muchas personas
+
+                Announcement an = new Announcement();
+                an.CampusId = Convert.ToInt32(Request["campus"]);
+                an.InitialDate = DateTime.ParseExact(Request["InitialDate_submit"], "yyyy/mm/dd", CultureInfo.InvariantCulture);
+                if (String.IsNullOrEmpty(Request["FinalDate_submit"]))
+                {
+                    an.FinalDate = DateTime.ParseExact(Request["InitialDate_submit"], "yyyy/mm/dd", CultureInfo.InvariantCulture);
+                }
+                else
+                {
+                    an.FinalDate = DateTime.ParseExact(Request["FinalDate_submit"], "yyyy/mm/dd", CultureInfo.InvariantCulture);
+                }
+                an.Observations = Request["Observations"];
+                if (!String.IsNullOrEmpty(Request["dia"]))
+                {
+                    an.SpecificDays = Request["dia"];
+                }
+                db.Announcements.Add(an);
+                db.SaveChanges();
+
+
+                string[] result = Request["nombre"].Split(',');
+                string[] tipo = new string[result.Length];
+                for (int i = 0; i < result.Length; i++)
+                {
+                    Visit visit = new Visit();
+                    visit.AnnouncementId = an.Id;
+                    visit.FullName = result[i];
+                    visit.TypeEntrance = Request["tipo_entrada[" + i + "]"];
+                    db.Visits.Add(visit);
+                }
+                    db.SaveChanges();
+
             }
             
-            
-            an.Observations = Request["Observations"];
-                
-                an.SpecificDays = Request["dia"];
-            
-
-            db.Announcements.Add(an);
-            db.SaveChanges();
-
-            Visit visit = new Visit();
-            visit.AnnouncementId = an.Id;
-            visit.FullName = Request["nombre"];
-            visit.TypeEntrance = Request["tipo_entrada"];
-
-            db.Visits.Add(visit);
-            db.SaveChanges();
-            
-            ViewBag.Campus = new SelectList(db.Campus.ToList(), "Code", "Name");
-
-            return View();
+            return RedirectToAction("Index");
         }
 
         //

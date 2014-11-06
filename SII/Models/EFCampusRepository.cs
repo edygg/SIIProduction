@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data;
-//using Microsoft.Ajax.Utilities;
-//using System.Runtime.Remoting.Contexts;
 
 namespace SII.Models
 {
@@ -33,9 +31,11 @@ namespace SII.Models
 
         public void delete(int id )
         {
-           Campus campus = context.Campus.Find(id);        
-           context.Campus.Remove(campus);
+           Campus campus = context.Campus.Find(id);
+           campus.Dropped = true;
+           context.Entry(campus).State = EntityState.Modified;
            context.SaveChanges();
+              
               
         }
 

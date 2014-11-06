@@ -4,33 +4,12 @@ using System.Linq;
 using System.Text;
 using SII.Models;
 
-namespace SII.Tests.Models
+namespace SII.Tests.Models 
 {
     [TestFixture]
     public class CampusModelTest
     {
-        /*[Test]
-        [ExpectedException(typeof(System.Data.Entity.Validation.DbEntityValidationException))]
-        public void TestCampusRequiredCode()
-        {
-            var campus = new Campus { Id = 1, Code = "", Name = "Universidad", Details = "" };
-            SIIContext context = new SIIContext();
-            context.Campus.Add(campus);
-            context.SaveChanges();
-            context.Dispose();
-        }*/
-
-      /*  [Test]
-        [ExpectedException(typeof(System.Data.Entity.Validation.DbEntityValidationException))]
-        public void TestCampusRequiredName()
-        {
-            var campus = new Campus { Id = 1, Code = "Code", Name = "", Details = "" };
-            SIIContext context = new SIIContext();
-            context.Campus.Add(campus);
-            context.SaveChanges();
-            context.Dispose();
-        }*/
-
+       
         [Test]
         public void UpdateAtSelectedCorrectlyWhenModifiedCampus()
         {
@@ -39,10 +18,68 @@ namespace SII.Tests.Models
         }
 
         [Test]
-        public void EnteringLessThan6CharacteresInCodeIsNotAllow()
+        public void EnteringJust6CharacteresInCode()
         {
-            Campus campus = new Campus { Code = "TUG"};
-            Assert.AreNotEqual(campus.Code.Length , 6);
+            Campus campus = new Campus {Id = 1, Name="Unitec Tegucigalpa",  Code = "UNITUG"};
+          
+           Assert.IsTrue(campus.Code.Length == 6);           
+        }
+
+        [Test]
+        public void EnteringLessThanOr50CharacteresInName()
+        {
+            Campus campus = new Campus { Id = 1, Name = "Unitec Tegucigalpa", Code = "UNITUG" };
+
+            Assert.IsTrue(campus.Name.Length <= 50);
+        }
+            
+         [Test]
+         public void EnteringJustUpperCaseCharacteresInCode()
+         {
+            Campus campus = new Campus {Id = 1, Name="Unitec Tegucigalpa",  Code = "UNITUG"};
+            Assert.IsTrue( hasLowerCase(campus.Code));
+         }
+
+        [Test]
+         public void EnteringJustCharacteresInCode()
+         {
+             Campus campus = new Campus { Id = 1, Name = "Unitec Tegucigalpa", Code = "UNITUG" };
+             Assert.IsTrue( JustCharacteres(campus.Code));
+         }
+
+        [Test]
+        public void EnteringJustCharacteresInName()
+        {
+            Campus campus = new Campus { Id = 1, Name = "Unitec Tegucigalpa", Code = "UNITUG" };
+            Assert.IsTrue(JustCharacteres(campus.Name));
+        }
+
+
+         public bool JustCharacteres(String sr)
+         {
+             if (String.IsNullOrEmpty(sr))
+                 return false;
+             for (int i = 0; i < sr.Length; i++)
+             {
+                 if (char.IsNumber(sr[i]) || sr[i].Equals('*') || sr[i].Equals('-') || sr[i].Equals('+') || sr[i].Equals('/') || sr[i].Equals('.')
+                    || sr[i].Equals('?') || sr[i].Equals('|') || sr[i].Equals('>') || sr[i].Equals('<') || sr[i].Equals(',') || sr[i].Equals(':') 
+                    || sr[i].Equals(';') || sr[i].Equals('!') || sr[i].Equals('@') || sr[i].Equals('#') || sr[i].Equals('$') || sr[i].Equals('%')
+                    || sr[i].Equals('^') || sr[i].Equals('&') || sr[i].Equals('(') || sr[i].Equals(')') || sr[i].Equals('_') || sr[i].Equals('=') )
+                     return false;
+             }
+             return true;
+         }
+
+        public bool hasLowerCase(String sr)
+        {
+            if (String.IsNullOrEmpty(sr))
+                return false;
+            for (int i = 0; i < sr.Length; i++)
+            {
+                if (char.IsLower(sr[i]))
+                    return false;
+            }
+            return true;
         }
     }
 }

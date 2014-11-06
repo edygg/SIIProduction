@@ -158,10 +158,11 @@ namespace SII.Tests.Controllers
           
             //Act
             var result = controller.Edit(campus) as RedirectToRouteResult;
-
+            
             //Assert
             Assert.IsNotNull(result);
             Assert.AreEqual(result.RouteValues["action"], "Index");
+           
         }
     }
 }
