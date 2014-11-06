@@ -22,7 +22,7 @@ namespace SII.Models
 
         [Display(Name = "Detalles")]
         [StringLength(150, ErrorMessage = "Se permiten solamente 150 caracteres", MinimumLength = 0)]
-        [RegularExpression(@"^[\w\s\,\.]{0,150}$", ErrorMessage = "Ingrese hasta 150 caracteres, que pueden ser letras, números, puntos o comas")]
+        [RegularExpression(@"^[a-zA-z\s\,\.]{0,150}$", ErrorMessage = "Ingrese hasta 150 caracteres, que pueden ser letras, puntos o comas")]
         public String Details { get; set; }
         public ICollection<Announcement> Announcements { get; set; }
     }
