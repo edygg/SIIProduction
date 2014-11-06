@@ -1,14 +1,9 @@
 ﻿$(document).ready(function () {
     var iniDate = $('#InitialDate').pickadate({
-        formatSubmit: 'yyyy-mm-dd',
-        firstDay: 2,
-        min: new Date()
+        min: new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate() + 1)
     });
 
     var finalDate = $('#FinalDate').pickadate({
-        formatSubmit: 'yyyy-mm-dd',
-        firstDay: 2,
-        min: new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate() + 1)
+        min: new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate() + 2)
     });
-    
 });

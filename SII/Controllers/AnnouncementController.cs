@@ -44,15 +44,15 @@ namespace SII.Controllers
 
             an.CampusId = Convert.ToInt32(Request["campus"]);
 
-            an.InitialDate = DateTime.ParseExact(Request["InitialDate"], "dd MMMM, yyyy", CultureInfo.InvariantCulture);
-                //Convert.ToDateTime(Request["InitialDate"]);
-            if (String.IsNullOrEmpty(Request["FinalDate"]))
+            an.InitialDate = DateTime.ParseExact(Request["InitialDate_submit"], "yyyy-mm-dd", CultureInfo.InvariantCulture);
+
+            if (String.IsNullOrEmpty(Request["FinalDate_submit"]))
             {
-                an.FinalDate = DateTime.ParseExact(Request["InitialDate"], "dd MMMM, yyyy", CultureInfo.InvariantCulture);
+                an.FinalDate = DateTime.ParseExact(Request["InitialDate_submit"], "yyyy-mm-dd", CultureInfo.InvariantCulture);
             }
             else
             {
-                an.FinalDate = DateTime.ParseExact(Request["FinalDate"], "dd MMMM, yyyy", CultureInfo.InvariantCulture);
+                an.FinalDate = DateTime.ParseExact(Request["FinalDate_submit"], "dd/MM/yyyy", CultureInfo.InvariantCulture);
             }
             
             
