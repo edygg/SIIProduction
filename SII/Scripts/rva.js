@@ -96,6 +96,7 @@ $('.agregar').on('click', function ()
     var $to_d = $($('.duplicate')[current]);
     $($('.duplicate')[current]).find('input.tipo_entrada').attr('name', 'tipo_entrada[' + current + ']');
     $($($('.duplicate')[0]).find('input.tipo_entrada')[0]).attr('checked', true);
+    $($($('.duplicate')[0]).find('input.nombres')[0]).val("");
     $('.duplicate').data('current', current);
 
     $('.agregar').each(function (index, el)
@@ -103,13 +104,17 @@ $('.agregar').on('click', function ()
         if (index !== 0) {
             $(el).removeClass('tiny agregar').addClass('alert');
             $(el).removeClass('fi-plus');
-            $(el).text("");
-            if (!$('.alert').hasClass('.fi-x'))
-            {
-                $('.alert').append('<i class="fi-x"></i>')
-            }
+            $(el).html("<i class="+"fi-x"+"></i>");
         }
     });
+
+    $('.alert').on('click', function () {
+        $(this).parents().eq(2).remove();
+        if ($('.alert').length !== $('.duplicate').data('current')) {
+            $('.duplicate').data('current', $('.duplicate').data('current') - 1);
+        }
+    });
+    
 
 });
 
