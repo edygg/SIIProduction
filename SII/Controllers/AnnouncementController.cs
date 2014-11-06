@@ -106,8 +106,8 @@ namespace SII.Controllers
                     visit.FullName = result[i];
                     visit.TypeEntrance = Request["tipo_entrada[" + i + "]"]; ;
                     db.Visits.Add(visit);
-                    db.SaveChanges();
                 }
+                    db.SaveChanges();
 
             }
             

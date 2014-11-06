@@ -95,7 +95,21 @@ $('.agregar').on('click', function ()
     current++;
     var $to_d = $($('.duplicate')[current]);
     $($('.duplicate')[current]).find('input.tipo_entrada').attr('name', 'tipo_entrada[' + current + ']');
+    $($($('.duplicate')[0]).find('input.tipo_entrada')[0]).attr('checked', true);
     $('.duplicate').data('current', current);
+
+    $('.agregar').each(function (index, el)
+    {
+        if (index !== 0) {
+            $(el).removeClass('tiny agregar').addClass('alert');
+            $(el).removeClass('fi-plus');
+            $(el).text("");
+            if (!$('.alert').hasClass('.fi-x'))
+            {
+                $('.alert').append('<i class="fi-x"></i>')
+            }
+        }
+    });
 
 });
 
@@ -127,6 +141,10 @@ $('.guardar').on('click', function () {
         $('.dias').text(txt);
     }
 
+    $('.duplicate').find('.nombres').each(function (index, element) {
+        $('.listado').after('<tr><td>' + $(element).val() + '</td><td>' + $(element).parent().parent().parent().find('input:checked.tipo_entrada').val() + '</td></tr>');
+    });
+
     $('.observaciones').text($('#Observations').val());
 });
 
@@ -139,9 +157,8 @@ $('.cancelar').on('click', function ()
 
 $('.autorizar').on('click', function ()
 {
-    if (confirm("Al momento autorizar la entrada a estas personas se hacer responsable de los daños que pudiesen causar"))
+    if (confirm("Al momento autorizar la entrada a estas personas se hace responsable de los daños que pudiesen causar"))
     {
-        console.log("Entre");
         $('form').submit();
     }
 });
