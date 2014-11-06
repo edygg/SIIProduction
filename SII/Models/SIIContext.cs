@@ -45,7 +45,9 @@ namespace SII.Models
                     property = type.GetProperty("CreatedBy");
                     if (property != null) 
                     {
-                        property.SetValue(entry.Entity, HttpContext.Current.User.Identity.Name, null);
+                        if (HttpContext.Current != null) {
+                            property.SetValue(entry.Entity, HttpContext.Current.User.Identity.Name, null);
+                        }
                     }
 
                 }
@@ -59,7 +61,10 @@ namespace SII.Models
                 property = type.GetProperty("UpdatedBy");
                 if (property != null)
                 {
-                    property.SetValue(entry.Entity, HttpContext.Current.User.Identity.Name, null);
+                    if (HttpContext.Current != null)
+                    {
+                        property.SetValue(entry.Entity, HttpContext.Current.User.Identity.Name, null);
+                    }
                 }
 
             }
