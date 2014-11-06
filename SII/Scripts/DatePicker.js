@@ -8,4 +8,6 @@
         min: new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate() + 2),
         formatSubmit: 'yyyy/mm/dd'
     });
+
+    $.validate();
 });
