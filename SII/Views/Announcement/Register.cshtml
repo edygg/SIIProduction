@@ -98,7 +98,7 @@
                                 <div class="medium-7 columns">
                                     <label>Nombre: </label>
                                     <div class="alpha-field">
-                                        <input class="nombres" name="nombre" type="text"/>
+                                        <input class="nombres" name="nombre" type="text" data-validation="custom" data-validation-regexp="[a-zA-z\s]{5, 100}" data-validation-error-msg="Los nombres pueden tener un máximo de 100 caracteres solo letras." />
                                     </div>
                                 </div>
                     
@@ -169,4 +169,5 @@
     @Scripts.Render("~/Scripts/datepicker/picker.js")
     @Scripts.Render("~/Scripts/datepicker/picker.date.js")
     @Scripts.Render("~/Scripts/DatePicker.js")
+    @Scripts.Render("~/Scripts/jquery.form-validator.min.js")
 }
