@@ -96,10 +96,20 @@ namespace SII.Controllers
         public ActionResult Edit(Campus campus)
         {
             if (ModelState.IsValid)
-            {               
-                CampusRepo.save(campus);
+            {
+                try
+                {
+                    CampusRepo.save(campus);
+                }
+                catch (Exception e)
+                {
+                    ViewBag.Error = "El código de campus ya existe.";
+                    return View(campus);
+                }
+                // CampusRepo.save(campus);
                 return RedirectToAction("Index");
             }
+
             return View(campus);
         }
 
