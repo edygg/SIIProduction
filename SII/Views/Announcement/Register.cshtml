@@ -121,8 +121,7 @@
                 <div class="large-12 columns">
                     <fieldset>
                         <legend>Observaciones:</legend>
-                        @Html.TextAreaFor(model => model.Observations)
-                        @Html.ValidationMessageFor(model => model.Observations)
+                        <textarea name="Observations" data-validation="custom" data-validation-regexp="[\w\s\,\.\:\-\(\)_\@@]{0,150}" data-validation-error-msg="Los nombres pueden tener un máximo de 100 caracteres solo letras."></textarea>
                     </fieldset>
                 </div>
             </div>
