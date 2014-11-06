@@ -18,7 +18,7 @@ namespace SII.Tests.Models
         }
 
         [Test]
-        public void EnteringLessThanOr6CharacteresInCodeIsNotAllow()
+        public void EnteringJust6CharacteresInCode()
         {
             Campus campus = new Campus {Id = 1, Name="Unitec Tegucigalpa",  Code = "UNITUG"};
           
@@ -26,7 +26,7 @@ namespace SII.Tests.Models
         }
 
         [Test]
-        public void EnteringLessThanOr50CharacteresInCodeIsNotAllow()
+        public void EnteringLessThanOr50CharacteresInName()
         {
             Campus campus = new Campus { Id = 1, Name = "Unitec Tegucigalpa", Code = "UNITUG" };
 
