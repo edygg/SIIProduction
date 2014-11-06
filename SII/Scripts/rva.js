@@ -122,6 +122,10 @@ $('.agregar').on('click', function ()
 });
 
 $('.guardar').on('click', function () {
+    if ($('.duplicate').length == 1) {
+        alert("Ingrese los nombres de las visitas.");
+        return;
+    }
     $('.parte2').hide();
     $('.resumen').show();
 
@@ -178,12 +182,27 @@ $(document).ready(function () {
         if (!regexp.test(currentName)) {
             $(this).parent().children('small.error').remove();
             $(this).addClass("error");
-            $(this).parent().append('<small class="error">Soy un error</small>');
+            $(this).parent().append('<small class="error">El nombre solo debe contener hasta 100 letras.</small>');
             $('.agregar').attr("disabled", "disabled");
         } else {
             $(this).removeClass("error");
             $(this).parent().children('small.error').remove();
             $('.agregar').removeAttr("disabled", "disabled");
+        }
+    });
+
+    $('.observations').on('blur', function () {
+        var currentVal = $(this).val();
+        var regexp = /^[a-z0-9\s\.\_\-\,\@]{0,150}$/i;
+        if (!regexp.test(currentVal)) {
+            $(this).parent().children('small.error').remove();
+            $(this).addClass("error");
+            $(this).parent().append('<small class="error">Las observaciones pueden contener hasta 150 caracteres entre letras, números, guiones y arrobas.</small>');
+            $('.guardar').attr("disabled", "disabled");
+        } else {
+            $(this).removeClass("error");
+            $(this).parent().children('small.error').remove();
+            $('.guardar').removeAttr("disabled", "disabled");
         }
     });
 });
