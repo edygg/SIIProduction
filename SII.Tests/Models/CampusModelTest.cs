@@ -18,11 +18,19 @@ namespace SII.Tests.Models
         }
 
         [Test]
-        public void EnteringLessThan6CharacteresInCodeIsNotAllow()
+        public void EnteringLessThanOr6CharacteresInCodeIsNotAllow()
         {
             Campus campus = new Campus {Id = 1, Name="Unitec Tegucigalpa",  Code = "UNITUG"};
           
-           Assert.AreEqual(campus.Code.Length, 6);           
+           Assert.IsTrue(campus.Code.Length == 6);           
+        }
+
+        [Test]
+        public void EnteringLessThanOr50CharacteresInCodeIsNotAllow()
+        {
+            Campus campus = new Campus { Id = 1, Name = "Unitec Tegucigalpa", Code = "UNITUG" };
+
+            Assert.IsTrue(campus.Name.Length <= 50);
         }
             
          [Test]
@@ -38,6 +46,14 @@ namespace SII.Tests.Models
              Campus campus = new Campus { Id = 1, Name = "Unitec Tegucigalpa", Code = "UNITUG" };
              Assert.IsTrue( JustCharacteres(campus.Code));
          }
+
+        [Test]
+        public void EnteringJustCharacteresInName()
+        {
+            Campus campus = new Campus { Id = 1, Name = "Unitec Tegucigalpa", Code = "UNITUG" };
+            Assert.IsTrue(JustCharacteres(campus.Name));
+        }
+
 
          public bool JustCharacteres(String sr)
          {
