@@ -3,10 +3,6 @@ using NUnit.Framework;
 using System.Linq;
 using System.Text;
 using SII.Models;
-using Moq;
-//using System.Web.Mvc;
-//using System.Web.Http.ModelBinding;
-
 
 namespace SII.Tests.Models 
 {
@@ -34,6 +30,28 @@ namespace SII.Tests.Models
          {
             Campus campus = new Campus {Id = 1, Name="Unitec Tegucigalpa",  Code = "UNITUG"};
             Assert.IsTrue( hasLowerCase(campus.Code));
+         }
+
+        [Test]
+         public void EnteringJustCharacteresInCode()
+         {
+             Campus campus = new Campus { Id = 1, Name = "Unitec Tegucigalpa", Code = "UNITUG" };
+             Assert.IsTrue( JustCharacteres(campus.Code));
+         }
+
+         public bool JustCharacteres(String sr)
+         {
+             if (String.IsNullOrEmpty(sr))
+                 return false;
+             for (int i = 0; i < sr.Length; i++)
+             {
+                 if (char.IsNumber(sr[i]) || sr[i].Equals('*') || sr[i].Equals('-') || sr[i].Equals('+') || sr[i].Equals('/') || sr[i].Equals('.')
+                    || sr[i].Equals('?') || sr[i].Equals('|') || sr[i].Equals('>') || sr[i].Equals('<') || sr[i].Equals(',') || sr[i].Equals(':') 
+                    || sr[i].Equals(';') || sr[i].Equals('!') || sr[i].Equals('@') || sr[i].Equals('#') || sr[i].Equals('$') || sr[i].Equals('%')
+                    || sr[i].Equals('^') || sr[i].Equals('&') || sr[i].Equals('(') || sr[i].Equals(')') || sr[i].Equals('_') || sr[i].Equals('=') )
+                     return false;
+             }
+             return true;
          }
 
         public bool hasLowerCase(String sr)
