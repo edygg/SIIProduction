@@ -14,8 +14,17 @@ $(function () {
 $('.next').on('click', function () {
     if ($('.parte2').css('display') === "none") {
         if ($('#InitialDate').val() != "") {
-            $('.parte1').hide();
-            $('.parte2').show();
+            var iniDate = $('input[name=InitialDate_submit]').val().split("/");
+            var finalDate = $('input[name=FinalDate_submit]').val().split("/");
+
+            iniDate = new Date(parseInt(iniDate[0]), parseInt(iniDate[1]), parseInt(iniDate[2]));
+            finalDate = new Date(parseInt(finalDate[0]), parseInt(finalDate[1]), parseInt(finalDate[2]));
+            if (iniDate > finalDate && $('.fecha_multi').is(':checked')) {
+                alert("La fecha final es mayor que la fecha inicial.");
+            } else {
+                $('.parte1').hide();
+                $('.parte2').show();
+            }
         } else {
             alert("Ingrese una fecha para la visita");
         }
@@ -152,9 +161,10 @@ $('.guardar').on('click', function () {
         })
         $('.dias').text(txt);
     }
-
+    $('.listado').empty();
     $('.duplicate').find('.nombres').each(function (index, element) {
-        $('.listado').after('<tr><td>' + $(element).val() + '</td><td>' + $(element).parent().parent().parent().find('input:checked.tipo_entrada').val() + '</td></tr>');
+        if ($(element).val() != "")
+            $('.listado').append('<tr><td>' + $(element).val() + '</td><td>' + $(element).parent().parent().parent().find('input:checked.tipo_entrada').val() + '</td></tr>');
     });
 
     $('.observaciones').text($('#Observations').val());

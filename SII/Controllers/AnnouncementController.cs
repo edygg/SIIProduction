@@ -67,7 +67,8 @@ namespace SII.Controllers
 
                 Visit visit = new Visit();
                 visit.AnnouncementId = an.Id;
-                visit.FullName = Request["nombre"];
+                var name = Request["nombre"].Split(',');
+                visit.FullName = name[1];
                 visit.TypeEntrance = Request["tipo_entrada[0]"];
 
                 db.Visits.Add(visit);
@@ -94,20 +95,22 @@ namespace SII.Controllers
                     an.SpecificDays = Request["dia"];
                 }
                 db.Announcements.Add(an);
-                db.SaveChanges();
-
-
+        
                 string[] result = Request["nombre"].Split(',');
                 string[] tipo = new string[result.Length];
                 for (int i = 0; i < result.Length; i++)
                 {
-                    Visit visit = new Visit();
-                    visit.AnnouncementId = an.Id;
-                    visit.FullName = result[i];
-                    visit.TypeEntrance = Request["tipo_entrada[" + i + "]"];
-                    db.Visits.Add(visit);
+                    if (!String.IsNullOrEmpty(result[i]))
+                    {
+                        Visit visit = new Visit();
+                        visit.AnnouncementId = an.Id;
+                        visit.FullName = result[i];
+                        visit.TypeEntrance = Request["tipo_entrada[" + i + "]"];
+                        db.Visits.Add(visit);   
+                    }
                 }
-                    db.SaveChanges();
+
+                db.SaveChanges();
 
             }
             
