@@ -104,6 +104,7 @@ $('.agregar').on('click', function ()
     var current = $('.duplicate').data('current');
     current++;
     var $to_d = $($('.duplicate')[current]);
+    $($('.duplicate')[current]).find('input.nombres').attr('name', 'nombre[' + current + ']');
     $($('.duplicate')[current]).find('input.tipo_entrada').attr('name', 'tipo_entrada[' + current + ']');
     $($('.duplicate')[current]).find('input.nombres').attr('disabled', 'disabled');
     $($($('.duplicate')[0]).find('input.tipo_entrada')[0]).attr('checked', true);
