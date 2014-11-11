@@ -31,7 +31,7 @@ namespace SII.Controllers
         public ActionResult Register()
         {
             ViewBag.Title = "Registro de Visitas";
-            ViewBag.Campus = new SelectList(db.Campus.ToList(),"Id","Name");
+            ViewBag.Campus = new SelectList(db.Campus.Where(m => m.Dropped == false).ToList(),"Id","Name");
             return View();
         }
 
@@ -61,14 +61,16 @@ namespace SII.Controllers
             }
 
             db.Announcements.Add(an);
+            db.SaveChanges();
 
-            int count = 0;
+            int count = 1;
 
-            while (Request["nombre[" + count + "]"] != null) {
+            while (!String.IsNullOrEmpty(Request["nombre[" + count + "]"])) {
                 Visit visit = new Visit();
                 visit.AnnouncementId = an.Id;
                 visit.FullName = Request["nombre[" + count + "]"];
                 visit.TypeEntrance = Request["tipo_entrada["+ count + "]"];
+                count++;
 
                 db.Visits.Add(visit);
             }
