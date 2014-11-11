@@ -51,8 +51,17 @@ namespace SII.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Barriers.Add(barrier);
-                db.SaveChanges();
+                try
+                {
+                    db.Barriers.Add(barrier);
+                    db.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    ViewBag.Error = "La dirección IP ya está asignada.";
+                    return View(barrier);
+                }
+                
                 return RedirectToAction("Index");
             }
 

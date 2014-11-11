@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Resumen";
+}
+
+
+<div class="row">
+    <div class="large-12 columns">
+        <h2>Se han registrado las visitas exitosamente</h2>
+        @Html.ActionLink("Nuevo Ingreso", "Register","Announcement", new { @class = "button" })
+        <a href="javascript:document.getElementById('logoutForm').submit()" class="button">Cerrar Sesión</a>
+        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+        {
+            @Html.AntiForgeryToken()
+        }
+    </div>
+</div>
