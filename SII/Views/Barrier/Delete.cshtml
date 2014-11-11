@@ -4,73 +4,74 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<div class="row">
+    <h3>Are you sure you want to delete this?</h3>
+    <fieldset>
+        <legend>Barrier</legend>
 
-<h3>Are you sure you want to delete this?</h3>
-<fieldset>
-    <legend>Barrier</legend>
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.Name)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Name)
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Name)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Name)
-    </div>
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.IpAddress)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.IpAddress)
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.IpAddress)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.IpAddress)
-    </div>
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.Port)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Port)
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Port)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Port)
-    </div>
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.Activate)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Activate)
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Activate)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Activate)
-    </div>
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.CampusId)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.CampusId)
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.CampusId)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.CampusId)
-    </div>
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.AllowTeachers)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.AllowTeachers)
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.AllowTeachers)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.AllowTeachers)
-    </div>
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.AllowAdministrative)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.AllowAdministrative)
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.AllowAdministrative)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.AllowAdministrative)
-    </div>
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.AllowStudents)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.AllowStudents)
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.AllowStudents)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.AllowStudents)
-    </div>
-
-</fieldset>
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
-}
+    </fieldset>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <p>
+            <input type="submit" value="Delete" class="button"/>
+            @Html.ActionLink("Back to List", "Index", "Barrier", new { @class = "button"})
+        </p>
+    }
+</div>

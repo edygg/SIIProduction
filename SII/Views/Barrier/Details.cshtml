@@ -1,100 +1,101 @@
 ﻿@model SII.Models.Barrier
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalles";
 }
+<div class="row">
 
-<h2>Details</h2>
 
-<fieldset>
-    <legend>Barrier</legend>
+    <fieldset>
+        <legend>Barrier</legend>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Name)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Name)
-    </div>
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.Name)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Name)
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.IpAddress)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.IpAddress)
-    </div>
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.IpAddress)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.IpAddress)
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Port)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Port)
-    </div>
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.Port)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Port)
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Activate)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Activate)
-    </div>
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.Activate)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Activate)
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.CampusId)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.CampusId)
-    </div>
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.CampusId)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.CampusId)
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.AllowTeachers)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.AllowTeachers)
-    </div>
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.AllowTeachers)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.AllowTeachers)
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.AllowAdministrative)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.AllowAdministrative)
-    </div>
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.AllowAdministrative)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.AllowAdministrative)
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.AllowStudents)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.AllowStudents)
-    </div>
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.AllowStudents)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.AllowStudents)
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.CreatedBy)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.CreatedBy)
-    </div>
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.CreatedBy)
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.CreatedAt)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.CreatedAt)
-    </div>
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.CreatedAt)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.CreatedAt)
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.UpdatedBy)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.UpdatedBy)
-    </div>
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.UpdatedBy)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.UpdatedBy)
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.UpdatedAt)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.UpdatedAt)
-    </div>
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.UpdatedAt)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.UpdatedAt)
+        </div>
 
-</fieldset>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+    </fieldset>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "button" })
+        @Html.ActionLink("Back to List", "Index", "Barrier", new { @class = "button" })
+    </p>
+</div>

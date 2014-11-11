@@ -4,71 +4,69 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class="row">
+    <table>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IpAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Port)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Activate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CampusId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AllowTeachers)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AllowAdministrative)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AllowStudents)
+            </th>
+        </tr>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IpAddress)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Port)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Activate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CampusId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AllowTeachers)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AllowAdministrative)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AllowStudents)
-        </th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IpAddress)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Port)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Activate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CampusId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AllowTeachers)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AllowAdministrative)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AllowStudents)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
-
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IpAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Port)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Activate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CampusId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AllowTeachers)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AllowAdministrative)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AllowStudents)
+                </td>
+                <td>
+                    <i class="fi-clipboard-pencil medium"></i> @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                    <i class="fi-eye medium"></i> @Html.ActionLink("Detalles", "Details", new { id = item.Id }) |
+                    <i class="fi-x medium"></i> @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </table>
+    @Html.ActionLink("Crear Barrera", "Create", "Barrier", new { @class = "button" })
+</div>
