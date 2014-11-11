@@ -1,7 +1,7 @@
 ﻿@model SII.Models.Barrier
 
 @{
-    ViewBag.Title = "Crear Nueva Barrera";
+    ViewBag.Title = "Crear nueva barrera";
 }
 
 <div class="row">
@@ -28,6 +28,15 @@
                     <div class="small-10 columns">
                         @Html.EditorFor(model => model.Name)
                         @Html.ValidationMessageFor(model => model.Name)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-2 columns">
+                        @Html.LabelFor(model => model.Description, new { @class = "right inline" })
+                    </div>
+                    <div class="small-10 columns">
+                        @Html.EditorFor(model => model.Description)
+                        @Html.ValidationMessageFor(model => model.Description)
                     </div>
                 </div>
                 <div class="row">

@@ -21,8 +21,8 @@ namespace SII.Models
         [StringLength(128, ErrorMessage = "Ingrese una descripción de máximo 128 caracteres.", MinimumLength = 5)]
         [Display(Name = "Descripción")]
         [Required]
-        [RegularExpression(@"^[A-za-z0-9]{5,128}$", ErrorMessage = "Ingrese una descripción que contenga de 5 a 128 caracteres letras o números.")]
-        public String Description;
+        [RegularExpression(@"^[A-za-z0-9\s]{5,128}$", ErrorMessage = "Ingrese una descripción que contenga de 5 a 128 caracteres letras o números.")]
+        public String Description { get; set; }
 
         [Column("ip")]
         [StringLength(15, ErrorMessage = "La dirección IP ingresada en inválida.", MinimumLength = 7)]

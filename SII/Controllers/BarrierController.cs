@@ -95,8 +95,17 @@ namespace SII.Controllers
         {
             if (ModelState.IsValid)
             {
-                BarrierRepo.save(barrier);
-                return RedirectToAction("Index");
+                try
+                {
+                    BarrierRepo.save(barrier);
+                    return RedirectToAction("Index");
+                }
+                catch (Exception e)
+                {
+                    ViewBag.Error = "La dirección IP ya está asignada.";
+                    return View(barrier);
+                }
+                
             }
             return View(barrier);
         }

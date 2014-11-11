@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<SII.Models.Barrier>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Administrar barreras";
 }
 
 <div class="row">
@@ -10,6 +10,9 @@
             <tr>
                 <th>
                     @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.IpAddress)
@@ -24,15 +27,6 @@
                     @Html.DisplayNameFor(model => model.CampusId)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.AllowTeachers)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.AllowAdministrative)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.AllowStudents)
-                </th>
-                <th>
 
                 </th>
             </tr>
@@ -42,6 +36,9 @@
                 <tr>
                     <td>
                         @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.IpAddress)
@@ -54,15 +51,6 @@
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.CampusId)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.AllowTeachers)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.AllowAdministrative)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.AllowStudents)
                     </td>
                     <td>
                         <i class="fi-clipboard-pencil medium"></i> @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
