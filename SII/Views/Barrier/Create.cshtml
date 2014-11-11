@@ -2,6 +2,15 @@
 
 @{
     ViewBag.Title = "Crear nueva barrera";
+
+    SII.Models.SIIContext db = new SII.Models.SIIContext();
+    var allCampus = db.Campus.Where(m => m.Dropped == false).ToList();
+    var campusDropDown = new List<SelectListItem>();
+
+    foreach (var campus in allCampus) 
+    {
+        campusDropDown.Add(new SelectListItem { Text = campus.Name, Value = campus.Id.ToString() }); 
+    }
 }
 
 <div class="row">
@@ -71,7 +80,7 @@
                         @Html.LabelFor(model => model.CampusId, new { @class = "right inline" })
                     </div>
                     <div class="small-10 columns">
-                        @Html.EditorFor(model => model.CampusId)
+                        @Html.DropDownListFor(model => model.CampusId, campusDropDown);
                         @Html.ValidationMessageFor(model => model.CampusId)
                     </div>
                 </div>

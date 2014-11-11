@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Administrar barreras";
+    SII.Models.SIIContext db = new SII.Models.SIIContext();
 }
 
 <div class="row">
@@ -50,7 +51,7 @@
                         @Html.DisplayFor(modelItem => item.Activate)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.CampusId)
+                       @db.Campus.Where(m => m.Id == item.CampusId).First().Name
                     </td>
                     <td>
                         <i class="fi-clipboard-pencil medium"></i> @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |

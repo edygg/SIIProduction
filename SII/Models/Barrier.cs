@@ -41,6 +41,7 @@ namespace SII.Models
         [Display(Name = "Activo")]
         public bool Activate { get; set; }
 
+        [Display(Name = "Campus")]
         public int CampusId { get; set; }
 
         [Column("AutorizaDocentes")]
