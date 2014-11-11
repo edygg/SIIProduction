@@ -34,8 +34,7 @@ namespace SII.Models
            Campus campus = context.Campus.Find(id);
            campus.Dropped = true;
            context.Entry(campus).State = EntityState.Modified;
-           context.SaveChanges();
-              
+           context.SaveChanges();            
               
         }
 

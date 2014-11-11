@@ -25,5 +25,6 @@ namespace SII.Models
         [RegularExpression(@"^[a-zA-z\s\,\.]{0,150}$", ErrorMessage = "Ingrese hasta 150 caracteres, que pueden ser letras, puntos o comas")]
         public String Details { get; set; }
         public ICollection<Announcement> Announcements { get; set; }
+        public ICollection<Barrier> Barriers { get; set; }
     }
 }

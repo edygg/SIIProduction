@@ -1,0 +1,120 @@
+﻿@model SII.Models.Barrier
+
+@{
+    ViewBag.Title = "Crear nueva barrera";
+}
+
+<div class="row">
+    <div class="small-8 small-offset-2 columns">
+        @if (!String.IsNullOrEmpty(ViewBag.Error))
+        {
+            <div data-alert class="alert-box alert round">
+                @ViewBag.Error
+                <a href="#" class="close">&times;</a>
+            </div>
+        }
+        
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            <fieldset>
+                <legend>Barreras</legend>
+                <div class="row">
+                    <div class="small-2 columns">
+                        @Html.LabelFor(model => model.Name, new { @class = "right inline" })
+                    </div>
+                    <div class="small-10 columns">
+                        @Html.EditorFor(model => model.Name)
+                        @Html.ValidationMessageFor(model => model.Name)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-2 columns">
+                        @Html.LabelFor(model => model.Description, new { @class = "right inline" })
+                    </div>
+                    <div class="small-10 columns">
+                        @Html.EditorFor(model => model.Description)
+                        @Html.ValidationMessageFor(model => model.Description)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-2 columns">
+                        @Html.LabelFor(model => model.IpAddress, new { @class = "right inline" })
+                    </div>
+                    <div class="small-10 columns">
+                        @Html.EditorFor(model => model.IpAddress)
+                        @Html.ValidationMessageFor(model => model.IpAddress)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-2 columns">
+                        @Html.LabelFor(model => model.Port, new { @class = "right inline" })
+                    </div>
+                    <div class="small-10 columns">
+                        @Html.EditorFor(model => model.Port)
+                        @Html.ValidationMessageFor(model => model.Port)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-2 columns">
+                        @Html.LabelFor(model => model.Activate, new { @class = "right inline" })
+                    </div>
+                    <div class="small-10 columns">
+                        @Html.EditorFor(model => model.Activate)
+                        @Html.ValidationMessageFor(model => model.Activate)
+                    </div>
+                </div>           
+                <div class="row">
+                    <div class="small-2 columns">
+                        @Html.LabelFor(model => model.CampusId, new { @class = "right inline" })
+                    </div>
+                    <div class="small-10 columns">
+                        @Html.EditorFor(model => model.CampusId)
+                        @Html.ValidationMessageFor(model => model.CampusId)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-2 columns">
+                        @Html.LabelFor(model => model.AllowTeachers, new { @class = "right inline" })
+                    </div>
+                    <div class="small-10 columns">
+                        @Html.EditorFor(model => model.AllowTeachers)
+                        @Html.ValidationMessageFor(model => model.AllowTeachers)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-2 columns">
+                        @Html.LabelFor(model => model.AllowAdministrative, new { @class = "right inline" })
+                    </div>
+                    <div class="small-10 columns">
+                        @Html.EditorFor(model => model.AllowAdministrative)
+                        @Html.ValidationMessageFor(model => model.AllowAdministrative)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-2 columns">
+                        @Html.LabelFor(model => model.AllowStudents, new { @class = "right inline" })
+                    </div>
+                    <div class="small-10 columns">
+                        @Html.EditorFor(model => model.AllowStudents)
+                        @Html.ValidationMessageFor(model => model.AllowStudents)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-6 small-offset-1 columns">
+                        <ul class="button-group">
+                            <li><input type="submit" value="Crear" class="small button" /></li>
+                            <li>@Html.ActionLink("Regresar a la lista", "Index", "Barrier", htmlAttributes: new { @class = "small button" })</li>
+                        </ul>
+                    </div>
+                </div>
+            </fieldset>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

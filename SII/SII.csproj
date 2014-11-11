@@ -190,6 +190,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AnnouncementController.cs" />
+    <Compile Include="Controllers\BarrierController.cs" />
     <Compile Include="Controllers\CampusController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\VisitController.cs" />
@@ -233,15 +234,30 @@
     <Compile Include="Migrations\201411041715460_ValidationsAnnouncementAndVisit.Designer.cs">
       <DependentUpon>201411041715460_ValidationsAnnouncementAndVisit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411110512534_CreateBarriersTable.cs" />
+    <Compile Include="Migrations\201411110512534_CreateBarriersTable.Designer.cs">
+      <DependentUpon>201411110512534_CreateBarriersTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411110515591_RelationshipCampusBarriers.cs" />
+    <Compile Include="Migrations\201411110515591_RelationshipCampusBarriers.Designer.cs">
+      <DependentUpon>201411110515591_RelationshipCampusBarriers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411111714459_AddDescriptionToBarriers.cs" />
+    <Compile Include="Migrations\201411111714459_AddDescriptionToBarriers.Designer.cs">
+      <DependentUpon>201411111714459_AddDescriptionToBarriers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Announcement.cs" />
+    <Compile Include="Models\Barrier.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\Campus.cs" />
     <Compile Include="Models\EFAnnouncementRepository.cs" />
+    <Compile Include="Models\EFBarrierRepository.cs" />
     <Compile Include="Models\EFCampusRepository.cs" />
     <Compile Include="Models\EFVisitRepository.cs" />
     <Compile Include="Models\IAnnouncementRepository.cs" />
+    <Compile Include="Models\IBarrierRepository.cs" />
     <Compile Include="Models\ICampusRepository.cs" />
     <Compile Include="Models\IVisitRepository.cs" />
     <Compile Include="Models\SIIContext.cs" />
@@ -667,6 +683,12 @@
     <Content Include="Views\Announcement\Edit.cshtml" />
     <Content Include="Views\Announcement\Delete.cshtml" />
     <Content Include="Views\Announcement\Register.cshtml" />
+    <Content Include="Views\Barrier\Index.cshtml" />
+    <Content Include="Views\Barrier\Details.cshtml" />
+    <Content Include="Views\Barrier\Create.cshtml" />
+    <Content Include="Views\Barrier\Edit.cshtml" />
+    <Content Include="Views\Barrier\Delete.cshtml" />
+    <Content Include="Views\Announcement\Summary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -701,6 +723,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411041715460_ValidationsAnnouncementAndVisit.resx">
       <DependentUpon>201411041715460_ValidationsAnnouncementAndVisit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411110512534_CreateBarriersTable.resx">
+      <DependentUpon>201411110512534_CreateBarriersTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411110515591_RelationshipCampusBarriers.resx">
+      <DependentUpon>201411110515591_RelationshipCampusBarriers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411111714459_AddDescriptionToBarriers.resx">
+      <DependentUpon>201411111714459_AddDescriptionToBarriers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

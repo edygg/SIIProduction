@@ -1,0 +1,128 @@
+﻿@model SII.Models.Barrier
+
+@{
+    ViewBag.Title = "Eliminar barreras";
+}
+
+<div class="row">
+    <div class="small-8 small-offset-2 columns">
+        <h4>¿Está seguro que desea eliminar la barrera?</h4>
+        <fieldset>
+            <legend>Barrera</legend>
+
+            <div class="row">
+                <div class="small-4 columns">
+                    <span class="label">@Html.DisplayNameFor(model => model.Name)</span>
+                </div>
+                <div class="small-8 columns">
+                    @Html.DisplayFor(model => model.Name)
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-4 columns">
+                    <span class="label">@Html.DisplayNameFor(model => model.Description)</span>
+                </div>
+                <div class="small-8 columns">
+                    @Html.DisplayFor(model => model.Description)
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-4 columns">
+                    <span class="label">@Html.DisplayNameFor(model => model.IpAddress)</span>
+                </div>
+                <div class="small-8 columns">
+                    @Html.DisplayFor(model => model.IpAddress)
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-4 columns">
+                    <span class="label">@Html.DisplayNameFor(model => model.Port)</span>
+                </div>
+                <div class="small-8 columns">
+                    @Html.DisplayFor(model => model.Port)
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-4 columns">
+                    <span class="label">@Html.DisplayNameFor(model => model.Activate)</span>
+                </div>
+                <div class="small-8 columns">
+                    @Html.DisplayFor(model => model.Activate)
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-4 columns">
+                    <span class="label">@Html.DisplayNameFor(model => model.CampusId)</span>
+                </div>
+                <div class="small-8 columns">
+                    @Html.DisplayFor(model => model.CampusId)
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-4 columns">
+                    <span class="label">@Html.DisplayNameFor(model => model.AllowTeachers)</span>
+                </div>
+                <div class="small-8 columns">
+                    @Html.DisplayFor(model => model.AllowTeachers)
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-4 columns">
+                    <span class="label">@Html.DisplayNameFor(model => model.AllowAdministrative)</span>
+                </div>
+                <div class="small-8 columns">
+                    @Html.DisplayFor(model => model.AllowAdministrative)
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-4 columns">
+                    <span class="label">@Html.DisplayNameFor(model => model.AllowStudents)</span>
+                </div>
+                <div class="small-8 columns">
+                    @Html.DisplayFor(model => model.AllowStudents)
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-4 columns">
+                    <span class="label">@Html.DisplayNameFor(model => model.CreatedBy)</span>
+                </div>
+                <div class="small-8 columns">
+                    @Html.DisplayFor(model => model.CreatedBy)
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-4 columns">
+                    <span class="label">@Html.DisplayNameFor(model => model.CreatedAt)</span>
+                </div>
+                <div class="small-8 columns">
+                    @Html.DisplayFor(model => model.CreatedAt)
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-4 columns">
+                    <span class="label">@Html.DisplayNameFor(model => model.UpdatedBy)</span>
+                </div>
+                <div class="small-8 columns">
+                    @Html.DisplayFor(model => model.UpdatedBy)
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-4 columns">
+                    <span class="label">@Html.DisplayNameFor(model => model.UpdatedAt)</span>
+                </div>
+                <div class="small-8 columns">
+                    @Html.DisplayFor(model => model.UpdatedAt)
+                </div>
+            </div>
+
+        </fieldset>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <ul class="button-group">
+                <li><input type="submit" value="Eliminar" class="small alert button" /></li>
+                @Html.ActionLink("Regresar a la lista", "Index", "Barrier", new { @class = "small button" })
+            </ul>
+        }
+    </div>
+</div>

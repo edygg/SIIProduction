@@ -23,6 +23,7 @@ namespace SII.App_Start
             ninjectKernel.Bind<ICampusRepository>().To<EFCampusRepository>();
             ninjectKernel.Bind<IAnnouncementRepository>().To<EFAnnouncementRepository>();
             ninjectKernel.Bind<IVisitRepository>().To<EFVisitRepository>();
+            ninjectKernel.Bind<IBarrierRepository>().To<EFBarrierRepository>();
         }
     }
 }
