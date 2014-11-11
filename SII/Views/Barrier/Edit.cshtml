@@ -1,0 +1,96 @@
+﻿@model SII.Models.Barrier
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Barrier</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IpAddress)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IpAddress)
+            @Html.ValidationMessageFor(model => model.IpAddress)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Port)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Port)
+            @Html.ValidationMessageFor(model => model.Port)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Activate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Activate)
+            @Html.ValidationMessageFor(model => model.Activate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CampusId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CampusId)
+            @Html.ValidationMessageFor(model => model.CampusId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AllowTeachers)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AllowTeachers)
+            @Html.ValidationMessageFor(model => model.AllowTeachers)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AllowAdministrative)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AllowAdministrative)
+            @Html.ValidationMessageFor(model => model.AllowAdministrative)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AllowStudents)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AllowStudents)
+            @Html.ValidationMessageFor(model => model.AllowStudents)
+        </div>
+
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.CreatedAt)
+        @Html.HiddenFor(model => model.CreatedBy)
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

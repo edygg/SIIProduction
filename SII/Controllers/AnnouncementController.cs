@@ -77,7 +77,7 @@ namespace SII.Controllers
 
             db.SaveChanges();
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Register");
         }
 
         //
