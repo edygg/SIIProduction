@@ -12,13 +12,19 @@ namespace SII.Controllers
     public class BarrierController : Controller
     {
         private SIIContext db = new SIIContext();
+        private IBarrierRepository BarrierRepo;
+
+        public BarrierController(IBarrierRepository BarrierRepo )
+        {
+            this.BarrierRepo = BarrierRepo;
+        }
 
         //
         // GET: /Barrier/
 
-        public ActionResult Index()
+        public ViewResult Index()
         {
-            return View(db.Barriers.Where(m => m.Dropped == false).ToList());
+            return View(BarrierRepo.Barriers.Where(m => m.Dropped == false).ToList());
         }
 
         //
@@ -26,7 +32,7 @@ namespace SII.Controllers
 
         public ActionResult Details(int id = 0)
         {
-            Barrier barrier = db.Barriers.Find(id);
+            Barrier barrier = BarrierRepo.Find(id);
             if (barrier == null)
             {
                 return HttpNotFound();
@@ -53,8 +59,7 @@ namespace SII.Controllers
             {
                 try
                 {
-                    db.Barriers.Add(barrier);
-                    db.SaveChanges();
+                    BarrierRepo.save(barrier);
                 }
                 catch (Exception e)
                 {
@@ -73,7 +78,7 @@ namespace SII.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            Barrier barrier = db.Barriers.Find(id);
+            Barrier barrier = BarrierRepo.Find(id);
             if (barrier == null)
             {
                 return HttpNotFound();
@@ -90,8 +95,7 @@ namespace SII.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(barrier).State = EntityState.Modified;
-                db.SaveChanges();
+                BarrierRepo.save(barrier);
                 return RedirectToAction("Index");
             }
             return View(barrier);
@@ -102,7 +106,7 @@ namespace SII.Controllers
 
         public ActionResult Delete(int id = 0)
         {
-            Barrier barrier = db.Barriers.Find(id);
+            Barrier barrier = BarrierRepo.Find(id);
             if (barrier == null)
             {
                 return HttpNotFound();
@@ -117,9 +121,7 @@ namespace SII.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Barrier barrier = db.Barriers.Find(id);
-            barrier.Dropped = true;
-            db.SaveChanges();
+            BarrierRepo.delete(id);
             return RedirectToAction("Index");
         }
 

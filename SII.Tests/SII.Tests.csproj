@@ -147,8 +147,11 @@
   <ItemGroup>
     <Compile Include="Controllers\CampusControllerTest.cs" />
     <Compile Include="Controllers\AnnouncementTest.cs" />
+    <Compile Include="Controllers\BarrierControllerTest.cs" />
     <Compile Include="Controllers\VisitControllerTest.cs" />
     <Compile Include="Models\CampusModelTest.cs" />
+    <Compile Include="Models\AnnouncementModelTest.cs" />
+    <Compile Include="Models\VisitModelTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
   </ItemGroup>
