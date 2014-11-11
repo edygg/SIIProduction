@@ -613,6 +613,7 @@
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Images\unitec-logo.png" />
     <Content Include="Scripts\Application.js" />
+    <Content Include="Scripts\barrier.js" />
     <Content Include="Scripts\DatePicker.js" />
     <Content Include="Scripts\datepicker\es_ES.js" />
     <Content Include="Scripts\foundation.min.js" />
