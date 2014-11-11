@@ -44,7 +44,7 @@ namespace SII.Controllers
         // GET: /Barrier/Create
 
         public ActionResult Create()
-        {
+        {            
             return View();
         }
 

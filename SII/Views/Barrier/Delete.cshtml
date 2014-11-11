@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Eliminar barreras";
+    SII.Models.SIIContext db = new SII.Models.SIIContext();
 }
 
 <div class="row">
@@ -55,7 +56,7 @@
                     <span class="label">@Html.DisplayNameFor(model => model.CampusId)</span>
                 </div>
                 <div class="small-8 columns">
-                    @Html.DisplayFor(model => model.CampusId)
+                    @db.Campus.Where(m => m.Id == Model.CampusId).First().Name
                 </div>
             </div>
             <div class="row">
