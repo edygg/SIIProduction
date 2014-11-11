@@ -77,11 +77,16 @@ namespace SII.Controllers
 
             db.SaveChanges();
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Resumen");
         }
 
         //
         // GET: /Announcement/
+
+        public ViewResult Resumen()
+        {
+            return View();
+        }
 
         public ViewResult Index()
         {
