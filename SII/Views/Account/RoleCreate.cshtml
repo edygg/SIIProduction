@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "Crear un rol";
+}
+<div class="row">
+    <div class="small-8 small-offset-2 columns">
+        
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            <fieldset>
+                <legend>Rol</legend>
+
+                <div class="row">
+                    <div class="small-2 columns">
+                        <label class="right inline">Nombre</label>
+                    </div>
+                    <div class="small-10 columns">
+                        @Html.TextBox("RoleName")
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-6 small-offset-1 columns">
+                        <ul class="button-group">
+                            <li><input type="submit" value="Crear" class="small button" /></li>
+                            <li>@Html.ActionLink("Regresar a la lista", "RoleIndex", "Account", htmlAttributes: new { @class = "small button" })</li>
+                        </ul>
+                    </div>
+                </div>
+            </fieldset>
+        }
+    </div>
+</div>

@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Administrar Roles";
+}
+<div class="row">
+    <div class="small-4 small-offset-4 columns">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        Nombre
+                    </th>
+                    <th>
+                        
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (string s in Model)
+                {
+                    <tr>
+                        <td>
+                            @s
+                        </td>
+                        <td>
+                            <i class="fi-x medium"></i> <a href="/Account/RoleDelete?RoleName=@s">Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="small-6 small-offset-3 columns">
+        <ul class="button-group">
+            <li>@Html.ActionLink("Crear un nuevo rol", "RoleCreate", "Account", htmlAttributes: new { @class = "small button" })</li>
+            <li>@Html.ActionLink("Agregar un usuario a un rol", "RoleAddToUser", "Account", htmlAttributes: new { @class = "small button" })</li>
+        </ul>
+    </div>
+</div>
