@@ -3,17 +3,22 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="selenium.base" href="http://localhost:32657/Barrier/Create" />
-<title>SeleniumIDE_Barrier_Create_Validations</title>
+<link rel="selenium.base" href="http://localhost:32657/Barrier/Edit/2" />
+<title>SeleniumIDE_Barrier_Edit_Validations</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">SeleniumIDE_Barrier_Create_Validations</td></tr>
+<tr><td rowspan="1" colspan="3">SeleniumIDE_Barrier_Edit_Validations</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/Barrier/Create</td>
+	<td>/Barrier/Edit/2</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Name</td>
 	<td></td>
 </tr>
 <tr>
@@ -27,19 +32,74 @@
 	<td>The Nombre field is required.</td>
 </tr>
 <tr>
-	<td>verifyText</td>
-	<td>//section[@id='body']/div/div/form/fieldset/div[2]/div[2]/span/span</td>
-	<td>The Descripción field is required.</td>
+	<td>type</td>
+	<td>id=Name</td>
+	<td>Barrera prueba 2</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Description</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=input.small.button</td>
+	<td></td>
 </tr>
 <tr>
 	<td>verifyText</td>
-	<td>//section[@id='body']/div/div/form/fieldset/div[3]/div[2]/span/span</td>
+	<td>css=span.field-validation-error &gt; span</td>
+	<td>The Descripción field is required.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Description</td>
+	<td>Descripcion de la barrera de prueba 2</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=IpAddress</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=input.small.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=span.field-validation-error &gt; span</td>
 	<td>The Dirección IP field is required.</td>
 </tr>
 <tr>
 	<td>type</td>
+	<td>id=IpAddress</td>
+	<td>194.153.205.20</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Port</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=input.small.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=span.field-validation-error &gt; span</td>
+	<td>The Puerto field is required.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Port</td>
+	<td>2032</td>
+</tr>
+<tr>
+	<td>type</td>
 	<td>id=Name</td>
-	<td>.%</td>
+	<td>34&amp;*43@</td>
 </tr>
 <tr>
 	<td>click</td>
@@ -69,7 +129,7 @@
 <tr>
 	<td>type</td>
 	<td>id=Name</td>
-	<td>Barrera de prueba</td>
+	<td>Barrera prueba 22</td>
 </tr>
 <tr>
 	<td>click</td>
@@ -84,12 +144,12 @@
 <tr>
 	<td>type</td>
 	<td>id=Name</td>
-	<td>Barrera prueba</td>
+	<td>Barrera prueba 2</td>
 </tr>
 <tr>
 	<td>type</td>
 	<td>id=Description</td>
-	<td>*d%</td>
+	<td>45&amp;*#2</td>
 </tr>
 <tr>
 	<td>click</td>
@@ -104,52 +164,7 @@
 <tr>
 	<td>type</td>
 	<td>id=Description</td>
-	<td>Desc</td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>css=input.small.button</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyText</td>
-	<td>css=span.field-validation-error &gt; span</td>
-	<td>Ingrese una descripción que contenga de 5 a 128 caracteres letras o números.</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>id=Description</td>
-	<td>Descripcion de la barrera de prueba asdfghjklaasdfghjklaasdfghjklaasdfghjklaasdfghjklaasdfghjklaasdfghjklaasdfghjklaasdfghjklaasdfghjkla</td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>css=input.small.button</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyText</td>
-	<td>css=span.field-validation-error &gt; span</td>
-	<td>Ingrese una descripción que contenga de 5 a 128 caracteres letras o números.</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>id=Description</td>
-	<td>Descripcion de la barrera de prueba</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>id=IpAddress</td>
-	<td>&amp;.3@</td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>css=input.small.button</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyText</td>
-	<td>css=span.field-validation-error &gt; span</td>
-	<td>La dirección IP ingresada en inválida.</td>
+	<td>Descripcion de la barrera de prueba 2</td>
 </tr>
 <tr>
 	<td>type</td>
@@ -169,7 +184,7 @@
 <tr>
 	<td>type</td>
 	<td>id=IpAddress</td>
-	<td>256.256.256.256</td>
+	<td>194.153.205.256</td>
 </tr>
 <tr>
 	<td>click</td>
@@ -184,17 +199,7 @@
 <tr>
 	<td>type</td>
 	<td>id=IpAddress</td>
-	<td>194.153.205.26</td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>css=input.small.button</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyText</td>
-	<td>css=span.field-validation-error &gt; span</td>
-	<td>The Puerto field is required.</td>
+	<td>194.153.205.20</td>
 </tr>
 <tr>
 	<td>type</td>
@@ -214,47 +219,12 @@
 <tr>
 	<td>type</td>
 	<td>id=Port</td>
-	<td>65536</td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>css=input.small.button</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyText</td>
-	<td>css=span.field-validation-error &gt; span</td>
-	<td>Ingrese un número entre 1 y 65535.</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>id=Port</td>
-	<td>65535</td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>id=Activate</td>
-	<td></td>
-</tr>
-<tr>
-	<td>select</td>
-	<td>id=CampusId</td>
-	<td>label=Unitec Tegucigalpa</td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>id=AllowStudents</td>
-	<td></td>
-</tr>
-<tr>
-	<td>selectWindow</td>
-	<td>null</td>
-	<td></td>
+	<td>2032</td>
 </tr>
 <tr>
 	<td>type</td>
 	<td>id=IpAddress</td>
-	<td>194.153.205.20</td>
+	<td>194.153.205.26</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -269,8 +239,14 @@
 <tr>
 	<td>type</td>
 	<td>id=IpAddress</td>
-	<td>194.153.205.26</td>
+	<td>194.153.205.20</td>
 </tr>
+<tr>
+	<td>type</td>
+	<td>id=Port</td>
+	<td>2032</td>
+</tr>
+
 </tbody></table>
 </body>
 </html>
