@@ -328,6 +328,108 @@ namespace SII.Controllers
             return PartialView("_RemoveExternalLoginsPartial", externalLogins);
         }
 
+        // --------------------------- ROLES ---------------------------
+        [Authorize(Roles = "Administrador")]
+        public ActionResult RoleCreate()
+        {
+            return View();
+        }
+
+        [Authorize(Roles = "Administrador")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RoleCreate(string RoleName)
+        {
+            Roles.CreateRole(Request.Form["RoleName"]);
+            // ViewBag.ResultMessage = "Role created successfully !";
+
+            return RedirectToAction("RoleIndex", "Account");
+        }
+
+        [Authorize(Roles = "Administrador")]
+        public ActionResult RoleIndex()
+        {
+            var roles = Roles.GetAllRoles();
+            return View(roles);
+        }
+
+        [Authorize(Roles = "Administrador")]
+        public ActionResult RoleDelete(string RoleName)
+        {
+
+            Roles.DeleteRole(RoleName);
+            // ViewBag.ResultMessage = "Role deleted succesfully !";
+
+
+            return RedirectToAction("RoleIndex", "Account");
+        }
+
+        /// <summary>
+        /// Create a new role to the user
+        /// </summary>
+        /// <returns></returns>
+        [Authorize(Roles = "Administrador")]
+        public ActionResult RoleAddToUser()
+        {
+            SelectList list = new SelectList(Roles.GetAllRoles());
+            ViewBag.Roles = list;
+
+            return View();
+        }
+
+        /// <summary>
+        /// Add role to the user
+        /// </summary>
+        /// <param name="RoleName"></param>
+        /// <param name="UserName"></param>
+        /// <returns></returns>
+        [Authorize(Roles = "Administrador")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RoleAddToUser(string RoleName, string UserName)
+        {
+
+            if (Roles.IsUserInRole(UserName, RoleName))
+            {
+                ViewBag.ResultMessage = "El usuario ya posee el rol.";
+            }
+            else
+            {
+                Roles.AddUserToRole(UserName, RoleName);
+                ViewBag.ResultMessage = "Se ha asignado el rol correctamente.";
+            }
+
+            SelectList list = new SelectList(Roles.GetAllRoles());
+            ViewBag.Roles = list;
+            return View();
+        }
+
+        /// <summary>
+        /// Get all the roles for a particular user
+        /// </summary>
+        /// <param name="UserName"></param>
+        /// <returns></returns>
+        [Authorize(Roles = "Administrador")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult GetRoles(string UserName)
+        {
+
+            if (!string.IsNullOrWhiteSpace(UserName))
+            {
+                ViewBag.RolesForThisUser = Roles.GetRolesForUser(UserName);
+            }
+            else 
+            {
+                ViewBag.Error = "El usuario está en blanco.";
+            }
+
+            SelectList list = new SelectList(Roles.GetAllRoles());
+            ViewBag.Roles = list;
+
+            return View("RoleAddToUser");
+        }
+
         #region Helpers
         private ActionResult RedirectToLocal(string returnUrl)
         {

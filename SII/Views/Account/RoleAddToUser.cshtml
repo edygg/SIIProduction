@@ -1,0 +1,95 @@
+﻿@{
+    ViewBag.Title = "Agregar un rol a un usuario";
+}
+<div class="row">
+    <div class="small-8 small-offset-2 columns">
+        @if(!String.IsNullOrEmpty(ViewBag.ResultMessage))
+        {
+            <div class="alert-box round">
+                @ViewBag.ResultMessage
+            </div>
+        }
+        
+        @if (!String.IsNullOrEmpty(ViewBag.Error))
+        {
+            <div data-alert class="alert-box alert round">
+                @ViewBag.Error
+                <a href="#" class="close">&times;</a>
+            </div>
+        }
+        
+        @using (Html.BeginForm("RoleAddToUser", "Account"))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <fieldset>
+                <legend>Usuario</legend>
+                
+                <div class="row">
+                    <div class="small-2 columns">
+                        <label class="right inline">Nombre de usuario</label>
+                    </div>
+                    <div class="small-10 columns">
+                        @Html.TextBox("UserName")
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="small-2 columns">
+                        <label class="right inline">Rol</label>
+                    </div>
+                    <div class="small-10 columns">
+                        @Html.DropDownList("RoleName", ViewBag.Roles as SelectList)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-6 small-offset-2 columns">
+                        <ul class="button-group">
+                            <li><input type="submit" value="Guardar" class="small button" /></li>
+                            <li>@Html.ActionLink("Regresar a la lista", "RoleIndex", "Account", htmlAttributes: new { @class = "small button" })</li>
+                        </ul>
+                    </div>
+                </div>
+            </fieldset>
+        }
+    </div>
+</div>
+<div class="row">
+    <div class="small-8 small-offset-2 columns">
+        @using (Html.BeginForm("GetRoles", "Account"))
+        {
+            @Html.AntiForgeryToken()
+            <fieldset>
+                <legend>Obtener roles de un usuario</legend>
+                <div class="row">
+                    <div class="small-2 columns">
+                        <label class="right inline">Nombre de usuario</label>
+                    </div>
+                    <div class="small-10 columns">
+                        @Html.TextBox("UserName")
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-6 small-offset-2 columns">
+                        <input type="submit" value="Obtener roles asignados" class="small button" />
+                    </div>
+                </div>
+                <div class="row">
+                    @if (ViewBag.RolesForThisUser != null)
+                    {
+                        <text>
+                            <h3>Roles del usuario</h3>
+                            <ol>
+                                @foreach (string s in ViewBag.RolesForThisUser)
+                                {
+                                    <li>@s</li>
+                                }
+                            </ol>
+                        </text>
+                    }
+                </div>
+            </fieldset>
+            
+        }
+    </div>
+</div>

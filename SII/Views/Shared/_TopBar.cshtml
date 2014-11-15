@@ -42,6 +42,14 @@
                         <li>@Html.ActionLink("Administrar", "Index", "Campus")</li>
                     </ul>
                 </li>
+                <li class="has-dropdown">
+                    <a>Barreras</a>
+                    <ul class="dropdown">
+                        <li>@Html.ActionLink("Crear", "Create", "Barrier")</li>
+                        <li>@Html.ActionLink("Administrar", "Index", "Barrier")</li>
+                    </ul>
+                </li>
+                <li>@Html.ActionLink("Roles", "RoleIndex", "Account")</li>
                 >
             </ul>
         }

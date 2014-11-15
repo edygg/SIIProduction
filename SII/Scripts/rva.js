@@ -141,18 +141,19 @@
 
         $('.agregar').each(function (index, el) {
             if (index !== 0) {
-                $(el).removeClass('tiny agregar').addClass('alert');
+                $(el).removeClass('tiny agregar').addClass('alert delete');
                 $(el).removeClass('fi-plus');
                 $(el).html("<i class=" + "fi-x" + "></i>");
             }
         });
 
-        $('.alert').on('click', function () {
-            $(this).parents().eq(2).remove();
-            if ($('.alert').length !== $('.duplicate').data('current')) {
-                $($('.duplicate')[$('.alert').length]).find('input.tipo_entrada').attr('name', 'tipo_entrada[' + $('.alert').length + ']'); 1
-                $('.duplicate').data('current', $('.duplicate').data('current') - 1);
-            }
+        $('.button.delete').on('click', function () {
+            $(this).parents('.duplicate').remove();
+            $('.duplicate').each(function (index, el) {
+                $(el).find('input.nombres').attr('name', 'nombre[' + index + ']');
+                $(el).find('input.tipo_entrada').attr('name', 'tipo_entrada[' + index + ']');
+                $('.duplicate').data('current', index);
+            });
         });
     });
 
