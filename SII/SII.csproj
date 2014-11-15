@@ -192,6 +192,7 @@
     <Compile Include="Controllers\AnnouncementController.cs" />
     <Compile Include="Controllers\BarrierController.cs" />
     <Compile Include="Controllers\CampusController.cs" />
+    <Compile Include="Controllers\EntranceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\VisitController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -246,6 +247,14 @@
     <Compile Include="Migrations\201411111714459_AddDescriptionToBarriers.Designer.cs">
       <DependentUpon>201411111714459_AddDescriptionToBarriers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411152233526_CreateEntrance.cs" />
+    <Compile Include="Migrations\201411152233526_CreateEntrance.Designer.cs">
+      <DependentUpon>201411152233526_CreateEntrance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411152236405_AddForeignKeysToEntrance.cs" />
+    <Compile Include="Migrations\201411152236405_AddForeignKeysToEntrance.Designer.cs">
+      <DependentUpon>201411152236405_AddForeignKeysToEntrance.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Announcement.cs" />
@@ -256,6 +265,7 @@
     <Compile Include="Models\EFBarrierRepository.cs" />
     <Compile Include="Models\EFCampusRepository.cs" />
     <Compile Include="Models\EFVisitRepository.cs" />
+    <Compile Include="Models\Entrance.cs" />
     <Compile Include="Models\IAnnouncementRepository.cs" />
     <Compile Include="Models\IBarrierRepository.cs" />
     <Compile Include="Models\ICampusRepository.cs" />
@@ -692,6 +702,11 @@
     <Content Include="Views\Account\RoleCreate.cshtml" />
     <Content Include="Views\Account\RoleIndex.cshtml" />
     <Content Include="Views\Account\RoleAddToUser.cshtml" />
+    <Content Include="Views\Entrance\Index.cshtml" />
+    <Content Include="Views\Entrance\Details.cshtml" />
+    <Content Include="Views\Entrance\Create.cshtml" />
+    <Content Include="Views\Entrance\Edit.cshtml" />
+    <Content Include="Views\Entrance\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -735,6 +750,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411111714459_AddDescriptionToBarriers.resx">
       <DependentUpon>201411111714459_AddDescriptionToBarriers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411152233526_CreateEntrance.resx">
+      <DependentUpon>201411152233526_CreateEntrance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411152236405_AddForeignKeysToEntrance.resx">
+      <DependentUpon>201411152236405_AddForeignKeysToEntrance.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

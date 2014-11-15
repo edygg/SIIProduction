@@ -20,5 +20,7 @@ namespace SII.Models
 
         [Required]
         public int AnnouncementId { get; set; }
+
+        public ICollection<Entrance> Entrances { get; set; }
     }
 }
