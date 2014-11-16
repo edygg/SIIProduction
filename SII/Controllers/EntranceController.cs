@@ -21,6 +21,16 @@ namespace SII.Controllers
             return View(db.Entrances.ToList());
         }
 
+        public ActionResult GetVisits()
+        {
+
+            
+
+
+            return null;
+        }
+
+
         //
         // GET: /Entrance/Details/5
 
