@@ -44,14 +44,14 @@ namespace SII.Controllers
             //salvar 1 persona
             Announcement an = new Announcement();
             an.CampusId = Convert.ToInt32(Request["campus"]);
-            an.InitialDate = DateTime.ParseExact(Request["InitialDate_submit"], "yyyy/mm/dd", CultureInfo.InvariantCulture);
+            an.InitialDate = DateTime.ParseExact(Request["InitialDate_submit"], "yyyy/MM/dd", CultureInfo.InvariantCulture);
             if (String.IsNullOrEmpty(Request["FinalDate_submit"]))
             {
-                an.FinalDate = DateTime.ParseExact(Request["InitialDate_submit"], "yyyy/mm/dd", CultureInfo.InvariantCulture);
+                an.FinalDate = DateTime.ParseExact(Request["InitialDate_submit"], "yyyy/MM/dd", CultureInfo.InvariantCulture);
             }
             else
             {
-                an.FinalDate = DateTime.ParseExact(Request["FinalDate_submit"], "yyyy/mm/dd", CultureInfo.InvariantCulture);
+                an.FinalDate = DateTime.ParseExact(Request["FinalDate_submit"], "yyyy/MM/dd", CultureInfo.InvariantCulture);
             }
 
             an.Observations = Request["Observations"];
