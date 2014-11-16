@@ -56,5 +56,7 @@ namespace SII.Models
         [Display(Name = "Permite alumnos")]
         public bool AllowStudents { get; set; }
 
+        public ICollection<Entrance> Entrances { get; set; }
+
     }
 }

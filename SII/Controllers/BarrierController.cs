@@ -9,6 +9,7 @@ using SII.Models;
 
 namespace SII.Controllers
 {
+    [Authorize(Roles = "Administrador")]
     public class BarrierController : Controller
     {
         private SIIContext db = new SIIContext();
@@ -21,7 +22,7 @@ namespace SII.Controllers
 
         //
         // GET: /Barrier/
-
+        [Authorize(Roles = "Administrador")]
         public ViewResult Index()
         {
             return View(BarrierRepo.Barriers.Where(m => m.Dropped == false).ToList());
@@ -29,7 +30,7 @@ namespace SII.Controllers
 
         //
         // GET: /Barrier/Details/5
-
+        [Authorize(Roles = "Administrador")]
         public ActionResult Details(int id = 0)
         {
             Barrier barrier = BarrierRepo.Find(id);
@@ -42,7 +43,7 @@ namespace SII.Controllers
 
         //
         // GET: /Barrier/Create
-
+        [Authorize(Roles = "Administrador")]
         public ActionResult Create()
         {            
             return View();
@@ -50,7 +51,7 @@ namespace SII.Controllers
 
         //
         // POST: /Barrier/Create
-
+        [Authorize(Roles = "Administrador")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Barrier barrier)
@@ -75,7 +76,7 @@ namespace SII.Controllers
 
         //
         // GET: /Barrier/Edit/5
-
+        [Authorize(Roles = "Administrador")]
         public ActionResult Edit(int id = 0)
         {
             Barrier barrier = BarrierRepo.Find(id);
@@ -88,7 +89,7 @@ namespace SII.Controllers
 
         //
         // POST: /Barrier/Edit/5
-
+        [Authorize(Roles = "Administrador")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Barrier barrier)
@@ -112,7 +113,7 @@ namespace SII.Controllers
 
         //
         // GET: /Barrier/Delete/5
-
+        [Authorize(Roles = "Administrador")]
         public ActionResult Delete(int id = 0)
         {
             Barrier barrier = BarrierRepo.Find(id);
@@ -125,7 +126,7 @@ namespace SII.Controllers
 
         //
         // POST: /Barrier/Delete/5
-
+        [Authorize(Roles = "Administrador")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
