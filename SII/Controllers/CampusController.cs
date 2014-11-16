@@ -9,6 +9,7 @@ using SII.Models;
 
 namespace SII.Controllers
 {
+    [Authorize(Roles = "Administrador")]
     public class CampusController : Controller
     {
         private SIIContext db = new SIIContext();
@@ -22,7 +23,7 @@ namespace SII.Controllers
 
         //
         // GET: /Campus/
-
+        [Authorize(Roles = "Administrador")]
         public ViewResult Index()
         {
 
@@ -31,7 +32,7 @@ namespace SII.Controllers
 
         //
         // GET: /Campus/Details/5
-
+        [Authorize(Roles = "Administrador")]
         public ActionResult Details(int id = 0)
         {
             Campus campus = CampusRepo.Find(id);
@@ -44,7 +45,7 @@ namespace SII.Controllers
 
         //
         // GET: /Campus/Create
-
+        [Authorize(Roles = "Administrador")]
         public ActionResult Create()
         {
             return View();
@@ -52,7 +53,7 @@ namespace SII.Controllers
 
         //
         // POST: /Campus/Create
-
+        [Authorize(Roles = "Administrador")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Campus campus)
@@ -77,7 +78,7 @@ namespace SII.Controllers
 
         //
         // GET: /Campus/Edit/5
-
+        [Authorize(Roles = "Administrador")]
         public ActionResult Edit(int id = 0)
         {
             Campus campus = CampusRepo.Find(id);
@@ -90,7 +91,7 @@ namespace SII.Controllers
 
         //
         // POST: /Campus/Edit/5
-
+        [Authorize(Roles = "Administrador")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Campus campus)
@@ -115,7 +116,7 @@ namespace SII.Controllers
 
         //
         // GET: /Campus/Delete/5
-
+        [Authorize(Roles = "Administrador")]
         public ActionResult Delete(int id = 0)
         {
             Campus campus = CampusRepo.Find(id);
@@ -128,7 +129,7 @@ namespace SII.Controllers
 
         //
         // POST: /Campus/Delete/5
-
+        [Authorize(Roles = "Administrador")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

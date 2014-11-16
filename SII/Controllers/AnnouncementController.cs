@@ -13,6 +13,7 @@ using System.Text;
 
 namespace SII.Controllers
 {
+    [Authorize]
     public class AnnouncementController : Controller
     {
         private SIIContext db = new SIIContext();
@@ -27,7 +28,7 @@ namespace SII.Controllers
         //Registro de visitas
         //GET
         [HttpGet]
-        [Authorize]
+        [Authorize(Roles = "Personal Administrativo")]
         public ActionResult Register()
         {
             ViewBag.Title = "Registro de Visitas";
@@ -38,7 +39,7 @@ namespace SII.Controllers
         //Post, para almacenar
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize]
+        [Authorize(Roles = "Personal Administrativo")]
         public ActionResult Register(string id)
         {
             //salvar 1 persona
@@ -82,12 +83,13 @@ namespace SII.Controllers
 
         //
         // GET: /Announcement/
-
+        [Authorize(Roles = "Personal Administrativo")]
         public ViewResult Summary()
         {
             return View();
         }
 
+        [Authorize(Roles = "Administrador")]
         public ViewResult Index()
         {
             return View(AnnouncementRepo.Announcements.ToList());
@@ -95,7 +97,7 @@ namespace SII.Controllers
 
         //
         // GET: /Announcement/Details/5
-
+        [Authorize(Roles = "Administrador")]
         public ActionResult Details(int id = 0)
         {
             Announcement announcement = AnnouncementRepo.Find(id);
@@ -108,7 +110,7 @@ namespace SII.Controllers
 
         //
         // GET: /Announcement/Create
-
+        [Authorize(Roles = "Administrador")]
         public ActionResult Create()
         {
             return View();
@@ -116,7 +118,7 @@ namespace SII.Controllers
 
         //
         // POST: /Announcement/Create
-
+        [Authorize(Roles = "Administrador")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Announcement announcement)
@@ -132,7 +134,7 @@ namespace SII.Controllers
 
         //
         // GET: /Announcement/Edit/5
-
+        [Authorize(Roles = "Administrador")]
         public ActionResult Edit(int id = 0)
         {
             Announcement announcement = AnnouncementRepo.Find(id);
@@ -145,7 +147,7 @@ namespace SII.Controllers
 
         //
         // POST: /Announcement/Edit/5
-
+        [Authorize(Roles = "Administrador")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Announcement announcement)
@@ -160,7 +162,7 @@ namespace SII.Controllers
 
         //
         // GET: /Announcement/Delete/5
-
+        [Authorize(Roles = "Administrador")]
         public ActionResult Delete(int id = 0)
         {
             Announcement announcement = AnnouncementRepo.Find(id);
@@ -173,7 +175,7 @@ namespace SII.Controllers
 
         //
         // POST: /Announcement/Delete/5
-
+        [Authorize(Roles = "Administrador")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

@@ -9,6 +9,7 @@ using SII.Models;
 
 namespace SII.Controllers
 {
+    [Authorize(Roles = "Administrador")]
     public class VisitController : Controller
     {
         private SIIContext db = new SIIContext();
@@ -21,7 +22,7 @@ namespace SII.Controllers
 
         //
         // GET: /Visit/
-
+        [Authorize(Roles = "Administrador")]
         public ViewResult Index()
         {
             return View(VisitRepo.Visits.ToList());
@@ -29,7 +30,7 @@ namespace SII.Controllers
 
         //
         // GET: /Visit/Details/5
-
+        [Authorize(Roles = "Administrador")]
         public ActionResult Details(int id = 0)
         {
             Visit visit = VisitRepo.Find(id);
@@ -42,7 +43,7 @@ namespace SII.Controllers
 
         //
         // GET: /Visit/Create
-
+        [Authorize(Roles = "Administrador")]
         public ActionResult Create()
         {
             return View();
@@ -50,7 +51,7 @@ namespace SII.Controllers
 
         //
         // POST: /Visit/Create
-
+        [Authorize(Roles = "Administrador")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Visit visit)
@@ -66,7 +67,7 @@ namespace SII.Controllers
 
         //
         // GET: /Visit/Edit/5
-
+        [Authorize(Roles = "Administrador")]
         public ActionResult Edit(int id = 0)
         {
             Visit visit = VisitRepo.Find(id);
@@ -79,7 +80,7 @@ namespace SII.Controllers
 
         //
         // POST: /Visit/Edit/5
-
+        [Authorize(Roles = "Administrador")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Visit visit)
@@ -94,7 +95,7 @@ namespace SII.Controllers
 
         //
         // GET: /Visit/Delete/5
-
+        [Authorize(Roles = "Administrador")]
         public ActionResult Delete(int id = 0)
         {
             Visit visit = VisitRepo.Find(id);
@@ -107,7 +108,7 @@ namespace SII.Controllers
 
         //
         // POST: /Visit/Delete/5
-
+        [Authorize(Roles = "Administrador")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

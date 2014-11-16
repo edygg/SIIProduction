@@ -59,8 +59,7 @@ namespace SII.Controllers
 
         //
         // GET: /Account/Register
-
-        [AllowAnonymous]
+        [Authorize(Roles = "Administrador")]
         public ActionResult Register()
         {
             return View();
@@ -68,9 +67,8 @@ namespace SII.Controllers
 
         //
         // POST: /Account/Register
-
+        [Authorize(Roles = "Administrador")]
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public ActionResult Register(RegisterModel model)
         {
@@ -124,7 +122,7 @@ namespace SII.Controllers
 
         //
         // GET: /Account/Manage
-
+        [Authorize(Roles = "Administrador")]
         public ActionResult Manage(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
@@ -139,7 +137,7 @@ namespace SII.Controllers
 
         //
         // POST: /Account/Manage
-
+        [Authorize(Roles = "Administrador")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Manage(LocalPasswordModel model)
