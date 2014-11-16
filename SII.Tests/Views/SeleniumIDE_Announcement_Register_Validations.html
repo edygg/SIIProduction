@@ -17,11 +17,6 @@
 	<td></td>
 </tr>
 <tr>
-	<td>select</td>
-	<td>name=campus</td>
-	<td>label=Unitec Tegucigalpa</td>
-</tr>
-<tr>
 	<td>click</td>
 	<td>link=Siguiente</td>
 	<td></td>
@@ -30,11 +25,6 @@
 	<td>verifyText</td>
 	<td>//form[@id='register-form']/div/div[4]/div</td>
 	<td>La fecha es requerida.</td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>xpath=(//input[@name='tipo_fecha'])[2]</td>
-	<td></td>
 </tr>
 <tr>
 	<td>click</td>
@@ -48,7 +38,67 @@
 </tr>
 <tr>
 	<td>click</td>
+	<td>link=Siguiente</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Atrás</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//input[@name='tipo_fecha'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Siguiente</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//form[@id='register-form']/div/div[4]/div</td>
+	<td>El rango de fechas es un campo requerido.</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//table[@id='InitialDate_table']/tbody/tr[3]/td[6]/div</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
 	<td>css=#FinalDate_root &gt; div.picker__holder &gt; div.picker__frame &gt; div.picker__wrap &gt; div.picker__box &gt; div.picker__header &gt; div.picker__nav--next</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//table[@id='FinalDate_table']/tbody/tr[3]/td[3]/div</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Siguiente</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//form[@id='register-form']/div/div[4]/div</td>
+	<td>Revise que la fecha inicial sea menor que la fecha final. Rango de fechas inválido.</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#FinalDate_root &gt; div.picker__holder &gt; div.picker__frame &gt; div.picker__wrap &gt; div.picker__box &gt; div.picker__header &gt; div.picker__nav--next</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=FinalDate</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#FinalDate_root &gt; div.picker__holder &gt; div.picker__frame &gt; div.picker__wrap &gt; div.picker__box &gt; div.picker__header &gt; div.picker__nav--prev</td>
 	<td></td>
 </tr>
 <tr>
@@ -58,62 +108,22 @@
 </tr>
 <tr>
 	<td>click</td>
-	<td>name=dia</td>
+	<td>xpath=(//input[@name='dia'])[2]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>name=dia</td>
+	<td>xpath=(//input[@name='dia'])[3]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>xpath=(//input[@name='dia'])[6]</td>
+	<td>xpath=(//input[@name='dia'])[4]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>click</td>
 	<td>xpath=(//input[@name='dia'])[5]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>xpath=(//input[@name='dia'])[4]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>xpath=(//input[@name='dia'])[3]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>xpath=(//input[@name='dia'])[2]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>name=dia</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>xpath=(//input[@name='dia'])[2]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>xpath=(//input[@name='dia'])[3]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>xpath=(//input[@name='dia'])[4]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>xpath=(//input[@name='dia'])[8]</td>
 	<td></td>
 </tr>
 <tr>
@@ -123,12 +133,7 @@
 </tr>
 <tr>
 	<td>click</td>
-	<td>xpath=(//input[@name='dia'])[5]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>xpath=(//input[@name='dia'])[6]</td>
+	<td>xpath=(//input[@name='dia'])[8]</td>
 	<td></td>
 </tr>
 <tr>
@@ -149,7 +154,7 @@
 <tr>
 	<td>type</td>
 	<td>name=nombre[0]</td>
-	<td>Jua</td>
+	<td>Ju</td>
 </tr>
 <tr>
 	<td>click</td>
@@ -164,7 +169,7 @@
 <tr>
 	<td>type</td>
 	<td>name=nombre[0]</td>
-	<td>34&amp;84</td>
+	<td>123@</td>
 </tr>
 <tr>
 	<td>click</td>
@@ -179,7 +184,7 @@
 <tr>
 	<td>type</td>
 	<td>name=nombre[0]</td>
-	<td>Juan Perez</td>
+	<td>Miguel</td>
 </tr>
 <tr>
 	<td>click</td>
@@ -189,17 +194,7 @@
 <tr>
 	<td>type</td>
 	<td>name=nombre[0]</td>
-	<td>Pedro Santos</td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>link=Agregar</td>
-	<td></td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>name=nombre[0]</td>
-	<td>Miguel Calderon</td>
+	<td>Daniela</td>
 </tr>
 <tr>
 	<td>click</td>
@@ -210,6 +205,96 @@
 	<td>click</td>
 	<td>link=Agregar</td>
 	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=nombre[0]</td>
+	<td>Pedro</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Agregar</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=nombre[0]</td>
+	<td>Tatiana</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//input[@name='tipo_entrada[0]'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Agregar</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=nombre[0]</td>
+	<td>Gerardo</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//input[@name='tipo_entrada[0]'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Agregar</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=nombre[0]</td>
+	<td>Marta</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//input[@name='tipo_entrada[0]'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Agregar</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//form[@id='register-form']/div[2]/div/div/fieldset/div[2]/div/div[3]/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//form[@id='register-form']/div[2]/div/div/fieldset/div[6]/div/div[3]/a/i</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//form[@id='register-form']/div[2]/div/div/fieldset/div[4]/div/div[3]/a/i</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>xpath=(//input[@name='tipo_entrada[3]'])[2]</td>
+	<td>on</td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>name=tipo_entrada[2]</td>
+	<td>on</td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>xpath=(//input[@name='tipo_entrada[1]'])[2]</td>
+	<td>on</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Observations</td>
+	<td>Esta es una observacion</td>
 </tr>
 <tr>
 	<td>click</td>
@@ -234,22 +319,22 @@
 <tr>
 	<td>verifyText</td>
 	<td>css=label.dias</td>
-	<td>Sábado, Domingo</td>
+	<td>Viernes, SábadoDomingo,</td>
 </tr>
 <tr>
 	<td>verifyText</td>
 	<td>css=tbody.listado &gt; tr &gt; td</td>
-	<td>Juan Perez</td>
+	<td>Daniela</td>
 </tr>
 <tr>
 	<td>verifyText</td>
 	<td>//form[@id='register-form']/div[3]/div/div/table/tbody/tr/td[2]</td>
-	<td>peatonal</td>
+	<td>vehicular</td>
 </tr>
 <tr>
 	<td>verifyText</td>
 	<td>//form[@id='register-form']/div[3]/div/div/table/tbody/tr[2]/td</td>
-	<td>Pedro Santos</td>
+	<td>Pedro</td>
 </tr>
 <tr>
 	<td>verifyText</td>
@@ -259,12 +344,27 @@
 <tr>
 	<td>verifyText</td>
 	<td>//form[@id='register-form']/div[3]/div/div/table/tbody/tr[3]/td</td>
-	<td>Miguel Calderon</td>
+	<td>Gerardo</td>
 </tr>
 <tr>
 	<td>verifyText</td>
 	<td>//form[@id='register-form']/div[3]/div/div/table/tbody/tr[3]/td[2]</td>
 	<td>vehicular</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=label.observaciones</td>
+	<td>Esta es una observacion</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Autorizar</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=div.large-12.columns &gt; h2</td>
+	<td>Se han registrado las visitas exitosamente</td>
 </tr>
 </tbody></table>
 </body>

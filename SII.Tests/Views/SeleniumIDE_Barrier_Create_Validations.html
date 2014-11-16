@@ -247,14 +247,44 @@
 	<td></td>
 </tr>
 <tr>
-	<td>selectWindow</td>
-	<td>null</td>
+	<td>clickAndWait</td>
+	<td>css=input.small.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Crear Barrera</td>
 	<td></td>
 </tr>
 <tr>
 	<td>type</td>
+	<td>id=Name</td>
+	<td>Barrera prueba 2</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Description</td>
+	<td>Descripcion de la barrera de prueba 2</td>
+</tr>
+<tr>
+	<td>type</td>
 	<td>id=IpAddress</td>
-	<td>194.153.205.20</td>
+	<td>194.153.205.26</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Port</td>
+	<td>6500</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=Activate</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=AllowTeachers</td>
+	<td></td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -269,7 +299,62 @@
 <tr>
 	<td>type</td>
 	<td>id=IpAddress</td>
+	<td>194.153.205.27</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.small.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=td</td>
+	<td>Barrera prueba</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//section[@id='body']/div/div/table/tbody/tr[2]/td[2]</td>
+	<td>Descripcion de la barrera de prueba</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//section[@id='body']/div/div/table/tbody/tr[2]/td[3]</td>
 	<td>194.153.205.26</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//section[@id='body']/div/div/table/tbody/tr[2]/td[4]</td>
+	<td>65535</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//section[@id='body']/div/div/table/tbody/tr[2]/td[6]</td>
+	<td>Unitec Tegucigalpa</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//section[@id='body']/div/div/table/tbody/tr[3]/td</td>
+	<td>Barrera prueba 2</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//section[@id='body']/div/div/table/tbody/tr[3]/td[2]</td>
+	<td>Descripcion de la barrera de prueba 2</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//section[@id='body']/div/div/table/tbody/tr[3]/td[3]</td>
+	<td>194.153.205.27</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//section[@id='body']/div/div/table/tbody/tr[3]/td[4]</td>
+	<td>6500</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//section[@id='body']/div/div/table/tbody/tr[3]/td[6]</td>
+	<td>Unitec Tegucigalpa</td>
 </tr>
 </tbody></table>
 </body>

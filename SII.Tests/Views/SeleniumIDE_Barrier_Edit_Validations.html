@@ -13,12 +13,32 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/Barrier/Edit/2</td>
+	<td>/Barrier/Index</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>xpath=(//a[contains(text(),'Editar')])[2]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>type</td>
 	<td>id=Name</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Description</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=IpAddress</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Port</td>
 	<td></td>
 </tr>
 <tr>
@@ -32,84 +52,19 @@
 	<td>The Nombre field is required.</td>
 </tr>
 <tr>
-	<td>type</td>
-	<td>id=Name</td>
-	<td>Barrera prueba 2</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>id=Description</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>css=input.small.button</td>
-	<td></td>
-</tr>
-<tr>
 	<td>verifyText</td>
-	<td>css=span.field-validation-error &gt; span</td>
+	<td>//section[@id='body']/div/div/form/fieldset/div[2]/div[2]/span/span</td>
 	<td>The Descripción field is required.</td>
 </tr>
 <tr>
-	<td>type</td>
-	<td>id=Description</td>
-	<td>Descripcion de la barrera de prueba 2</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>id=IpAddress</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>css=input.small.button</td>
-	<td></td>
-</tr>
-<tr>
 	<td>verifyText</td>
-	<td>css=span.field-validation-error &gt; span</td>
+	<td>//section[@id='body']/div/div/form/fieldset/div[3]/div[2]/span/span</td>
 	<td>The Dirección IP field is required.</td>
 </tr>
 <tr>
-	<td>type</td>
-	<td>id=IpAddress</td>
-	<td>194.153.205.20</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>id=Port</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>css=input.small.button</td>
-	<td></td>
-</tr>
-<tr>
 	<td>verifyText</td>
-	<td>css=span.field-validation-error &gt; span</td>
+	<td>//section[@id='body']/div/div/form/fieldset/div[4]/div[2]/span/span</td>
 	<td>The Puerto field is required.</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>id=Port</td>
-	<td>2032</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>id=Name</td>
-	<td>34&amp;*43@</td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>css=input.small.button</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyText</td>
-	<td>css=span.field-validation-error &gt; span</td>
-	<td>Ingrese un nombre que contenga de 3 a 16 caracteres letras o números.</td>
 </tr>
 <tr>
 	<td>type</td>
@@ -149,21 +104,6 @@
 <tr>
 	<td>type</td>
 	<td>id=Description</td>
-	<td>45&amp;*#2</td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>css=input.small.button</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyText</td>
-	<td>css=span.field-validation-error &gt; span</td>
-	<td>Ingrese una descripción que contenga de 5 a 128 caracteres letras o números.</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>id=Description</td>
 	<td>Descripcion de la barrera de prueba 2</td>
 </tr>
 <tr>
@@ -184,7 +124,7 @@
 <tr>
 	<td>type</td>
 	<td>id=IpAddress</td>
-	<td>194.153.205.256</td>
+	<td>256.256.256.256</td>
 </tr>
 <tr>
 	<td>click</td>
@@ -199,7 +139,7 @@
 <tr>
 	<td>type</td>
 	<td>id=IpAddress</td>
-	<td>194.153.205.20</td>
+	<td>194.153.205.27</td>
 </tr>
 <tr>
 	<td>type</td>
@@ -219,7 +159,7 @@
 <tr>
 	<td>type</td>
 	<td>id=Port</td>
-	<td>2032</td>
+	<td>6800</td>
 </tr>
 <tr>
 	<td>type</td>
@@ -239,14 +179,23 @@
 <tr>
 	<td>type</td>
 	<td>id=IpAddress</td>
-	<td>194.153.205.20</td>
+	<td>194.153.205.27</td>
 </tr>
 <tr>
-	<td>type</td>
-	<td>id=Port</td>
-	<td>2032</td>
+	<td>click</td>
+	<td>id=AllowAdministrative</td>
+	<td></td>
 </tr>
-
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.small.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//section[@id='body']/div/div/table/tbody/tr[3]/td[4]</td>
+	<td>6800</td>
+</tr>
 </tbody></table>
 </body>
 </html>
