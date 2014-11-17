@@ -707,7 +707,7 @@
     <Content Include="Views\Entrance\Create.cshtml" />
     <Content Include="Views\Entrance\Edit.cshtml" />
     <Content Include="Views\Entrance\Delete.cshtml" />
-    <Content Include="Views\Entrance\DropDownBarrier.cshtml" />
+    <Content Include="Views\Entrance\SelectBarrier.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -773,7 +773,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>32685</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

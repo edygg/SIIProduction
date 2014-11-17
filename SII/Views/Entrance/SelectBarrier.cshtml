@@ -1,8 +1,10 @@
-﻿
+﻿@{
+    ViewBag.Title = "Ingreso de visitas anunciadas";
+}
 
 <div class="row">
-    <div class="large-12 columns" >
-        @using (Html.BeginForm("DropDownBarrier","Entrance",FormMethod.Post))
+    <div class="small-8 small-offset-2 columns" >
+        @using (Html.BeginForm("Index","Entrance",FormMethod.Get))
         {
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true)
@@ -16,11 +18,9 @@
                         <option value="@cmp.Value">@cmp.Text</option>
                     }
                 </select>
-                <input type="submit" class="button" />
+                <input type="submit" class="button" value="Ver visitas" />
             </fieldset>
         }
-        
-        <h2>Hola :D</h2>
     </div>
 </div>
 
