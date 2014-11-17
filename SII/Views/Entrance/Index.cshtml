@@ -7,10 +7,19 @@
 
 <div class="row">
     <div class="large-12 columns" >
-        <h2>Seleccione una barrera: </h2>
-        <!--combobox here-->
+      <form method="get">
+          <input type="search" name="searchTerm" />
+          <input type="submit" value="Buscar por nombre" /> 
+      </form>
+
     </div>
 </div>
-<div class="large-12 columns">
-
+<div class="row">
+    <div class="large-12 columns">
+        @foreach (var item in ViewBag.dailyVisits)
+        {
+            <h3 data-id ="item.Visit_Id">item.FullName</h3>
+            @Html.ActionLink("Ingresar", "Index", "Entrance", new { @class = "button" })
+        }
+    </div>
 </div>
