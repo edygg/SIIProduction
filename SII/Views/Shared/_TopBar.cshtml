@@ -53,6 +53,16 @@
                     </li>
                     <li>@Html.ActionLink("Roles", "RoleAddToUser", "Account")</li>    
                 }
+                
+                @if (User.IsInRole("Guardia"))
+                {
+                    <li class="has-dropdown">
+                        <a>Visitas</a>
+                        <ul class="dropdown">
+                            <li>@Html.ActionLink("Visitas anunciadas", "SelectBarrier", "Entrance")</li>
+                        </ul>
+                    </li>
+                }
             </ul>
         }
     </section>
