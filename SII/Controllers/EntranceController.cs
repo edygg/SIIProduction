@@ -51,20 +51,27 @@ namespace SII.Controllers
 
             ViewBag.dailyVisits = (from v in db.Visits
                                 join an in db.Announcements on v.AnnouncementId equals an.Id
-                                where (h >= an.InitialDate) && (h <= an.FinalDate) && (an.SpecificDays.Contains(dayOfWeek)) && (searchTerm == null ? v.FullName.StartsWith(searchTerm): false)
-                                select new
+                                where (h >= an.InitialDate) && (h <= an.FinalDate) && (an.SpecificDays.Contains(dayOfWeek))
+                                select new Ingress()
                                 {
                                     AnnouncementId = an.Id,
                                     Visitor = v.FullName,
                                     Visitor_id = v.Id,
                                     TypeEntrance = v.TypeEntrance,
                                     Observations = an.Observations
-                                });
+                                }).ToList();
             
             return View();
         }
 
-        [AllowAnonymous]
+        public class Ingress{
+            public int AnnouncementId {get;set;}
+            public String Visitor {get;set;}
+            public int Visitor_id {get;set;}
+            public String TypeEntrance {get;set;}
+            public String Observations {get;set;}
+        }
+
         public ActionResult GetVisits()
         {
             //DateTime h = new DateTime(2014, 11, 17);
@@ -95,17 +102,18 @@ namespace SII.Controllers
                     dayOfWeek = "D";
                     break;
             }
-
+            
             var dailyVisits = (from v in db.Visits
-                                join an in db.Announcements on v.AnnouncementId equals an.Id
-                                where (h >= an.InitialDate) && (h <= an.FinalDate) && (an.SpecificDays.Contains(dayOfWeek)) 
-                                select new
-                                {
-                                    AnnouncementId = an.Id,
-                                    Visitor = v.FullName,
-                                    TypeEntrance = v.TypeEntrance,
-                                    Observations = an.Observations
-                                });
+                               join an in db.Announcements on v.AnnouncementId equals an.Id
+                               where (h >= an.InitialDate) && (h <= an.FinalDate) && (an.SpecificDays.Contains(dayOfWeek))
+                               select new
+                               {
+                                   AnnouncementId = an.Id,
+                                   Visitor = v.FullName,
+                                   Visitor_id = v.Id,
+                                   TypeEntrance = v.TypeEntrance,
+                                   Observations = an.Observations
+                               });
             return Json(dailyVisits, JsonRequestBehavior.AllowGet);
 
         }

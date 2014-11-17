@@ -1,7 +1,6 @@
-﻿@model IEnumerable<SII.Models.Entrance>
-
+﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Ingreso de Visitas";
 }
 
 
@@ -15,11 +14,39 @@
     </div>
 </div>
 <div class="row">
-    <div class="large-12 columns">
-        @foreach (var item in ViewBag.dailyVisits)
-        {
-            <h3 data-id ="item.Visit_Id">item.FullName</h3>
-            @Html.ActionLink("Ingresar", "Index", "Entrance", new { @class = "button" })
-        }
+    <div class="large-6 columns">
+        <h2>Nombres:</h2>
+    </div>
+    <div class="large-3 columns" >
+        <h2>Tipo de entrada:</h2>
+    </div>
+    <div class="large-3 columns" >
+        <h1></h1>
     </div>
 </div>
+
+        @foreach (var item in ViewBag.dailyVisits)
+        {
+            <div class="panel">
+                <div class="row" data-id="@item.Visitor_id">
+                    <div class="large-6 columns">
+                        <h3>@item.Visitor</h3>
+                    </div>
+                    <div class="large-3 columns">
+                        <h3>@item.TypeEntrance</h3>
+                    </div>
+                    <div class="large-3 columns">
+                        @Html.ActionLink("Ingresar", "Index", "Entrance", new { @class = "button" })
+                    </div>
+                </div> 
+            </div>
+            <div class="row">
+                <div class="large-4 columns">
+                    <h3>Observaciones:</h3>
+                </div>
+                <div class="large-8 columns" >
+                    <h4>@item.Observations</h4>
+                </div>
+            </div>
+            
+        }
