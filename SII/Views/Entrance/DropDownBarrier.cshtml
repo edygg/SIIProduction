@@ -1,0 +1,27 @@
+﻿
+
+<div class="row">
+    <div class="large-12 columns" >
+        @using (Html.BeginForm("DropDownBarrier","Entrance",FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            
+            <fieldset>
+                <legend>Seleccione una barrera:</legend>
+                        
+                <select name="barrera">
+                    @foreach (var cmp in ViewBag.Barrier)
+                    {
+                        <option value="@cmp.Value">@cmp.Text</option>
+                    }
+                </select>
+                <input type="submit" class="button" />
+            </fieldset>
+        }
+        
+        <h2>Hola :D</h2>
+    </div>
+</div>
+
+
