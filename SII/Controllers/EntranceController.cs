@@ -24,11 +24,21 @@ namespace SII.Controllers
 
         public ActionResult GetVisits()
         {
+            DateTime h = new DateTime(2014, 11, 17);
+            var daily_visits = (from v in db.Visits
+                                join an in db.Announcements on v.AnnouncementId equals an.Id
+                                where h >= an.InitialDate
+                                where h <= an.FinalDate
+                                select new
+                                {
+                                    AnnouncementID = an.Id,
+                                    Visitors = v.FullName,
+                                    Type_Entrance = v.TypeEntrance,
+                                    Observations = an.Observations
+                                });
 
-            
+            return Json(daily_visits, JsonRequestBehavior.AllowGet);
 
-
-            return null;
         }
 
 
