@@ -9,15 +9,14 @@ using SII.Models;
 
 namespace SII.Controllers
 {
-   // [Authorize(Roles = "Guardia")]
+   [Authorize(Roles = "Guardia")]
     public class EntranceController : Controller
     {
         private SIIContext db = new SIIContext();
 
         //
         // GET: /Entrance/
-        //[Authorize(Roles = "Guardia")]
-        [AllowAnonymous]
+        [Authorize(Roles = "Guardia")]
         public ActionResult Index(string searchTerm = null)
         {
 
@@ -52,24 +51,12 @@ namespace SII.Controllers
             ViewBag.dailyVisits = (from v in db.Visits
                                 join an in db.Announcements on v.AnnouncementId equals an.Id
                                 where (h >= an.InitialDate) && (h <= an.FinalDate) && (an.SpecificDays.Contains(dayOfWeek))
-                                select new Ingress()
+                                select new Entrance
                                 {
-                                    AnnouncementId = an.Id,
-                                    Visitor = v.FullName,
-                                    Visitor_id = v.Id,
-                                    TypeEntrance = v.TypeEntrance,
-                                    Observations = an.Observations
+
                                 }).ToList();
             
             return View();
-        }
-
-        public class Ingress{
-            public int AnnouncementId {get;set;}
-            public String Visitor {get;set;}
-            public int Visitor_id {get;set;}
-            public String TypeEntrance {get;set;}
-            public String Observations {get;set;}
         }
 
         public ActionResult GetVisits()
@@ -120,8 +107,8 @@ namespace SII.Controllers
 
         //aqui podes cambiar al rol que quieres que pueda verlo, lo deje asi para pruebas nada mas
         [HttpGet]
-        [AllowAnonymous]
-        public ActionResult DropDownBarrier()
+        [Authorize(Roles = "Guardia")]
+        public ActionResult SelectBarrier()
         {
             ViewBag.Barrier = new SelectList(db.Barriers.Where(m => m.Dropped == false).ToList(), "Id", "Name");
             return View();
