@@ -1,0 +1,36 @@
+﻿@model SII.Models.Entrance
+
+@{
+    SII.Models.SIIContext db = new SII.Models.SIIContext();
+    System.Globalization.CultureInfo cultureInfo = System.Globalization.CultureInfo.InvariantCulture;
+    System.Globalization.TextInfo textInfo = cultureInfo.TextInfo;
+       
+    var Visit = db.Visits.Where(p => p.Id == Model.VisitId).First(); 
+}
+
+
+@using (Ajax.BeginForm("Create", "Entrance", null, new AjaxOptions
+    {
+        HttpMethod = "post",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "visit-" + Model.Id
+    }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.VisitId)
+    @Html.HiddenFor(model => model.BarrierId)
+    @Html.HiddenFor(model => model.State)
+        
+    <td>@Visit.FullName</td>
+    <td>@textInfo.ToTitleCase(Visit.TypeEntrance)</td>
+    if (Model.State == "Entrada")
+    {
+        <td>Fuera del campus</td>
+    }
+    else 
+    {
+        <td>Dentro del campus</td> 
+    }
+    <td>@db.Announcements.Where(p => p.Id == Visit.AnnouncementId).First().Observations</td>
+    <td><input type="submit" value="Marcar" class="tiny small button" /></td>
+}
