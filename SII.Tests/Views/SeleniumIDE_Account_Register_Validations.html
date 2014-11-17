@@ -54,12 +54,12 @@
 <tr>
 	<td>type</td>
 	<td>id=Password</td>
-	<td>asdfgh</td>
+	<td>user123</td>
 </tr>
 <tr>
 	<td>type</td>
 	<td>id=ConfirmPassword</td>
-	<td>asdfgh</td>
+	<td>user123</td>
 </tr>
 <tr>
 	<td>click</td>
@@ -79,12 +79,12 @@
 <tr>
 	<td>type</td>
 	<td>id=Password</td>
-	<td>asdfg</td>
+	<td>user1</td>
 </tr>
 <tr>
 	<td>type</td>
 	<td>id=ConfirmPassword</td>
-	<td>asdfg</td>
+	<td>user1</td>
 </tr>
 <tr>
 	<td>click</td>
@@ -99,12 +99,12 @@
 <tr>
 	<td>type</td>
 	<td>id=Password</td>
-	<td>asdfgh</td>
+	<td>user123</td>
 </tr>
 <tr>
 	<td>type</td>
 	<td>id=ConfirmPassword</td>
-	<td>asdfghj</td>
+	<td>user12</td>
 </tr>
 <tr>
 	<td>click</td>
@@ -115,6 +115,71 @@
 	<td>verifyText</td>
 	<td>css=div.validation-summary-errors &gt; ul &gt; li</td>
 	<td>Las contraseñas no coinciden.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=ConfirmPassword</td>
+	<td>user123</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>link=user</td>
+	<td>user</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Cerrar Sesión</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=UserName</td>
+	<td>admin</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Password</td>
+	<td>admin123</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/Account/Register</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=UserName</td>
+	<td>user</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Password</td>
+	<td>user123</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=ConfirmPassword</td>
+	<td>user123</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=div.validation-summary-errors &gt; ul &gt; li</td>
+	<td>User name already exists. Please enter a different user name.</td>
 </tr>
 </tbody></table>
 </body>
