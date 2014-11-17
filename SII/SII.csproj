@@ -708,6 +708,7 @@
     <Content Include="Views\Entrance\Edit.cshtml" />
     <Content Include="Views\Entrance\Delete.cshtml" />
     <Content Include="Views\Entrance\SelectBarrier.cshtml" />
+    <Content Include="Views\Entrance\_EntranceVisit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

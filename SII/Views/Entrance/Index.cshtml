@@ -1,52 +1,30 @@
-﻿
+﻿@model IEnumerable<SII.Models.Entrance>
+
 @{
-    ViewBag.Title = "Ingreso de Visitas";
+    ViewBag.Title = "Ingreso de visitas anunciadas";
 }
 
-
 <div class="row">
-    <div class="large-12 columns" >
-      <form method="get">
-          <input type="search" name="searchTerm" />
-          <input type="submit" value="Buscar por nombre" /> 
-      </form>
+    <div class="small-8 small-offset-2 columns">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Tipo de entada</th>
+                    <th>Estado</th>
+                    <th>Observaciones</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="visitsTable">
+                @foreach (var item in Model)
+                {
+                    <tr id="visit-@item.Id">
+                        @Html.Partial("_EntranceVisit", item)
+                    </tr>
+                }
+            </tbody>
 
+        </table>
     </div>
 </div>
-<div class="row">
-    <div class="large-6 columns">
-        <h2>Nombres:</h2>
-    </div>
-    <div class="large-3 columns" >
-        <h2>Tipo de entrada:</h2>
-    </div>
-    <div class="large-3 columns" >
-        <h1></h1>
-    </div>
-</div>
-
-        @foreach (var item in ViewBag.dailyVisits)
-        {
-            <div class="panel">
-                <div class="row" data-id="@item.Visitor_id">
-                    <div class="large-6 columns">
-                        <h3>@item.Visitor</h3>
-                    </div>
-                    <div class="large-3 columns">
-                        <h3>@item.TypeEntrance</h3>
-                    </div>
-                    <div class="large-3 columns">
-                        @Html.ActionLink("Ingresar", "Index", "Entrance", new { @class = "button" })
-                    </div>
-                </div> 
-            </div>
-            <div class="row">
-                <div class="large-4 columns">
-                    <h3>Observaciones:</h3>
-                </div>
-                <div class="large-8 columns" >
-                    <h4>@item.Observations</h4>
-                </div>
-            </div>
-            
-        }

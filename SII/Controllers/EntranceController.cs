@@ -20,7 +20,7 @@ namespace SII.Controllers
         public ActionResult Index(string searchTerm = null)
         {
 
-            DateTime h = DateTime.Now;
+            DateTime h = DateTime.Now.Date;
             var dayOfWeek = "";
 
             switch (h.DayOfWeek)
@@ -48,15 +48,19 @@ namespace SII.Controllers
                     break;
             }
 
-            ViewBag.dailyVisits = (from v in db.Visits
-                                join an in db.Announcements on v.AnnouncementId equals an.Id
-                                where (h >= an.InitialDate) && (h <= an.FinalDate) && (an.SpecificDays.Contains(dayOfWeek))
-                                select new Entrance
-                                {
+            var visits = (from v in db.Visits
+                          join an in db.Announcements on v.AnnouncementId equals an.Id
+                          where (h >= an.InitialDate) && (h <= an.FinalDate) && (an.SpecificDays.Contains(dayOfWeek))
+                          select v);
+            var entrances = new List<Entrance>();
 
-                                }).ToList();
+            foreach (var visit in visits) {
+                var lastEntrance = db.Entrances.Where(p => p.VisitId == visit.Id).OrderByDescending(p => p.CreatedAt).First();
+                var state = lastEntrance.State == "Entrada" ? "Salida" : "Entrada";
+                entrances.Add(new Entrance { VisitId = visit.Id, BarrierId = int.Parse(Request["barrera"]), State = state });
+            } 
             
-            return View();
+            return View(entrances);
         }
 
         public ActionResult GetVisits()
@@ -146,7 +150,9 @@ namespace SII.Controllers
             {
                 db.Entrances.Add(entrance);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                
+                return RedirectToAction("Index", "Entrance", new { barrera = entrance.BarrierId});
+                
             }
 
             return View(entrance);
