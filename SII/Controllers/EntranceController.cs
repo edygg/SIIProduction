@@ -9,23 +9,19 @@ using SII.Models;
 
 namespace SII.Controllers
 {
-    [Authorize(Roles = "Guardia")]
+   // [Authorize(Roles = "Guardia")]
     public class EntranceController : Controller
     {
         private SIIContext db = new SIIContext();
 
         //
         // GET: /Entrance/
-        [Authorize(Roles = "Guardia")]
-        public ActionResult Index()
+        //[Authorize(Roles = "Guardia")]
+        [AllowAnonymous]
+        public ActionResult Index(string searchTerm = null)
         {
-            return View(db.Entrances.ToList());
-        }
 
-        public ActionResult GetVisits()
-        {
-            DateTime h = new DateTime(2014, 11, 17);
-
+            DateTime h = DateTime.Now;
             var dayOfWeek = "";
 
             switch (h.DayOfWeek)
@@ -53,21 +49,83 @@ namespace SII.Controllers
                     break;
             }
 
-            var dailyVisits = (from v in db.Visits
+            ViewBag.dailyVisits = (from v in db.Visits
                                 join an in db.Announcements on v.AnnouncementId equals an.Id
                                 where (h >= an.InitialDate) && (h <= an.FinalDate) && (an.SpecificDays.Contains(dayOfWeek))
-                                select new
+                                select new Ingress()
                                 {
                                     AnnouncementId = an.Id,
                                     Visitor = v.FullName,
+                                    Visitor_id = v.Id,
                                     TypeEntrance = v.TypeEntrance,
                                     Observations = an.Observations
-                                });
+                                }).ToList();
+            
+            return View();
+        }
 
+        public class Ingress{
+            public int AnnouncementId {get;set;}
+            public String Visitor {get;set;}
+            public int Visitor_id {get;set;}
+            public String TypeEntrance {get;set;}
+            public String Observations {get;set;}
+        }
+
+        public ActionResult GetVisits()
+        {
+            //DateTime h = new DateTime(2014, 11, 17);
+            DateTime h = DateTime.Now;
+            var dayOfWeek = "";
+
+            switch (h.DayOfWeek)
+            { 
+                case DayOfWeek.Monday:
+                    dayOfWeek = "L";
+                    break;
+                case DayOfWeek.Tuesday:
+                    dayOfWeek = "M";
+                    break;
+                case DayOfWeek.Wednesday:
+                    dayOfWeek = "X";
+                    break;
+                case DayOfWeek.Thursday:
+                    dayOfWeek = "J";
+                    break;
+                case DayOfWeek.Friday:
+                    dayOfWeek = "V";
+                    break;
+                case DayOfWeek.Saturday:
+                    dayOfWeek = "S";
+                    break;
+                case DayOfWeek.Sunday:
+                    dayOfWeek = "D";
+                    break;
+            }
+            
+            var dailyVisits = (from v in db.Visits
+                               join an in db.Announcements on v.AnnouncementId equals an.Id
+                               where (h >= an.InitialDate) && (h <= an.FinalDate) && (an.SpecificDays.Contains(dayOfWeek))
+                               select new
+                               {
+                                   AnnouncementId = an.Id,
+                                   Visitor = v.FullName,
+                                   Visitor_id = v.Id,
+                                   TypeEntrance = v.TypeEntrance,
+                                   Observations = an.Observations
+                               });
             return Json(dailyVisits, JsonRequestBehavior.AllowGet);
 
         }
 
+        //aqui podes cambiar al rol que quieres que pueda verlo, lo deje asi para pruebas nada mas
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult DropDownBarrier()
+        {
+            ViewBag.Barrier = new SelectList(db.Barriers.Where(m => m.Dropped == false).ToList(), "Id", "Name");
+            return View();
+        }
 
         //
         // GET: /Entrance/Details/5
