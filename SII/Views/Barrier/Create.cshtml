@@ -80,7 +80,7 @@
                         @Html.LabelFor(model => model.CampusId, new { @class = "right inline" })
                     </div>
                     <div class="small-10 columns">
-                        @Html.DropDownListFor(model => model.CampusId, campusDropDown);
+                        @Html.DropDownListFor(model => model.CampusId, campusDropDown)
                         @Html.ValidationMessageFor(model => model.CampusId)
                     </div>
                 </div>
