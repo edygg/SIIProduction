@@ -29,28 +29,30 @@
         {
             <!-- Left Nav Section -->
             <ul class="left">
-                <li class="has-dropdown">
-                    <a>Usuarios</a>
-                    <ul class="dropdown">
-                        <li>@Html.ActionLink("Crear", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-                    </ul>
-                </li>
-                <li class="has-dropdown">
-                    <a>Campus</a>
-                    <ul class="dropdown">
-                        <li>@Html.ActionLink("Crear", "Create", "Campus")</li>
-                        <li>@Html.ActionLink("Administrar", "Index", "Campus")</li>
-                    </ul>
-                </li>
-                <li class="has-dropdown">
-                    <a>Barreras</a>
-                    <ul class="dropdown">
-                        <li>@Html.ActionLink("Crear", "Create", "Barrier")</li>
-                        <li>@Html.ActionLink("Administrar", "Index", "Barrier")</li>
-                    </ul>
-                </li>
-                <li>@Html.ActionLink("Roles", "RoleIndex", "Account")</li>
-                >
+                @if (User.IsInRole("Administrador"))
+                {
+                    <li class="has-dropdown">
+                        <a>Usuarios</a>
+                        <ul class="dropdown">
+                            <li>@Html.ActionLink("Crear", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                        </ul>
+                    </li>
+                    <li class="has-dropdown">
+                        <a>Campus</a>
+                        <ul class="dropdown">
+                            <li>@Html.ActionLink("Crear", "Create", "Campus")</li>
+                            <li>@Html.ActionLink("Administrar", "Index", "Campus")</li>
+                        </ul>
+                    </li>
+                    <li class="has-dropdown">
+                        <a>Barreras</a>
+                        <ul class="dropdown">
+                            <li>@Html.ActionLink("Crear", "Create", "Barrier")</li>
+                            <li>@Html.ActionLink("Administrar", "Index", "Barrier")</li>
+                        </ul>
+                    </li>
+                    <li>@Html.ActionLink("Roles", "RoleAddToUser", "Account")</li>    
+                }
             </ul>
         }
     </section>

@@ -59,8 +59,7 @@ namespace SII.Controllers
 
         //
         // GET: /Account/Register
-
-        [AllowAnonymous]
+        [Authorize(Roles = "Administrador")]
         public ActionResult Register()
         {
             return View();
@@ -68,9 +67,8 @@ namespace SII.Controllers
 
         //
         // POST: /Account/Register
-
+        [Authorize(Roles = "Administrador")]
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public ActionResult Register(RegisterModel model)
         {
@@ -124,7 +122,7 @@ namespace SII.Controllers
 
         //
         // GET: /Account/Manage
-
+        [Authorize(Roles = "Administrador")]
         public ActionResult Manage(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
@@ -139,7 +137,7 @@ namespace SII.Controllers
 
         //
         // POST: /Account/Manage
-
+        [Authorize(Roles = "Administrador")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Manage(LocalPasswordModel model)
@@ -388,19 +386,34 @@ namespace SII.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult RoleAddToUser(string RoleName, string UserName)
         {
+            SelectList list = new SelectList(Roles.GetAllRoles());
+            ViewBag.Roles = list;
+
+            if (String.IsNullOrEmpty(UserName))
+            {
+                ViewBag.Error = "El campo nombre de usuario está en blanco.";
+                return View();
+            }
+
+            if (!WebSecurity.UserExists(UserName))
+            {
+                ViewBag.Error = "El usuario no existe.";
+                return View();
+            }
+
+            if (Roles.GetRolesForUser(UserName).Count() > 0) {
+                ViewBag.Error = "El usuario ya posee un rol.";
+                return View();
+            }
 
             if (Roles.IsUserInRole(UserName, RoleName))
             {
-                ViewBag.ResultMessage = "El usuario ya posee el rol.";
+                ViewBag.Error = "El usuario ya posee el rol.";
+                return View();
             }
-            else
-            {
-                Roles.AddUserToRole(UserName, RoleName);
-                ViewBag.ResultMessage = "Se ha asignado el rol correctamente.";
-            }
-
-            SelectList list = new SelectList(Roles.GetAllRoles());
-            ViewBag.Roles = list;
+            
+            Roles.AddUserToRole(UserName, RoleName);
+            ViewBag.ResultMessage = "Se ha asignado el rol correctamente.";
             return View();
         }
 
@@ -414,19 +427,22 @@ namespace SII.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult GetRoles(string UserName)
         {
-
-            if (!string.IsNullOrWhiteSpace(UserName))
-            {
-                ViewBag.RolesForThisUser = Roles.GetRolesForUser(UserName);
-            }
-            else 
-            {
-                ViewBag.Error = "El usuario está en blanco.";
-            }
-
             SelectList list = new SelectList(Roles.GetAllRoles());
             ViewBag.Roles = list;
 
+            if (String.IsNullOrEmpty(UserName))
+            {
+                ViewBag.Error = "El campo nombre de usuario está en blanco.";
+                return View("RoleAddToUser");
+            }
+
+            if (!WebSecurity.UserExists(UserName))
+            {
+                ViewBag.Error = "El usuario no existe.";
+                return View("RoleAddToUser");
+            }
+
+            ViewBag.RolesForThisUser = Roles.GetRolesForUser(UserName);
             return View("RoleAddToUser");
         }
 

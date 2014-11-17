@@ -9,13 +9,14 @@ using SII.Models;
 
 namespace SII.Controllers
 {
+    [Authorize(Roles = "Guardia")]
     public class EntranceController : Controller
     {
         private SIIContext db = new SIIContext();
 
         //
         // GET: /Entrance/
-
+        [Authorize(Roles = "Guardia")]
         public ActionResult Index()
         {
             return View(db.Entrances.ToList());
@@ -33,7 +34,7 @@ namespace SII.Controllers
 
         //
         // GET: /Entrance/Details/5
-
+        [Authorize(Roles = "Guardia")]
         public ActionResult Details(int id = 0)
         {
             Entrance entrance = db.Entrances.Find(id);
@@ -46,7 +47,7 @@ namespace SII.Controllers
 
         //
         // GET: /Entrance/Create
-
+        [Authorize(Roles = "Guardia")]
         public ActionResult Create()
         {
             return View();
@@ -54,7 +55,7 @@ namespace SII.Controllers
 
         //
         // POST: /Entrance/Create
-
+        [Authorize(Roles = "Guardia")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Entrance entrance)
@@ -71,7 +72,7 @@ namespace SII.Controllers
 
         //
         // GET: /Entrance/Edit/5
-
+        [Authorize(Roles = "Guardia")]
         public ActionResult Edit(int id = 0)
         {
             Entrance entrance = db.Entrances.Find(id);
@@ -84,7 +85,7 @@ namespace SII.Controllers
 
         //
         // POST: /Entrance/Edit/5
-
+        [Authorize(Roles = "Guardia")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Entrance entrance)
@@ -100,7 +101,7 @@ namespace SII.Controllers
 
         //
         // GET: /Entrance/Delete/5
-
+        [Authorize(Roles = "Guardia")]
         public ActionResult Delete(int id = 0)
         {
             Entrance entrance = db.Entrances.Find(id);
@@ -113,7 +114,7 @@ namespace SII.Controllers
 
         //
         // POST: /Entrance/Delete/5
-
+        [Authorize(Roles = "Guardia")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
