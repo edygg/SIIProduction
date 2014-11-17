@@ -22,6 +22,53 @@ namespace SII.Controllers
             return View(db.Entrances.ToList());
         }
 
+        public ActionResult GetVisits()
+        {
+            DateTime h = new DateTime(2014, 11, 17);
+
+            var dayOfWeek = "";
+
+            switch (h.DayOfWeek)
+            { 
+                case DayOfWeek.Monday:
+                    dayOfWeek = "L";
+                    break;
+                case DayOfWeek.Tuesday:
+                    dayOfWeek = "M";
+                    break;
+                case DayOfWeek.Wednesday:
+                    dayOfWeek = "X";
+                    break;
+                case DayOfWeek.Thursday:
+                    dayOfWeek = "J";
+                    break;
+                case DayOfWeek.Friday:
+                    dayOfWeek = "V";
+                    break;
+                case DayOfWeek.Saturday:
+                    dayOfWeek = "S";
+                    break;
+                case DayOfWeek.Sunday:
+                    dayOfWeek = "D";
+                    break;
+            }
+
+            var dailyVisits = (from v in db.Visits
+                                join an in db.Announcements on v.AnnouncementId equals an.Id
+                                where (h >= an.InitialDate) && (h <= an.FinalDate) && (an.SpecificDays.Contains(dayOfWeek))
+                                select new
+                                {
+                                    AnnouncementId = an.Id,
+                                    Visitor = v.FullName,
+                                    TypeEntrance = v.TypeEntrance,
+                                    Observations = an.Observations
+                                });
+
+            return Json(dailyVisits, JsonRequestBehavior.AllowGet);
+
+        }
+
+
         //
         // GET: /Entrance/Details/5
         [Authorize(Roles = "Guardia")]

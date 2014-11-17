@@ -58,7 +58,34 @@ namespace SII.Controllers
             an.Observations = Request["Observations"];
             if (!String.IsNullOrEmpty(Request["dia"]))
             {
-                an.SpecificDays = Request["dia"];
+                an.SpecificDays = Request["dia"].Replace(",", "");
+            }
+            else
+            {
+                switch (an.InitialDate.DayOfWeek)
+                {
+                    case DayOfWeek.Monday:
+                        an.SpecificDays = "L";
+                        break;
+                    case DayOfWeek.Tuesday:
+                        an.SpecificDays = "M";
+                        break;
+                    case DayOfWeek.Wednesday:
+                        an.SpecificDays = "X";
+                        break;
+                    case DayOfWeek.Thursday:
+                        an.SpecificDays = "J";
+                        break;
+                    case DayOfWeek.Friday:
+                        an.SpecificDays = "V";
+                        break;
+                    case DayOfWeek.Saturday:
+                        an.SpecificDays = "S";
+                        break;
+                    case DayOfWeek.Sunday:
+                        an.SpecificDays = "D";
+                        break;
+                }
             }
 
             db.Announcements.Add(an);
