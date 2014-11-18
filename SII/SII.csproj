@@ -275,6 +275,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\aspnet-SII-20141030091147.mdf" />
+    <Content Include="App_Data\aspnet-SII-20141030091147_log.ldf">
+      <DependentUpon>aspnet-SII-20141030091147.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\datepicker\classic.css" />
     <Content Include="Content\datepicker\classic.date.css" />
     <Content Include="Content\foundation-icons\foundation-icons.css" />
@@ -652,7 +656,9 @@
     <Content Include="Scripts\datepicker\picker.js" />
     <Content Include="Scripts\datepicker\picker.time.js" />
     <Content Include="Scripts\rva.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -710,9 +716,7 @@
     <Content Include="Views\Entrance\SelectBarrier.cshtml" />
     <Content Include="Views\Entrance\_EntranceVisit.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
