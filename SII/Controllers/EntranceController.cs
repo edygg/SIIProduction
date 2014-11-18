@@ -51,12 +51,19 @@ namespace SII.Controllers
             var visits = (from v in db.Visits
                           join an in db.Announcements on v.AnnouncementId equals an.Id
                           where (h >= an.InitialDate) && (h <= an.FinalDate) && (an.SpecificDays.Contains(dayOfWeek))
-                          select v);
+                          select v).Distinct();
+            
             var entrances = new List<Entrance>();
 
             foreach (var visit in visits) {
-                var lastEntrance = db.Entrances.Where(p => p.VisitId == visit.Id).OrderByDescending(p => p.CreatedAt).First();
-                var state = lastEntrance.State == "Entrada" ? "Salida" : "Entrada";
+                var lastEntrance = "Salida";
+                
+                if (db.Entrances.Where(p => p.VisitId == visit.Id).Count() > 0)
+                {
+                    lastEntrance = db.Entrances.Where(p => p.VisitId == visit.Id).OrderByDescending(p => p.CreatedAt).First().State;
+                }
+                
+                var state = lastEntrance == "Entrada" ? "Salida" : "Entrada";
                 entrances.Add(new Entrance { VisitId = visit.Id, BarrierId = int.Parse(Request["barrera"]), State = state });
             } 
             
