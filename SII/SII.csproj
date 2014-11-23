@@ -194,6 +194,7 @@
     <Compile Include="Controllers\CampusController.cs" />
     <Compile Include="Controllers\EntranceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\VisitController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -655,6 +656,7 @@
     <Content Include="Scripts\datepicker\picker.date.js" />
     <Content Include="Scripts\datepicker\picker.js" />
     <Content Include="Scripts\datepicker\picker.time.js" />
+    <Content Include="Scripts\Reports.js" />
     <Content Include="Scripts\rva.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -715,6 +717,7 @@
     <Content Include="Views\Entrance\Delete.cshtml" />
     <Content Include="Views\Entrance\SelectBarrier.cshtml" />
     <Content Include="Views\Entrance\_EntranceVisit.cshtml" />
+    <Content Include="Views\Report\AnnouncementsByDateRange.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

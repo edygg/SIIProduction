@@ -1,0 +1,45 @@
+﻿@model IEnumerable<SII.Models.Visit>
+
+@{
+    ViewBag.Title = "Reporte de visitas anunciadas por rango de fechas";
+}
+
+<div class="row">
+    <div class="small-12 columns">
+        @using (Html.BeginForm())
+        {
+            <div class="row">
+                <div class="small-4 columns">
+                    <fieldset>
+                        <legend>Desde</legend>
+                        <input class="text-box single-line datepicker" id="InitialDate" name="InitialDate" type="date" value="">
+                    </fieldset>
+                </div>
+                <div class="small-4 columns">
+                    <fieldset>
+                        <legend>Hasta</legend>
+                        <input class="text-box single-line datepicker" id="FinalDate" name="FinalDate" type="date" value="">
+                    </fieldset>
+                </div>
+                <div class="small-4 columns">
+                    <fieldset>
+                        <legend>Campus</legend>
+                        @Html.DropDownList("Campus", ViewBag.Campus as SelectList)
+                    </fieldset>
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-2 small-offset-5 columns">
+                    <input value="Generar" type="submit" class="small button" />
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/datepicker/legacy.js")
+    @Scripts.Render("~/Scripts/datepicker/picker.js")
+    @Scripts.Render("~/Scripts/datepicker/picker.date.js")
+    @Scripts.Render("~/Scripts/Reports.js")
+}
