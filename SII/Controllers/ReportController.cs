@@ -1,6 +1,7 @@
 ﻿using SII.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -36,7 +37,26 @@ namespace SII.Controllers
         [HttpPost]
         public ActionResult AnnouncementsByDateRange(String id)
         {
-            return View();
+            ViewBag.Campus = new SelectList(db.Campus.Where(m => m.Dropped == false).ToList(), "Id", "Name");
+
+            var campus = int.Parse(Request["Campus"]);
+            var iniDate = DateTime.ParseExact(Request["InitialDate_submit"], "yyyy/MM/dd", CultureInfo.InvariantCulture);
+            var finalDate = DateTime.ParseExact(Request["FinalDate_submit"], "yyyy/MM/dd", CultureInfo.InvariantCulture);
+
+            //Fecha única
+            var visitsOnlyDate = (from visit in db.Visits
+                              join an in db.Announcements on visit.AnnouncementId equals an.Id
+                              where (an.CampusId == campus) && (an.InitialDate == an.FinalDate) && ((iniDate <= an.InitialDate) && (an.InitialDate <= finalDate))
+                              select visit).ToList();
+            //Rango de fechas
+            var visitsRangeDate = (from visit in db.Visits
+                                   join an in db.Announcements on visit.AnnouncementId equals an.Id
+                                   where (an.CampusId == campus) && (an.InitialDate != an.FinalDate) && ((iniDate <= an.InitialDate) || (an.FinalDate <= finalDate))
+                                   select visit).ToList();
+
+            var visits = visitsOnlyDate.Concat(visitsRangeDate);
+
+            return View(visits);
         }
 
         protected override void Dispose(bool disposing)
