@@ -1,8 +1,30 @@
 ﻿@model IEnumerable<SII.Models.Entrance>
 
+@Scripts.Render("~/Scripts/knockout-2.2.0.js")
+
 @{
     ViewBag.Title = "Ingreso de visitas anunciadas";
 }
+
+<script>
+    @{
+        var jsonSerialiser = new System.Web.Script.Serialization.JavaScriptSerializer();
+        var initialData = jsonSerialiser.Serialize(Model);
+    }
+    var data = @Html.Raw(initialData) 
+</script>
+
+@Scripts.Render("~/Scripts/Entrance.js")
+
+<div class="row">
+    <div class="large-12 columns" >
+        @using (@Html.BeginForm())
+        {
+    <input name="searchTerm" type="search" placeholder="Buscar..." data-bind="value: query, valueUpdate: 'keyup'" autocomplete="off">
+        }
+    </div>
+</div>
+
 
 <div class="row">
     <div class="small-8 small-offset-2 columns">

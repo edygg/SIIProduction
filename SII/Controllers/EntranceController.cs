@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SII.Models;
+using System.Web.Script.Serialization;
 
 namespace SII.Controllers
 {
@@ -16,7 +17,8 @@ namespace SII.Controllers
 
         //
         // GET: /Entrance/
-        [Authorize(Roles = "Guardia")]
+       [AllowAnonymous]
+       //[Authorize(Roles = "Guardia")]
         public ActionResult Index(string searchTerm = null)
         {
 
@@ -70,7 +72,8 @@ namespace SII.Controllers
             return View(entrances);
         }
 
-        public ActionResult GetVisits()
+        [AllowAnonymous]
+        public ActionResult GetVisits(String searchTerm = null)
         {
             //DateTime h = new DateTime(2014, 11, 17);
             DateTime h = DateTime.Now;
@@ -103,15 +106,19 @@ namespace SII.Controllers
             
             var dailyVisits = (from v in db.Visits
                                join an in db.Announcements on v.AnnouncementId equals an.Id
-                               where (h >= an.InitialDate) && (h <= an.FinalDate) && (an.SpecificDays.Contains(dayOfWeek))
+                               where (h >= an.InitialDate) && (h <= an.FinalDate) && (an.SpecificDays.Contains(dayOfWeek)) 
                                select new
                                {
                                    AnnouncementId = an.Id,
-                                   Visitor = v.FullName,
-                                   Visitor_id = v.Id,
+                                   FullName = v.FullName,
+                                   Id = v.Id,
                                    TypeEntrance = v.TypeEntrance,
                                    Observations = an.Observations
                                });
+            if (!String.IsNullOrEmpty(searchTerm))
+            {
+                dailyVisits = dailyVisits.Where(p => p.FullName.StartsWith(searchTerm));
+            }
             return Json(dailyVisits, JsonRequestBehavior.AllowGet);
 
         }
