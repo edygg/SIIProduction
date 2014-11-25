@@ -13,6 +13,13 @@ namespace SII.Controllers
     public class EntranceController : Controller
     {
         private SIIContext db = new SIIContext();
+        private IEntranceRepository EntraceRepo;
+
+        public EntranceController(IEntranceRepository EntraceRepo)
+        {
+            this.EntraceRepo = EntraceRepo;
+        }
+
 
         //
         // GET: /Entrance/
@@ -130,7 +137,7 @@ namespace SII.Controllers
         [Authorize(Roles = "Guardia")]
         public ActionResult Details(int id = 0)
         {
-            Entrance entrance = db.Entrances.Find(id);
+            Entrance entrance = EntraceRepo.Find(id);
             if (entrance == null)
             {
                 return HttpNotFound();
@@ -155,8 +162,7 @@ namespace SII.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entrances.Add(entrance);
-                db.SaveChanges();
+                EntraceRepo.save(entrance);
                 
                 return RedirectToAction("Index", "Entrance", new { barrera = entrance.BarrierId});
                 
@@ -170,7 +176,7 @@ namespace SII.Controllers
         [Authorize(Roles = "Guardia")]
         public ActionResult Edit(int id = 0)
         {
-            Entrance entrance = db.Entrances.Find(id);
+            Entrance entrance = EntraceRepo.Find(id);
             if (entrance == null)
             {
                 return HttpNotFound();
@@ -187,8 +193,7 @@ namespace SII.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(entrance).State = EntityState.Modified;
-                db.SaveChanges();
+                EntraceRepo.save(entrance);
                 return RedirectToAction("Index");
             }
             return View(entrance);
@@ -199,7 +204,7 @@ namespace SII.Controllers
         [Authorize(Roles = "Guardia")]
         public ActionResult Delete(int id = 0)
         {
-            Entrance entrance = db.Entrances.Find(id);
+            Entrance entrance = EntraceRepo.Find(id);
             if (entrance == null)
             {
                 return HttpNotFound();
@@ -214,9 +219,7 @@ namespace SII.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Entrance entrance = db.Entrances.Find(id);
-            db.Entrances.Remove(entrance);
-            db.SaveChanges();
+            EntraceRepo.delete(id);
             return RedirectToAction("Index");
         }
 
