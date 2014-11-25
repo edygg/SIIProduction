@@ -1,27 +1,24 @@
 ﻿@model IEnumerable<SII.Models.Entrance>
 
 @Scripts.Render("~/Scripts/knockout-2.2.0.js")
+@Scripts.Render("~/Scripts/jquery.hideseek.js")
 
 @{
     ViewBag.Title = "Ingreso de visitas anunciadas";
 }
 
 <script>
-    @{
+    @*@{
         var jsonSerialiser = new System.Web.Script.Serialization.JavaScriptSerializer();
         var initialData = jsonSerialiser.Serialize(Model);
-    }
-    var data = @Html.Raw(initialData) 
+    }*@
+    var data = [];
 </script>
 
-@Scripts.Render("~/Scripts/Entrance.js")
 
 <div class="row">
     <div class="large-12 columns" >
-        @using (@Html.BeginForm())
-        {
-    <input name="searchTerm" type="search" placeholder="Buscar..." data-bind="value: query, valueUpdate: 'keyup'" autocomplete="off">
-        }
+        <input id="search" name="search" type="search" placeholder="Buscar..." data-list=".list">
     </div>
 </div>
 
@@ -38,10 +35,10 @@
                     <th></th>
                 </tr>
             </thead>
-            <tbody id="visitsTable">
+            <tbody id="visitsTable" class="list">
                 @foreach (var item in Model)
                 {
-                    <tr id="visit-@item.Id">
+                    <tr id="visit-@item.Id" >
                         @Html.Partial("_EntranceVisit", item)
                     </tr>
                 }
@@ -50,3 +47,4 @@
         </table>
     </div>
 </div>
+@Scripts.Render("~/Scripts/Entrance.js")

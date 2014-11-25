@@ -11,6 +11,7 @@
         @Styles.Render("~/Content/datepicker/classic.css")
         @Styles.Render("~/Content/datepicker/classic.date.css")
         @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/bundles/jquery")
     </head>
     <body>
         <header>
@@ -22,7 +23,6 @@
             </header>
             @RenderBody()
         </section>
-        @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/Scripts/foundation.min.js")
         @Scripts.Render("~/Scripts/Application.js")
         @RenderSection("scripts", required: false)

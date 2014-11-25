@@ -8,6 +8,13 @@
     var Visit = db.Visits.Where(p => p.Id == Model.VisitId).First(); 
 }
 
+@{
+    var jsonSerialiser = new System.Web.Script.Serialization.JavaScriptSerializer();
+    var initialData = jsonSerialiser.Serialize(Visit);
+}
+<script>
+    data.push(@Html.Raw(initialData))
+</script>    
 
 @using (Ajax.BeginForm("Create", "Entrance", null, new AjaxOptions
     {
@@ -20,7 +27,7 @@
     @Html.HiddenFor(model => model.VisitId)
     @Html.HiddenFor(model => model.BarrierId)
     @Html.HiddenFor(model => model.State)
-        
+
     <td>@Visit.FullName</td>
     <td>@textInfo.ToTitleCase(Visit.TypeEntrance)</td>
     if (Model.State == "Entrada")
