@@ -53,6 +53,13 @@
                         </ul>
                     </li>
                     <li class="has-dropdown">
+                        <a>Departamentos</a>
+                        <ul class="dropdown">
+                            <li>@Html.ActionLink("Crear", "Create", "Department")</li>
+                            <li>@Html.ActionLink("Administrar", "Index", "Department")</li>
+                        </ul>
+                    </li>
+                    <li class="has-dropdown">
                         <a>Reportes</a>
                         <ul class="dropdown">
                             <li>@Html.ActionLink("Visitas anunciadas por rango de fechas", "AnnouncementsByDateRange", "Report")</li>

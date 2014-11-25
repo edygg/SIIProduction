@@ -1,0 +1,66 @@
+﻿@model SII.Models.Department
+
+@{
+    ViewBag.Title = "Eliminar departamento";
+}
+
+<div class="row">
+    <div class="small-8 small-offset-2 columns">
+        <h4>¿Está seguro que desea eliminar la barrera?</h4>
+        <fieldset>
+            <legend>Departamento</legend>
+            <div class="row">
+                <div class="small-4 columns">
+                    <span class="label">@Html.DisplayNameFor(model => model.Name)</span>
+                </div>
+                <div class="small-8 columns">
+                    @Html.DisplayFor(model => model.Name)
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-4 columns">
+                    <span class="label">@Html.DisplayNameFor(model => model.CreatedBy)</span>
+                </div>
+                <div class="small-8 columns">
+                    @Html.DisplayFor(model => model.CreatedBy)
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-4 columns">
+                    <span class="label">@Html.DisplayNameFor(model => model.CreatedAt)</span>
+                </div>
+                <div class="small-8 columns">
+                    @Html.DisplayFor(model => model.CreatedAt)
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-4 columns">
+                    <span class="label">@Html.DisplayNameFor(model => model.UpdatedBy)</span>
+                </div>
+                <div class="small-8 columns">
+                    @Html.DisplayFor(model => model.UpdatedBy)
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-4 columns">
+                    <span class="label">@Html.DisplayNameFor(model => model.UpdatedAt)</span>
+                </div>
+                <div class="small-8 columns">
+                    @Html.DisplayFor(model => model.UpdatedAt)
+                </div>
+            </div>
+        </fieldset>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <ul class="button-group">
+                <li><input type="submit" value="Eliminar" class="small alert button"/></li>
+                <li>@Html.ActionLink("Regresar a la lista", "Index", "Department", new { @class = "small button" })</li>
+            </ul>
+        }
+    </div>
+</div>
+
+
+
+

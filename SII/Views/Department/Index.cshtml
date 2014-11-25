@@ -1,0 +1,35 @@
+﻿@model IEnumerable<SII.Models.Department>
+
+@{
+    ViewBag.Title = "Administrar departamentos";
+}
+
+<div class="row">
+    <div class="small-6 small-offset-3 columns">
+        <table>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+
+                    <td>
+                        <i class="fi-clipboard-pencil medium"></i> @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                        <i class="fi-eye medium"></i> @Html.ActionLink("Detalles", "Details", new { id = item.Id }) |
+                        <i class="fi-x medium"></i> @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+
+        </table>
+        @Html.ActionLink("Crear Departamento", "Create", "Department", new { @class = "button" })
+    </div>
+</div>

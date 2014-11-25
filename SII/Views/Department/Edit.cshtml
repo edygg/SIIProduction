@@ -1,0 +1,49 @@
+﻿@model SII.Models.Department
+
+@{
+    ViewBag.Title = "Editar departamento";
+}
+
+<div class="row">
+    <div class="small-8 small-offset-2 columns">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            <fieldset>
+                <legend>Departamento</legend>
+
+                <div class="row">
+                    <div class="small-3 columns">
+                        @Html.LabelFor(model => model.Name)
+                    </div>
+                    <div class="small-9 columns">
+                        @Html.EditorFor(model => model.Name)
+                        @Html.ValidationMessageFor(model => model.Name)
+                    </div>
+                </div>
+                
+
+                @Html.HiddenFor(model => model.Id)
+                @Html.HiddenFor(model => model.CreatedBy)
+                @Html.HiddenFor(model => model.CreatedAt)
+                @Html.HiddenFor(model => model.Dropped)
+
+                <div class="row">
+                    <div class="small-6 small-offset-1 columns">
+                        <ul class="button-group">
+                            <li><input type="submit" value="Guardar" class="small button" /></li>
+                            <li>@Html.ActionLink("Regresar a la lista", "Index", "Department", new { @class = "small button" })</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </fieldset>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

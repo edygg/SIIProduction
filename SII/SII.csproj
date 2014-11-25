@@ -192,6 +192,7 @@
     <Compile Include="Controllers\AnnouncementController.cs" />
     <Compile Include="Controllers\BarrierController.cs" />
     <Compile Include="Controllers\CampusController.cs" />
+    <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\EntranceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
@@ -256,12 +257,17 @@
     <Compile Include="Migrations\201411152236405_AddForeignKeysToEntrance.Designer.cs">
       <DependentUpon>201411152236405_AddForeignKeysToEntrance.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411250359409_CreateDepartments.cs" />
+    <Compile Include="Migrations\201411250359409_CreateDepartments.Designer.cs">
+      <DependentUpon>201411250359409_CreateDepartments.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Announcement.cs" />
     <Compile Include="Models\Barrier.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\Campus.cs" />
+    <Compile Include="Models\Department.cs" />
     <Compile Include="Models\EFAnnouncementRepository.cs" />
     <Compile Include="Models\EFBarrierRepository.cs" />
     <Compile Include="Models\EFCampusRepository.cs" />
@@ -718,6 +724,11 @@
     <Content Include="Views\Entrance\SelectBarrier.cshtml" />
     <Content Include="Views\Entrance\_EntranceVisit.cshtml" />
     <Content Include="Views\Report\AnnouncementsByDateRange.cshtml" />
+    <Content Include="Views\Department\Index.cshtml" />
+    <Content Include="Views\Department\Details.cshtml" />
+    <Content Include="Views\Department\Create.cshtml" />
+    <Content Include="Views\Department\Edit.cshtml" />
+    <Content Include="Views\Department\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -765,6 +776,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411152236405_AddForeignKeysToEntrance.resx">
       <DependentUpon>201411152236405_AddForeignKeysToEntrance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411250359409_CreateDepartments.resx">
+      <DependentUpon>201411250359409_CreateDepartments.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
