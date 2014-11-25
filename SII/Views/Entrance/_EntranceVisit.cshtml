@@ -6,15 +6,7 @@
     System.Globalization.TextInfo textInfo = cultureInfo.TextInfo;
        
     var Visit = db.Visits.Where(p => p.Id == Model.VisitId).First(); 
-}
-
-@{
-    var jsonSerialiser = new System.Web.Script.Serialization.JavaScriptSerializer();
-    var initialData = jsonSerialiser.Serialize(Visit);
-}
-<script>
-    data.push(@Html.Raw(initialData))
-</script>    
+}  
 
 @using (Ajax.BeginForm("Create", "Entrance", null, new AjaxOptions
     {
