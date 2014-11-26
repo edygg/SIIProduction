@@ -6,8 +6,7 @@
     System.Globalization.TextInfo textInfo = cultureInfo.TextInfo;
        
     var Visit = db.Visits.Where(p => p.Id == Model.VisitId).First(); 
-}
-
+}  
 
 @using (Ajax.BeginForm("Create", "Entrance", null, new AjaxOptions
     {
@@ -20,7 +19,7 @@
     @Html.HiddenFor(model => model.VisitId)
     @Html.HiddenFor(model => model.BarrierId)
     @Html.HiddenFor(model => model.State)
-        
+
     <td>@Visit.FullName</td>
     <td>@textInfo.ToTitleCase(Visit.TypeEntrance)</td>
     if (Model.State == "Entrada")
