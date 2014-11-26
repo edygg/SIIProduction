@@ -197,6 +197,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\VisitController.cs" />
+    <Compile Include="Controllers\VisitorController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -261,6 +262,26 @@
     <Compile Include="Migrations\201411250359409_CreateDepartments.Designer.cs">
       <DependentUpon>201411250359409_CreateDepartments.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411252020498_CreateVisitor.cs" />
+    <Compile Include="Migrations\201411252020498_CreateVisitor.Designer.cs">
+      <DependentUpon>201411252020498_CreateVisitor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411252117322_IdentityTypeString.cs" />
+    <Compile Include="Migrations\201411252117322_IdentityTypeString.Designer.cs">
+      <DependentUpon>201411252117322_IdentityTypeString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411252210552_AddVisitorEntrance.cs" />
+    <Compile Include="Migrations\201411252210552_AddVisitorEntrance.Designer.cs">
+      <DependentUpon>201411252210552_AddVisitorEntrance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411252219471_ForeingKeysVisitorEntrances.cs" />
+    <Compile Include="Migrations\201411252219471_ForeingKeysVisitorEntrances.Designer.cs">
+      <DependentUpon>201411252219471_ForeingKeysVisitorEntrances.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411252325390_AddStateToVisitorEntrance.cs" />
+    <Compile Include="Migrations\201411252325390_AddStateToVisitorEntrance.Designer.cs">
+      <DependentUpon>201411252325390_AddStateToVisitorEntrance.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Announcement.cs" />
@@ -281,6 +302,8 @@
     <Compile Include="Models\IVisitRepository.cs" />
     <Compile Include="Models\SIIContext.cs" />
     <Compile Include="Models\Visit.cs" />
+    <Compile Include="Models\Visitor.cs" />
+    <Compile Include="Models\VisitorEntrance.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -731,6 +754,14 @@
     <Content Include="Views\Department\Create.cshtml" />
     <Content Include="Views\Department\Edit.cshtml" />
     <Content Include="Views\Department\Delete.cshtml" />
+    <Content Include="Views\Visitor\Index.cshtml" />
+    <Content Include="Views\Visitor\Details.cshtml" />
+    <Content Include="Views\Visitor\Create.cshtml" />
+    <Content Include="Views\Visitor\Edit.cshtml" />
+    <Content Include="Views\Visitor\Delete.cshtml" />
+    <Content Include="Views\Visitor\SelectBarrier.cshtml" />
+    <Content Include="Views\Visitor\_VisitorForm.cshtml" />
+    <Content Include="Views\Visitor\_VisitorEntrance.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -781,6 +812,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411250359409_CreateDepartments.resx">
       <DependentUpon>201411250359409_CreateDepartments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411252020498_CreateVisitor.resx">
+      <DependentUpon>201411252020498_CreateVisitor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411252117322_IdentityTypeString.resx">
+      <DependentUpon>201411252117322_IdentityTypeString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411252210552_AddVisitorEntrance.resx">
+      <DependentUpon>201411252210552_AddVisitorEntrance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411252219471_ForeingKeysVisitorEntrances.resx">
+      <DependentUpon>201411252219471_ForeingKeysVisitorEntrances.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411252325390_AddStateToVisitorEntrance.resx">
+      <DependentUpon>201411252325390_AddStateToVisitorEntrance.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -13,5 +13,7 @@ namespace SII.Models
         [Display(Name = "Nombre")]
         [RegularExpression(@"^[A-Za-z\s]{2,100}$", ErrorMessage = "Ingrese un nombre que contenga de 2 a 100 caracteres letras solamente.")]
         public String Name { get; set; }
+
+        public ICollection<VisitorEntrance> VisitorEntrances { get; set; }
     }
 }

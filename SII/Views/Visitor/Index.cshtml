@@ -1,0 +1,36 @@
+﻿@model SII.Models.Visitor
+
+@{
+    ViewBag.Title = "Ingreso de visitas no anunciadas";
+}
+
+<div class="row">
+    <div class="small-6 columns">
+        @using (Ajax.BeginForm("Create", "Visitor", new AjaxOptions { HttpMethod = "Post", InsertionMode = InsertionMode.Replace, UpdateTargetId = "VisitorForm" }))
+        {
+            <div id="VisitorForm">
+                @Html.Partial("_VisitorForm", Model)
+            </div>
+        }
+    </div>
+    <div class="small-6 columns">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Carnet</th>
+                    <th>Estado</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="visitsTable">
+                @foreach (var item in ViewBag.VisitorEntrances as List<SII.Models.VisitorEntrance>)
+                {
+                    <tr id="visit-@item.Id">
+                        @Html.Partial("_VisitorEntrance", item)
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Ingreso de visitas no anunciadas";
+}
+
+<div class="row">
+    <div class="small-8 small-offset-2 columns">
+        @using (Html.BeginForm("Index", "Visitor", FormMethod.Get))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            <fieldset>
+                <legend>Seleccione una barrera:</legend>
+
+                <select name="barrera">
+                    @foreach (var cmp in ViewBag.Barrier)
+                    {
+                        <option value="@cmp.Value">@cmp.Text</option>
+                    }
+                </select>
+                <input type="submit" class="button" value="Ver visitas" />
+            </fieldset>
+        }
+    </div>
+</div>

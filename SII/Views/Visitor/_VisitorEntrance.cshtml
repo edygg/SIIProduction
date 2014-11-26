@@ -1,0 +1,38 @@
+﻿@model SII.Models.VisitorEntrance
+
+@{
+    SII.Models.SIIContext db = new SII.Models.SIIContext();
+    System.Globalization.CultureInfo cultureInfo = System.Globalization.CultureInfo.InvariantCulture;
+    System.Globalization.TextInfo textInfo = cultureInfo.TextInfo;
+
+    var Visitor = db.Visitors.Where(p => p.Id == Model.VisitorId).First();
+}
+
+
+@using (Ajax.BeginForm("Mark", "Visitor", null, new AjaxOptions
+    {
+        HttpMethod = "post",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "visit-" + Model.Id
+    }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.VisitorId)
+    @Html.HiddenFor(model => model.BarrierId)
+    @Html.HiddenFor(model => model.DepartmentId)
+    @Html.HiddenFor(model => model.Carnet)
+    @Html.HiddenFor(model => model.ReturnCarnet)
+    @Html.HiddenFor(model => model.State)
+
+    <td>@Visitor.Name</td>
+    <td>@Model.Carnet</td>
+    if (Model.State == "Entrada")
+    {
+        <td>Fuera del campus</td>
+    }
+    else
+    {
+        <td>Dentro del campus</td>
+    }
+    <td><input type="submit" value="Marcar" class="tiny small button" /></td>
+}
