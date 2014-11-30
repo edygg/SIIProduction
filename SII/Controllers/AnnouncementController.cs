@@ -91,6 +91,19 @@ namespace SII.Controllers
             db.Announcements.Add(an);
             db.SaveChanges();
 
+            if (!String.IsNullOrEmpty(Request["multiple_names"]))
+            {
+                var names = Request["multiple_names"].Split('\n');
+                foreach (var n in names){
+                    Visit visit = new Visit();
+                    visit.AnnouncementId = an.Id;
+                    visit.FullName = n;
+                    visit.TypeEntrance = Request["m_tipo_entrada"].Substring(2);
+
+                    db.Visits.Add(visit);
+                }
+            }
+
             int count = 1;
 
             while (!String.IsNullOrEmpty(Request["nombre[" + count + "]"])) {
