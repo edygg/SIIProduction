@@ -76,6 +76,17 @@
                         </ul>
                     </li>
                 }
+                
+                @if (User.IsInRole("Personal Administrativo"))
+                {
+                    <li class="has-dropdown">
+                        <a>Visitas</a>
+                        <ul class="dropdown">
+                            <li>@Html.ActionLink("Registrar Visitas", "Register", "Announcement")</li>
+                        </ul>
+                    </li>
+                }
+
             </ul>
         }
     </section>
