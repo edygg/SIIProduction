@@ -282,6 +282,10 @@
     <Compile Include="Migrations\201411252325390_AddStateToVisitorEntrance.Designer.cs">
       <DependentUpon>201411252325390_AddStateToVisitorEntrance.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411300510442_CreateIdCards.cs" />
+    <Compile Include="Migrations\201411300510442_CreateIdCards.Designer.cs">
+      <DependentUpon>201411300510442_CreateIdCards.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Announcement.cs" />
@@ -298,6 +302,7 @@
     <Compile Include="Models\IAnnouncementRepository.cs" />
     <Compile Include="Models\IBarrierRepository.cs" />
     <Compile Include="Models\ICampusRepository.cs" />
+    <Compile Include="Models\IdCard.cs" />
     <Compile Include="Models\IEntranceRepository.cs" />
     <Compile Include="Models\IVisitRepository.cs" />
     <Compile Include="Models\SIIContext.cs" />
@@ -831,6 +836,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411252325390_AddStateToVisitorEntrance.resx">
       <DependentUpon>201411252325390_AddStateToVisitorEntrance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411300510442_CreateIdCards.resx">
+      <DependentUpon>201411300510442_CreateIdCards.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
