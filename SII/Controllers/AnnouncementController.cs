@@ -94,7 +94,8 @@ namespace SII.Controllers
             if (!String.IsNullOrEmpty(Request["multiple_names"]))
             {
                 var names = Request["multiple_names"].Split('\n');
-                foreach (var n in names){
+                foreach (var n in names)
+                {
                     Visit visit = new Visit();
                     visit.AnnouncementId = an.Id;
                     visit.FullName = n;
@@ -103,17 +104,20 @@ namespace SII.Controllers
                     db.Visits.Add(visit);
                 }
             }
+            else 
+            {
+                int count = 1;
 
-            int count = 1;
+                while (!String.IsNullOrEmpty(Request["nombre[" + count + "]"]))
+                {
+                    Visit visit = new Visit();
+                    visit.AnnouncementId = an.Id;
+                    visit.FullName = Request["nombre[" + count + "]"];
+                    visit.TypeEntrance = Request["tipo_entrada[" + count + "]"];
+                    count++;
 
-            while (!String.IsNullOrEmpty(Request["nombre[" + count + "]"])) {
-                Visit visit = new Visit();
-                visit.AnnouncementId = an.Id;
-                visit.FullName = Request["nombre[" + count + "]"];
-                visit.TypeEntrance = Request["tipo_entrada["+ count + "]"];
-                count++;
-
-                db.Visits.Add(visit);
+                    db.Visits.Add(visit);
+                }
             }
 
             db.SaveChanges();
