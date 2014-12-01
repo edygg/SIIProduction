@@ -172,6 +172,30 @@
         }
     });
 
+    $('.multiple_names').on('blur', function () {
+        var currentNames = $(this).val().split("\n");
+        var regexp = /^[a-z\s]{5,100}$/i;
+        var txtArea = $(this);
+        var hasError = false;
+
+        currentNames.forEach(function (el, index) {
+            if (!regexp.test(el)) {
+                hasError = true;
+                txtArea.parent().children('small.error').remove();
+                txtArea.addClass("error");
+                txtArea.parent().append($('<small class="error">Los nombres ingresados</small>'));
+                $('.guardar').attr("disabled", "disabled");
+            }
+        });
+
+        if (!hasError) {
+            $(this).removeClass("error");
+            $('.no-name-error').remove();
+            $(this).parent().children('small.error').remove();
+            $('.guardar').removeAttr("disabled", "disabled");
+        }
+    });
+
     $('.observations').on('blur', function () {
         var currentVal = $(this).val();
         var regexp = /^[a-z0-9\s\.\_\-\,\@]{0,150}$/i;
@@ -188,9 +212,10 @@
     });
 
     $('.guardar').on('click', function () {
-        if ($('.duplicate').length == 1) {
+        if ($('.duplicate').length == 1 && $('.multiple_names').val() == "") {
             $('.no-name-error').remove();
-            $($('.duplicate')[0]).append($('<div class="row"><div class="alert-box alert no-name-error">Ingrese al menos un nombre.</div></div>'));
+            var error = $('<div class="row"><div class="alert-box alert no-name-error">Ingrese al menos un nombre.</div></div>')
+            $('.tabs').parent().append(error);
             return false;;
         }
 
