@@ -1,0 +1,43 @@
+﻿@model IEnumerable<SII.Models.Carnet>
+
+@{
+    ViewBag.Title = "Administrar carnets";
+    SII.Models.SIIContext db = new SII.Models.SIIContext();
+}
+
+<div class="row">
+    <div class="small-8 small-offset-2 columns">
+        <table>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Number)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CampusId)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Number)
+                    </td>
+                    <td>
+                        @db.Campus.Where(m => m.Id == item.CampusId).First().Name
+                    </td>
+                    <td>
+                        <i class="fi-clipboard-pencil medium"></i> @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                        <i class="fi-eye medium"></i> @Html.ActionLink("Detalles", "Details", new { id = item.Id }) |
+                        <i class="fi-x medium"></i> @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
+<div class="row">
+    @Html.ActionLink("Crear Carnet", "Create", "Carnet", new { @class = "button" })
+</div>

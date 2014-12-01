@@ -1,0 +1,59 @@
+﻿@model SII.Models.Carnet
+
+@{
+    ViewBag.Title = "Crear carnet";
+}
+
+<div class="row">
+    <div class="small-8 small-offset-2 columns">
+        @if (!String.IsNullOrEmpty(ViewBag.Error))
+        {
+            <div data-alert class="alert-box alert round">
+                @ViewBag.Error
+                <a href="#" class="close">&times;</a>
+            </div>
+        }
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            <fieldset>
+                <legend>Carnet</legend>
+
+                <div class="row">
+                    <div class="small-2 columns">
+                        @Html.LabelFor(model => model.Number, new { @class = "right inline" })
+                    </div>
+                    <div class="small-10 columns">
+                        @Html.EditorFor(model => model.Number)
+                        @Html.ValidationMessageFor(model => model.Number)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-2 columns">
+                        @Html.LabelFor(model => model.CampusId, new { @class = "right inline" })
+                    </div>
+                    <div class="small-10 columns">
+                        @Html.DropDownListFor(model => model.CampusId, ViewBag.Campus as SelectList)
+                        @Html.ValidationMessageFor(model => model.CampusId)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-6 small-offset-1">
+                        <ul class="button-group">
+                            <li><input type="submit" value="Crear" class="small button" /></li>
+                            <li>@Html.ActionLink("Regresar a la Lista", "Index", "Carnet", htmlAttributes: new { @class = "small button" })</li>
+                        </ul>
+                    </div>
+                </div>
+            </fieldset>
+        }
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -60,6 +60,13 @@
                         </ul>
                     </li>
                     <li class="has-dropdown">
+                        <a>Carnets</a>
+                        <ul class="dropdown">
+                            <li>@Html.ActionLink("Crear", "Create", "Carnet")</li>
+                            <li>@Html.ActionLink("Administrar", "Index", "Carnet")</li>
+                        </ul>
+                    </li>
+                    <li class="has-dropdown">
                         <a>Reportes</a>
                         <ul class="dropdown">
                             <li>@Html.ActionLink("Visitas anunciadas por rango de fechas", "AnnouncementsByDateRange", "Report")</li>

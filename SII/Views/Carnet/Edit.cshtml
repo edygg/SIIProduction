@@ -1,0 +1,65 @@
+﻿@model SII.Models.Carnet
+
+@{
+    ViewBag.Title = "Editar carnet";
+    SII.Models.SIIContext db = new SII.Models.SIIContext();
+}
+
+<div class="row">
+    <div class="small-8 small-offset-2 columns">
+        @if (!String.IsNullOrEmpty(ViewBag.Error))
+        {
+            <div data-alert class="alert-box alert round">
+                @ViewBag.Error
+                <a href="#" class="close">&times;</a>
+            </div>
+        }
+        
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            <fieldset>
+                <legend>Carnet</legend>
+
+                <div class="row">
+                    <div class="small-3 columns">
+                        @Html.LabelFor(model => model.Number)
+                    </div>
+                    <div class="small-9 columns">
+                        @Html.EditorFor(model => model.Number)
+                        @Html.ValidationMessageFor(model => model.Number)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-3 columns">
+                        @Html.LabelFor(model => model.CampusId)
+                    </div>
+                    <div class="small-9 columns">
+                        @Html.DropDownListFor(model => model.CampusId, ViewBag.Campus as SelectList)
+                        @Html.ValidationMessageFor(model => model.CampusId)
+                    </div>
+                </div>
+
+                @Html.HiddenFor(model => model.Id)
+                @Html.HiddenFor(model => model.CreatedBy)
+                @Html.HiddenFor(model => model.CreatedAt)
+                @Html.HiddenFor(model => model.Dropped)
+
+                <div class="row">
+                    <div class="small-6 small-offset-1 columns">
+                        <ul class="button-group">
+                            <li><input type="submit" value="Guardar" class="small button" /></li>
+                            <li>@Html.ActionLink("Regresar a la lista", "Index", "Carnet", new { @class = "small button" })</li>
+                        </ul>
+                    </div>
+                </div>
+                
+            </fieldset>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

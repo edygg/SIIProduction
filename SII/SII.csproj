@@ -192,6 +192,7 @@
     <Compile Include="Controllers\AnnouncementController.cs" />
     <Compile Include="Controllers\BarrierController.cs" />
     <Compile Include="Controllers\CampusController.cs" />
+    <Compile Include="Controllers\CarnetController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\EntranceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -286,12 +287,21 @@
     <Compile Include="Migrations\201411300510442_CreateIdCards.Designer.cs">
       <DependentUpon>201411300510442_CreateIdCards.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201412011657546_CreateCarnet.cs" />
+    <Compile Include="Migrations\201412011657546_CreateCarnet.Designer.cs">
+      <DependentUpon>201412011657546_CreateCarnet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412011709235_CreateUniqueIndexCarnet.cs" />
+    <Compile Include="Migrations\201412011709235_CreateUniqueIndexCarnet.Designer.cs">
+      <DependentUpon>201412011709235_CreateUniqueIndexCarnet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Announcement.cs" />
     <Compile Include="Models\Barrier.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\Campus.cs" />
+    <Compile Include="Models\Carnet.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\EFAnnouncementRepository.cs" />
     <Compile Include="Models\EFBarrierRepository.cs" />
@@ -771,6 +781,11 @@
     <Content Include="Views\Visitor\SelectBarrier.cshtml" />
     <Content Include="Views\Visitor\_VisitorForm.cshtml" />
     <Content Include="Views\Visitor\_VisitorEntrance.cshtml" />
+    <Content Include="Views\Carnet\Index.cshtml" />
+    <Content Include="Views\Carnet\Details.cshtml" />
+    <Content Include="Views\Carnet\Create.cshtml" />
+    <Content Include="Views\Carnet\Edit.cshtml" />
+    <Content Include="Views\Carnet\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -839,6 +854,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411300510442_CreateIdCards.resx">
       <DependentUpon>201411300510442_CreateIdCards.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412011657546_CreateCarnet.resx">
+      <DependentUpon>201412011657546_CreateCarnet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412011709235_CreateUniqueIndexCarnet.resx">
+      <DependentUpon>201412011709235_CreateUniqueIndexCarnet.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
