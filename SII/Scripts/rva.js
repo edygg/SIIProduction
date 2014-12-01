@@ -55,7 +55,7 @@
             var day = weekday[dayOfWeek];
 
             $('input.dia').attr('checked', false);
-            $('input[value^=' + day + ']').attr('checked', true);
+            $('input[value=' + day + ']').attr('checked', true);
         }
     });
 
