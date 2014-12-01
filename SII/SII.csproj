@@ -306,12 +306,14 @@
     <Compile Include="Models\EFAnnouncementRepository.cs" />
     <Compile Include="Models\EFBarrierRepository.cs" />
     <Compile Include="Models\EFCampusRepository.cs" />
+    <Compile Include="Models\EFCarnetRepository.cs" />
     <Compile Include="Models\EFEntranceRepository.cs" />
     <Compile Include="Models\EFVisitRepository.cs" />
     <Compile Include="Models\Entrance.cs" />
     <Compile Include="Models\IAnnouncementRepository.cs" />
     <Compile Include="Models\IBarrierRepository.cs" />
     <Compile Include="Models\ICampusRepository.cs" />
+    <Compile Include="Models\ICarnetRepository.cs" />
     <Compile Include="Models\IdCard.cs" />
     <Compile Include="Models\IEntranceRepository.cs" />
     <Compile Include="Models\IVisitRepository.cs" />
