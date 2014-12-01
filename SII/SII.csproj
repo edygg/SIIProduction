@@ -708,6 +708,7 @@
     <Content Include="Scripts\datepicker\picker.time.js" />
     <Content Include="Scripts\Reports.js" />
     <Content Include="Scripts\rva.js" />
+    <Content Include="Scripts\Visitor.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

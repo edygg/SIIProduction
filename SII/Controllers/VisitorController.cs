@@ -52,6 +52,30 @@ namespace SII.Controllers
         }
 
         //
+        // GET: /Visitor/GetNameByID
+
+        public ActionResult GetNameByID(String id)
+        {
+
+            if(!String.IsNullOrEmpty(id)){
+
+                var n = (from p in db.IdCards
+                         where p.Id.Contains(id)
+                         select new
+                         {
+                             p.FirstName,
+                             p.MiddleName,
+                             p.FirstLastName,
+                             p.SecondLastName
+                         }).First();
+                
+                return Json(n, JsonRequestBehavior.AllowGet);
+            }
+            return null;
+           
+        }
+
+        //
         // GET: /Visitor/Details/5
 
         public ActionResult Details(int id = 0)
