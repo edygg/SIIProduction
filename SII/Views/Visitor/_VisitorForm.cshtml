@@ -1,0 +1,70 @@
+﻿@model SII.Models.Visitor
+
+@{
+    var items = new List<SelectListItem>();
+    items.Add(new SelectListItem { Text = "Tarjeta de identidad", Value = "Identidad", Selected = true });
+    items.Add(new SelectListItem { Text = "Licencia de conducir", Value = "Licencia"});
+    
+    var TypeIdentity = new SelectList(items, "Value", "Text");
+}
+<script src="~/Scripts/jquery-1.8.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Visitante</legend>
+
+        <div class="row">
+            <div class="small-2 columns">
+                @Html.LabelFor(model => model.Identity, new { @class = "right inline" })
+            </div>
+            <div class="small-10 columns">
+                @Html.EditorFor(model => model.Identity)
+                @Html.ValidationMessageFor(model => model.Identity)
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-2 columns">
+                @Html.LabelFor(model => model.IdentityType, new { @class = "right inline" })
+            </div>
+            <div class="small-10 columns">
+                @Html.DropDownListFor(model => model.IdentityType, TypeIdentity)
+                @Html.ValidationMessageFor(model => model.IdentityType)
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-2 columns">
+                @Html.LabelFor(model => model.Name, new { @class = "right inline" })
+            </div>
+            <div class="small-10 columns">
+                @Html.EditorFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-2 columns">
+                <label class="right inline">Departamento</label>
+            </div>
+            <div class="small-10 columns">
+                @Html.DropDownList("DepartmentId", ViewBag.Departments as SelectList)
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-2 columns">
+                <label class="right inline">No. carnet</label>
+            </div>
+            <div class="small-10 columns">
+                @Html.Editor("Carnet")
+            </div>
+        </div>
+        @Html.Hidden("BarrierId", ViewBag.BarrierId as object)
+
+        <div class="row">
+            <input type="submit" value="Marcar entrada" class="small button" />
+        </div>
+    </fieldset>
+}

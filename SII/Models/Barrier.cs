@@ -57,6 +57,7 @@ namespace SII.Models
         public bool AllowStudents { get; set; }
 
         public ICollection<Entrance> Entrances { get; set; }
+        public ICollection<VisitorEntrance> VisitorEntrances { get; set; }
 
     }
 }

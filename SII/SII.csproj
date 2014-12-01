@@ -192,11 +192,13 @@
     <Compile Include="Controllers\AnnouncementController.cs" />
     <Compile Include="Controllers\BarrierController.cs" />
     <Compile Include="Controllers\CampusController.cs" />
+    <Compile Include="Controllers\CarnetController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\EntranceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\VisitController.cs" />
+    <Compile Include="Controllers\VisitorController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -261,12 +263,45 @@
     <Compile Include="Migrations\201411250359409_CreateDepartments.Designer.cs">
       <DependentUpon>201411250359409_CreateDepartments.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411252020498_CreateVisitor.cs" />
+    <Compile Include="Migrations\201411252020498_CreateVisitor.Designer.cs">
+      <DependentUpon>201411252020498_CreateVisitor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411252117322_IdentityTypeString.cs" />
+    <Compile Include="Migrations\201411252117322_IdentityTypeString.Designer.cs">
+      <DependentUpon>201411252117322_IdentityTypeString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411252210552_AddVisitorEntrance.cs" />
+    <Compile Include="Migrations\201411252210552_AddVisitorEntrance.Designer.cs">
+      <DependentUpon>201411252210552_AddVisitorEntrance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411252219471_ForeingKeysVisitorEntrances.cs" />
+    <Compile Include="Migrations\201411252219471_ForeingKeysVisitorEntrances.Designer.cs">
+      <DependentUpon>201411252219471_ForeingKeysVisitorEntrances.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411252325390_AddStateToVisitorEntrance.cs" />
+    <Compile Include="Migrations\201411252325390_AddStateToVisitorEntrance.Designer.cs">
+      <DependentUpon>201411252325390_AddStateToVisitorEntrance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411300510442_CreateIdCards.cs" />
+    <Compile Include="Migrations\201411300510442_CreateIdCards.Designer.cs">
+      <DependentUpon>201411300510442_CreateIdCards.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412011657546_CreateCarnet.cs" />
+    <Compile Include="Migrations\201412011657546_CreateCarnet.Designer.cs">
+      <DependentUpon>201412011657546_CreateCarnet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412011709235_CreateUniqueIndexCarnet.cs" />
+    <Compile Include="Migrations\201412011709235_CreateUniqueIndexCarnet.Designer.cs">
+      <DependentUpon>201412011709235_CreateUniqueIndexCarnet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Announcement.cs" />
     <Compile Include="Models\Barrier.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\Campus.cs" />
+    <Compile Include="Models\Carnet.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\EFAnnouncementRepository.cs" />
     <Compile Include="Models\EFBarrierRepository.cs" />
@@ -277,10 +312,13 @@
     <Compile Include="Models\IAnnouncementRepository.cs" />
     <Compile Include="Models\IBarrierRepository.cs" />
     <Compile Include="Models\ICampusRepository.cs" />
+    <Compile Include="Models\IdCard.cs" />
     <Compile Include="Models\IEntranceRepository.cs" />
     <Compile Include="Models\IVisitRepository.cs" />
     <Compile Include="Models\SIIContext.cs" />
     <Compile Include="Models\Visit.cs" />
+    <Compile Include="Models\Visitor.cs" />
+    <Compile Include="Models\VisitorEntrance.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -642,8 +680,10 @@
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Images\unitec-logo.png" />
     <Content Include="Scripts\Application.js" />
+    <Content Include="Scripts\barrier.js" />
     <Content Include="Scripts\DatePicker.js" />
     <Content Include="Scripts\datepicker\es_ES.js" />
+    <Content Include="Scripts\Entrance.js" />
     <Content Include="Scripts\foundation.min.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -651,6 +691,8 @@
     <Content Include="Scripts\jquery-ui-1.8.24.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
     <Content Include="Scripts\jquery.form-validator.min.js" />
+    <Content Include="Scripts\jquery.hideseek.js" />
+    <Content Include="Scripts\jquery.hideseek.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -666,6 +708,7 @@
     <Content Include="Scripts\datepicker\picker.time.js" />
     <Content Include="Scripts\Reports.js" />
     <Content Include="Scripts\rva.js" />
+    <Content Include="Scripts\Visitor.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -731,6 +774,19 @@
     <Content Include="Views\Department\Create.cshtml" />
     <Content Include="Views\Department\Edit.cshtml" />
     <Content Include="Views\Department\Delete.cshtml" />
+    <Content Include="Views\Visitor\Index.cshtml" />
+    <Content Include="Views\Visitor\Details.cshtml" />
+    <Content Include="Views\Visitor\Create.cshtml" />
+    <Content Include="Views\Visitor\Edit.cshtml" />
+    <Content Include="Views\Visitor\Delete.cshtml" />
+    <Content Include="Views\Visitor\SelectBarrier.cshtml" />
+    <Content Include="Views\Visitor\_VisitorForm.cshtml" />
+    <Content Include="Views\Visitor\_VisitorEntrance.cshtml" />
+    <Content Include="Views\Carnet\Index.cshtml" />
+    <Content Include="Views\Carnet\Details.cshtml" />
+    <Content Include="Views\Carnet\Create.cshtml" />
+    <Content Include="Views\Carnet\Edit.cshtml" />
+    <Content Include="Views\Carnet\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -781,6 +837,30 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411250359409_CreateDepartments.resx">
       <DependentUpon>201411250359409_CreateDepartments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411252020498_CreateVisitor.resx">
+      <DependentUpon>201411252020498_CreateVisitor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411252117322_IdentityTypeString.resx">
+      <DependentUpon>201411252117322_IdentityTypeString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411252210552_AddVisitorEntrance.resx">
+      <DependentUpon>201411252210552_AddVisitorEntrance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411252219471_ForeingKeysVisitorEntrances.resx">
+      <DependentUpon>201411252219471_ForeingKeysVisitorEntrances.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411252325390_AddStateToVisitorEntrance.resx">
+      <DependentUpon>201411252325390_AddStateToVisitorEntrance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411300510442_CreateIdCards.resx">
+      <DependentUpon>201411300510442_CreateIdCards.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412011657546_CreateCarnet.resx">
+      <DependentUpon>201412011657546_CreateCarnet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412011709235_CreateUniqueIndexCarnet.resx">
+      <DependentUpon>201412011709235_CreateUniqueIndexCarnet.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

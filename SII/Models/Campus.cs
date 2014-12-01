@@ -26,5 +26,6 @@ namespace SII.Models
         public String Details { get; set; }
         public ICollection<Announcement> Announcements { get; set; }
         public ICollection<Barrier> Barriers { get; set; }
+        public ICollection<Carnet> Carnets { get; set; }
     }
 }
