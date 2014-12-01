@@ -221,10 +221,20 @@
             $('.dias').text(txt);
         }
         $('.listado').empty();
-        $('.duplicate').find('.nombres').each(function (index, element) {
-            if ($(element).val() != "")
-                $('.listado').append('<tr><td>' + $(element).val() + '</td><td>' + $(element).parent().parent().parent().find('input:checked.tipo_entrada').val() + '</td></tr>');
-        });
+
+        if ($('dd.active a').attr('href') !== '#panel1' && $('.multiple_names').val() !== '') {
+            //muchas personas
+            var nombres = $('.multiple_names').val().split('\n');
+            $(nombres).each(function (index, el) {
+                $('.listado').append('<tr><td>' + el + '</td><td>' + $('.tipo_entrada_m:checked').val().substr(2, 12).toUpperCase() + '</td></tr>');
+            });
+        } else {
+            //individuales
+            $('.duplicate').find('.nombres').each(function (index, element) {
+                if ($(element).val() != "")
+                    $('.listado').append('<tr><td>' + $(element).val() + '</td><td>' + $(element).parent().parent().parent().find('input:checked.tipo_entrada').val() + '</td></tr>');
+            });
+        }
 
         $('.observaciones').text($('#Observations').val());
     });
