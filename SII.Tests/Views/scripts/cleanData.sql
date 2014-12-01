@@ -1,5 +1,6 @@
 use [SII.Models.SIIContext];
 
+delete Departments;
 delete Entrances;
 
 delete from barreras where barrera = 'Barrera prueba';
