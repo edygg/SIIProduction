@@ -58,7 +58,8 @@ namespace SII.Controllers
         {
 
             if(!String.IsNullOrEmpty(id)){
-
+                id = id.Replace('-',' ');
+                id = id.Trim();
                 var n = (from p in db.IdCards
                          where p.Id.Contains(id)
                          select new
@@ -67,9 +68,14 @@ namespace SII.Controllers
                              p.MiddleName,
                              p.FirstLastName,
                              p.SecondLastName
-                         }).First();
-                
-                return Json(n, JsonRequestBehavior.AllowGet);
+                         }).FirstOrDefault();
+                if ( n == null){
+                    return null;
+                }
+                else
+                {
+                    return Json(n, JsonRequestBehavior.AllowGet);
+                }
             }
             return null;
            

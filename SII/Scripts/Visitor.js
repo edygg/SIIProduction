@@ -8,8 +8,10 @@
             }).done(function (data)
             {
                 //var nombre = JSON.parse(data);
-                console.log(data);
-                $('#Name').val(data["FirstName"] + " " + ((data["MiddleName"] === "") ? "" : data["MiddleName"]) + " " + data["FirstLastName"] + " " + data["SecondLastName"]);
+                if (data !== null && data !== 'undefined') {
+                    console.log(data);
+                    $('#Name').val(data["FirstName"] + " " + ((data["MiddleName"] === "") ? "" : data["MiddleName"]) + " " + data["FirstLastName"] + " " + data["SecondLastName"]);
+                }
             });
     }
 });
