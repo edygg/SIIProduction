@@ -26,6 +26,7 @@ namespace SII.App_Start
             ninjectKernel.Bind<IBarrierRepository>().To<EFBarrierRepository>();
             ninjectKernel.Bind<IEntranceRepository>().To<EFEntranceRepository>();
             ninjectKernel.Bind<ICarnetRepository>().To<EFCarnetRepository>();
+            ninjectKernel.Bind<IDeparmentRepository>().To<EFDepartmentRepository>();
         }
     }
 }
