@@ -33,73 +33,33 @@
 </tr>
 <tr>
 	<td>open</td>
-	<td>/Entrance/SelectBarrier</td>
-	<td></td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>css=input.button</td>
+	<td>/Entrance</td>
 	<td></td>
 </tr>
 <tr>
 	<td>verifyText</td>
 	<td>css=td</td>
-	<td>Persona de prueba uno</td>
+	<td>Daniela</td>
 </tr>
 <tr>
 	<td>verifyText</td>
 	<td>xpath=(//tr[@id='visit-0']/td)[6]</td>
-	<td>Persona de prueba dos</td>
+	<td>Gerardo</td>
 </tr>
 <tr>
 	<td>verifyText</td>
 	<td>xpath=(//tr[@id='visit-0']/td)[11]</td>
-	<td>Persona de prueba tres</td>
+	<td>Lester</td>
 </tr>
 <tr>
 	<td>verifyText</td>
 	<td>xpath=(//tr[@id='visit-0']/td)[16]</td>
-	<td>Persona de prueba cuatro</td>
-</tr>
-<tr>
-	<td>verifyText</td>
-	<td>xpath=(//tr[@id='visit-0']/td)[21]</td>
-	<td>Persona de prueba cinco</td>
-</tr>
-<tr>
-	<td>verifyText</td>
-	<td>//tr[@id='visit-0']/td[3]</td>
-	<td>Fuera del campus</td>
+	<td>Mariela</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
 	<td>//input[@value='Marcar']</td>
 	<td></td>
-</tr>
-<tr>
-	<td>verifyText</td>
-	<td>//tr[@id='visit-0']/td[3]</td>
-	<td>Dentro del campus</td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>//input[@value='Marcar']</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyText</td>
-	<td>//tr[@id='visit-0']/td[3]</td>
-	<td>Fuera del campus</td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>xpath=(//input[@value='Marcar'])[2]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyText</td>
-	<td>xpath=(//tr[@id='visit-0']/td[3])[2]</td>
-	<td>Dentro del campus</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -107,44 +67,19 @@
 	<td></td>
 </tr>
 <tr>
-	<td>verifyText</td>
-	<td>xpath=(//tr[@id='visit-0']/td[3])[3]</td>
-	<td>Dentro del campus</td>
-</tr>
-<tr>
 	<td>clickAndWait</td>
-	<td>xpath=(//input[@value='Marcar'])[4]</td>
+	<td>link=Cerrar Sesión</td>
 	<td></td>
 </tr>
 <tr>
-	<td>verifyText</td>
-	<td>xpath=(//tr[@id='visit-0']/td[3])[4]</td>
-	<td>Dentro del campus</td>
+	<td>type</td>
+	<td>id=UserName</td>
+	<td>guardia</td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
-	<td>xpath=(//input[@value='Marcar'])[5]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyText</td>
-	<td>xpath=(//tr[@id='visit-0']/td[3])[5]</td>
-	<td>Dentro del campus</td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>xpath=(//input[@value='Marcar'])[5]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyText</td>
-	<td>xpath=(//tr[@id='visit-0']/td[3])[5]</td>
-	<td>Fuera del campus</td>
-</tr>
-<tr>
-	<td>open</td>
-	<td>/Entrance/SelectBarrier</td>
-	<td></td>
+	<td>type</td>
+	<td>id=Password</td>
+	<td>guardia123</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -152,13 +87,13 @@
 	<td></td>
 </tr>
 <tr>
-	<td>verifyText</td>
-	<td>//tr[@id='visit-0']/td[3]</td>
-	<td>Fuera del campus</td>
+	<td>open</td>
+	<td>/Entrance</td>
+	<td></td>
 </tr>
 <tr>
 	<td>verifyText</td>
-	<td>xpath=(//tr[@id='visit-0']/td[3])[2]</td>
+	<td>//tr[@id='visit-0']/td[3]</td>
 	<td>Dentro del campus</td>
 </tr>
 <tr>
@@ -167,14 +102,49 @@
 	<td>Dentro del campus</td>
 </tr>
 <tr>
-	<td>verifyText</td>
-	<td>xpath=(//tr[@id='visit-0']/td[3])[4]</td>
-	<td>Dentro del campus</td>
+	<td>clickAndWait</td>
+	<td>link=Cerrar Sesión</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=UserName</td>
+	<td>guardia2</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Password</td>
+	<td>guardia2123</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/Entrance</td>
+	<td></td>
 </tr>
 <tr>
 	<td>verifyText</td>
-	<td>xpath=(//tr[@id='visit-0']/td[3])[5]</td>
-	<td>Fuera del campus</td>
+	<td>css=td</td>
+	<td>Pedro</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(//tr[@id='visit-0']/td)[6]</td>
+	<td>Miguel</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(//tr[@id='visit-0']/td)[11]</td>
+	<td>Alejandra</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(//tr[@id='visit-0']/td)[16]</td>
+	<td>Fernando</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>

@@ -142,6 +142,41 @@
 	<td>Guardia</td>
 </tr>
 <tr>
+	<td>type</td>
+	<td>id=UserName</td>
+	<td>guardia2</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=RoleName</td>
+	<td>label=Guardia</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=Campus</td>
+	<td>label=Unitec Tegucigalpa</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.small.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=div.alert-box.round</td>
+	<td>Se ha asignado el rol correctamente.</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Obtener roles asignados']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=ol &gt; li</td>
+	<td>Guardia</td>
+</tr>
+<tr>
 	<td>clickAndWait</td>
 	<td>link=Cerrar Sesión</td>
 	<td></td>
