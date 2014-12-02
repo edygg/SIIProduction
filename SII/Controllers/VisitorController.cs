@@ -36,7 +36,7 @@ namespace SII.Controllers
 
                 var state = lastEntrance.State == "Entrada" ? "Salida" : "Entrada";
 
-                visitorEntrances.Add(new VisitorEntrance { VisitorId = v.Id, BarrierId = int.Parse(Request["barrera"]), DepartmentId = lastEntrance.DepartmentId, Carnet = lastEntrance.Carnet, State = state, ReturnCarnet = false });
+                visitorEntrances.Add(new VisitorEntrance { VisitorId = v.Id, DepartmentId = lastEntrance.DepartmentId, Carnet = lastEntrance.Carnet, State = state, ReturnCarnet = false });
             }
 
             ViewBag.VisitorEntrances = visitorEntrances;
@@ -48,7 +48,7 @@ namespace SII.Controllers
         {
             db.VisitorEntrances.Add(visitorEntrance);
             db.SaveChanges();
-            return RedirectToAction("Index", "Visitor", new { barrera = visitorEntrance.BarrierId });
+            return RedirectToAction("Index", "Visitor");
         }
 
         //
@@ -109,7 +109,7 @@ namespace SII.Controllers
                 ViewBag.Departments = new SelectList(db.Departments.Where(m => m.Dropped == false).ToList(), "Id", "Name");
                 db.Visitors.Add(visitor);
                 db.SaveChanges();
-                db.VisitorEntrances.Add(new VisitorEntrance { VisitorId = visitor.Id, BarrierId = int.Parse(Request["BarrierId"]), DepartmentId = int.Parse(Request["DepartmentId"]), Carnet = int.Parse(Request["Carnet"]), State = "Entrada", ReturnCarnet = false });
+                db.VisitorEntrances.Add(new VisitorEntrance { VisitorId = visitor.Id, DepartmentId = int.Parse(Request["DepartmentId"]), Carnet = int.Parse(Request["Carnet"]), State = "Entrada", ReturnCarnet = false });
                 db.SaveChanges();
 
                 var today = (new DateTime()).Date;
@@ -131,7 +131,7 @@ namespace SII.Controllers
                     }
 
                     var state = lastEntrance == "Entrada" ? "Salida" : "Entrada";
-                    visitorEntrances.Add(new VisitorEntrance { VisitorId = v.Id, BarrierId = int.Parse(Request["BarrierId"]), DepartmentId = int.Parse(Request["DepartmentId"]), Carnet = int.Parse(Request["Carnet"]), State = state, ReturnCarnet = false });
+                    visitorEntrances.Add(new VisitorEntrance { VisitorId = v.Id, DepartmentId = int.Parse(Request["DepartmentId"]), Carnet = int.Parse(Request["Carnet"]), State = state, ReturnCarnet = false });
                 }
 
                 ViewBag.VisitorEntrances = visitorEntrances;

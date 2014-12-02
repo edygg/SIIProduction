@@ -17,7 +17,6 @@
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(model => model.VisitId)
-    @Html.HiddenFor(model => model.BarrierId)
     @Html.HiddenFor(model => model.State)
 
     <td>@Visit.FullName</td>

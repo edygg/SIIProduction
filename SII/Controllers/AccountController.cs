@@ -17,6 +17,8 @@ namespace SII.Controllers
     [InitializeSimpleMembership]
     public class AccountController : Controller
     {
+        private SIIContext db = new SIIContext();
+        private UsersContext users = new UsersContext();
         //
         // GET: /Account/Login
 
@@ -371,6 +373,11 @@ namespace SII.Controllers
         {
             SelectList list = new SelectList(Roles.GetAllRoles());
             ViewBag.Roles = list;
+            ViewBag.Campus = new SelectList(db.Campus.Where(m => m.Dropped == false).ToList(), "Id", "Name");
+            List<SelectListItem> typeEntrances = new List<SelectListItem>();
+            typeEntrances.Add(new SelectListItem { Value = "peatonal", Text = "Peatonal" });
+            typeEntrances.Add(new SelectListItem { Value = "vehicular", Text = "vehicular" });
+            ViewBag.TypeEntrance = new SelectList(typeEntrances, "Value", "Text");
 
             return View();
         }
@@ -384,10 +391,16 @@ namespace SII.Controllers
         [Authorize(Roles = "Administrador")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult RoleAddToUser(string RoleName, string UserName)
+        public ActionResult RoleAddToUser(string RoleName, string UserName, string Campus, string TypeEntrance)
         {
             SelectList list = new SelectList(Roles.GetAllRoles());
             ViewBag.Roles = list;
+            ViewBag.Campus = new SelectList(db.Campus.Where(m => m.Dropped == false).ToList(), "Id", "Name");
+            List<SelectListItem> typeEntrances = new List<SelectListItem>();
+            typeEntrances.Add(new SelectListItem { Value = "peatonal", Text = "Peatonal" });
+            typeEntrances.Add(new SelectListItem { Value = "vehicular", Text = "vehicular" });
+            ViewBag.TypeEntrance = new SelectList(typeEntrances, "Value", "Text");
+
 
             if (String.IsNullOrEmpty(UserName))
             {
@@ -414,6 +427,13 @@ namespace SII.Controllers
             
             Roles.AddUserToRole(UserName, RoleName);
             ViewBag.ResultMessage = "Se ha asignado el rol correctamente.";
+
+            if (Roles.IsUserInRole(UserName, "Guardia"))
+            {
+                GuardDetails guardDetails = new GuardDetails { UserId = users.UserProfiles.Where(m => m.UserName == UserName).First().UserId, CampusId = int.Parse(Campus), TypeEntrance = TypeEntrance  };
+                db.GuardsDetails.Add(guardDetails);
+                db.SaveChanges();
+            }
             return View();
         }
 
@@ -429,6 +449,12 @@ namespace SII.Controllers
         {
             SelectList list = new SelectList(Roles.GetAllRoles());
             ViewBag.Roles = list;
+            ViewBag.Campus = new SelectList(db.Campus.Where(m => m.Dropped == false).ToList(), "Id", "Name");
+            List<SelectListItem> typeEntrances = new List<SelectListItem>();
+            typeEntrances.Add(new SelectListItem { Value = "peatonal", Text = "Peatonal" });
+            typeEntrances.Add(new SelectListItem { Value = "vehicular", Text = "vehicular" });
+            ViewBag.TypeEntrance = new SelectList(typeEntrances, "Value", "Text");
+
 
             if (String.IsNullOrEmpty(UserName))
             {
@@ -444,6 +470,12 @@ namespace SII.Controllers
 
             ViewBag.RolesForThisUser = Roles.GetRolesForUser(UserName);
             return View("RoleAddToUser");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            db.Dispose();
+            base.Dispose(disposing);
         }
 
         #region Helpers

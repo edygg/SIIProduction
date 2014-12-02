@@ -42,11 +42,28 @@
                         @Html.DropDownList("RoleName", ViewBag.Roles as SelectList)
                     </div>
                 </div>
+                <div class="guard-details">
+                    <div class="row">
+                        <div class="small-2 columns">
+                            <label class="right inline">Campus</label>
+                        </div>
+                        <div class="small-10 columns">
+                            @Html.DropDownList("Campus", ViewBag.Campus as SelectList)
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-2 columns">
+                            <label class="right inline">Tipo de entrada asignada</label>
+                        </div>
+                        <div class="small-10 columns">
+                            @Html.DropDownList("TypeEntrance", ViewBag.TypeEntrance as SelectList)
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="small-6 small-offset-2 columns">
                         <ul class="button-group">
                             <li><input type="submit" value="Guardar" class="small button" /></li>
-                            <li>@Html.ActionLink("Regresar a la lista", "RoleIndex", "Account", htmlAttributes: new { @class = "small button" })</li>
                         </ul>
                     </div>
                 </div>
@@ -93,3 +110,7 @@
         }
     </div>
 </div>
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/GuardDetails.js")
+}
