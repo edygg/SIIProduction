@@ -13,13 +13,19 @@ namespace SII.Controllers
     public class DepartmentController : Controller
     {
         private SIIContext db = new SIIContext();
+        private IDeparmentRepository DepartRepo;
+
+        public DepartmentController(IDeparmentRepository DepartRepo)
+        {
+            this.DepartRepo = DepartRepo;
+        }
 
         //
         // GET: /Deparmet/
         [Authorize(Roles = "Administrador")]
-        public ActionResult Index()
+        public ViewResult Index()
         {
-            return View(db.Departments.Where(m => m.Dropped == false).ToList());
+            return View(DepartRepo.Departments.Where(m => m.Dropped == false).ToList());
         }
 
         //
@@ -27,7 +33,7 @@ namespace SII.Controllers
         [Authorize(Roles = "Administrador")]
         public ActionResult Details(int id = 0)
         {
-            Department department = db.Departments.Find(id);
+            Department department = DepartRepo.Find(id);
             if (department == null)
             {
                 return HttpNotFound();
@@ -52,8 +58,7 @@ namespace SII.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Departments.Add(department);
-                db.SaveChanges();
+                DepartRepo.save(department);
                 return RedirectToAction("Index");
             }
 
@@ -65,7 +70,7 @@ namespace SII.Controllers
         [Authorize(Roles = "Administrador")]
         public ActionResult Edit(int id = 0)
         {
-            Department department = db.Departments.Find(id);
+            Department department = DepartRepo.Find(id);
             if (department == null)
             {
                 return HttpNotFound();
@@ -82,8 +87,7 @@ namespace SII.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(department).State = EntityState.Modified;
-                db.SaveChanges();
+                DepartRepo.save(department);
                 return RedirectToAction("Index");
             }
             return View(department);
@@ -94,7 +98,7 @@ namespace SII.Controllers
         [Authorize(Roles = "Administrador")]
         public ActionResult Delete(int id = 0)
         {
-            Department department = db.Departments.Find(id);
+            Department department = DepartRepo.Find(id);
             if (department == null)
             {
                 return HttpNotFound();
@@ -109,9 +113,7 @@ namespace SII.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Department department = db.Departments.Find(id);
-            department.Dropped = true;
-            db.SaveChanges();
+            DepartRepo.delete(id);
             return RedirectToAction("Index");
         }
 
