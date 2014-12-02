@@ -48,27 +48,22 @@
 </tr>
 <tr>
 	<td>click</td>
-	<td>//table[@id='InitialDate_table']/tbody/tr[5]/td[3]/div</td>
+	<td>id=InitialDate</td>
 	<td></td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>//table[@id='FinalDate_table']/tbody/tr[5]/td[2]/div</td>
+	<td>css=button.picker__button--today</td>
 	<td></td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>css=input.small.button</td>
+	<td>id=FinalDate</td>
 	<td></td>
 </tr>
 <tr>
-	<td>verifyText</td>
-	<td>//section[@id='body']/div/div/div/div</td>
-	<td>La fecha inicial es mayor que la final. Revise el rango de fechas.</td>
-</tr>
-<tr>
 	<td>click</td>
-	<td>//table[@id='FinalDate_table']/tbody/tr[5]/td[3]/div</td>
+	<td>css=#FinalDate_root &gt; div.picker__holder &gt; div.picker__frame &gt; div.picker__wrap &gt; div.picker__box &gt; div.picker__footer &gt; button.picker__button--today</td>
 	<td></td>
 </tr>
 <tr>
@@ -88,12 +83,22 @@
 </tr>
 <tr>
 	<td>click</td>
-	<td>//table[@id='InitialDate_table']/tbody/tr[5]/td[3]/div</td>
+	<td>id=InitialDate</td>
 	<td></td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>//table[@id='FinalDate_table']/tbody/tr[5]/td[3]/div</td>
+	<td>css=button.picker__button--today</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=FinalDate</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#FinalDate_root &gt; div.picker__holder &gt; div.picker__frame &gt; div.picker__wrap &gt; div.picker__box &gt; div.picker__footer &gt; button.picker__button--today</td>
 	<td></td>
 </tr>
 <tr>
@@ -102,36 +107,10 @@
 	<td></td>
 </tr>
 <tr>
-	<td>verifyText</td>
-	<td>//section[@id='body']/div[2]/div/table/tbody/tr/td</td>
-	<td>Persona de prueba uno</td>
-</tr>
-<tr>
-	<td>verifyText</td>
-	<td>//section[@id='body']/div[2]/div/table/tbody/tr[2]/td</td>
-	<td>Persona de prueba dos</td>
-</tr>
-<tr>
-	<td>verifyText</td>
-	<td>//section[@id='body']/div[2]/div/table/tbody/tr[3]/td</td>
-	<td>Persona de prueba tres</td>
-</tr>
-<tr>
-	<td>verifyText</td>
-	<td>//section[@id='body']/div[2]/div/table/tbody/tr[4]/td</td>
-	<td>Persona de prueba cuatro</td>
-</tr>
-<tr>
-	<td>verifyText</td>
-	<td>//section[@id='body']/div[2]/div/table/tbody/tr[5]/td</td>
-	<td>Persona de prueba cinco</td>
-</tr>
-<tr>
 	<td>clickAndWait</td>
 	<td>link=Cerrar Sesión</td>
 	<td></td>
 </tr>
-
 </tbody></table>
 </body>
 </html>
