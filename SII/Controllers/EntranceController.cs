@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using SII.Models;
 using System.Web.Script.Serialization;
+using WebMatrix.WebData;
 
 namespace SII.Controllers
 {
@@ -14,6 +15,7 @@ namespace SII.Controllers
     public class EntranceController : Controller
     {
         private SIIContext db = new SIIContext();
+        private UsersContext users = new UsersContext();
         private IEntranceRepository EntraceRepo;
 
         public EntranceController(IEntranceRepository EntraceRepo)
@@ -56,10 +58,12 @@ namespace SII.Controllers
                     dayOfWeek = "D";
                     break;
             }
+            var guardId = users.UserProfiles.Where(m => m.UserName == User.Identity.Name).First().UserId;
+            var currentGuard = db.GuardsDetails.Where(m => m.UserId == guardId).First();
 
             var visits = (from v in db.Visits
                           join an in db.Announcements on v.AnnouncementId equals an.Id
-                          where (h >= an.InitialDate) && (h <= an.FinalDate) && (an.SpecificDays.Contains(dayOfWeek))
+                          where (h >= an.InitialDate) && (h <= an.FinalDate) && (an.SpecificDays.Contains(dayOfWeek)) && (v.TypeEntrance == currentGuard.TypeEntrance) && (an.CampusId == currentGuard.CampusId)
                           select v).Distinct();
             
             var entrances = new List<Entrance>();
@@ -73,7 +77,7 @@ namespace SII.Controllers
                 }
                 
                 var state = lastEntrance == "Entrada" ? "Salida" : "Entrada";
-                entrances.Add(new Entrance { VisitId = visit.Id, BarrierId = int.Parse(Request["barrera"]), State = state });
+                entrances.Add(new Entrance { VisitId = visit.Id, State = state });
             } 
             
             return View(entrances);
@@ -171,7 +175,7 @@ namespace SII.Controllers
             {
                 EntraceRepo.save(entrance);
                 
-                return RedirectToAction("Index", "Entrance", new { barrera = entrance.BarrierId});
+                return RedirectToAction("Index", "Entrance");
                 
             }
 
@@ -233,6 +237,7 @@ namespace SII.Controllers
         protected override void Dispose(bool disposing)
         {
             db.Dispose();
+            users.Dispose();
             base.Dispose(disposing);
         }
     }

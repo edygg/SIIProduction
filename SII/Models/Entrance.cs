@@ -12,9 +12,6 @@ namespace SII.Models
         public int VisitId { get; set; }
 
         [Required]
-        public int BarrierId { get; set; }
-
-        [Required]
         public String State { get; set; }
     }
 }

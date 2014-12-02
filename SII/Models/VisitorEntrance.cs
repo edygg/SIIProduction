@@ -13,10 +13,6 @@ namespace SII.Models
         public int VisitorId { get; set; }
 
         [Required]
-        [Display(Name = "Barrera")]
-        public int BarrierId { get; set; }
-
-        [Required]
         [Display(Name = "Departamento")]
         public int DepartmentId { get; set; }
 

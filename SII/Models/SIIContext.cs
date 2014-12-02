@@ -21,6 +21,7 @@ namespace SII.Models
         public DbSet<VisitorEntrance> VisitorEntrances { get; set; }
         public DbSet<IdCard> IdCards { get; set; }
         public DbSet<Carnet> Carnets { get; set; }
+        public DbSet<GuardDetails> GuardsDetails { get; set; }
 
         public override int SaveChanges()
         {

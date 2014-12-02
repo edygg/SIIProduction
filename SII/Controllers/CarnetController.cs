@@ -13,13 +13,18 @@ namespace SII.Controllers
     public class CarnetController : Controller
     {
         private SIIContext db = new SIIContext();
+        private ICarnetRepository CarnetRepo;
 
+        public CarnetController(ICarnetRepository CarnetRepo)
+        {
+            this.CarnetRepo = CarnetRepo;
+        }
         //
         // GET: /Carnet/
         [Authorize(Roles = "Administrador")]
-        public ActionResult Index()
+        public ViewResult Index()
         {
-            return View(db.Carnets.Where(m => m.Dropped == false).ToList());
+            return View(CarnetRepo.Carnets.Where(m => m.Dropped == false).ToList());
         }
 
         //
@@ -27,7 +32,7 @@ namespace SII.Controllers
         [Authorize(Roles = "Administrador")]
         public ActionResult Details(int id = 0)
         {
-            Carnet carnet = db.Carnets.Find(id);
+            Carnet carnet = CarnetRepo.Find(id);
             if (carnet == null)
             {
                 return HttpNotFound();
@@ -54,11 +59,10 @@ namespace SII.Controllers
             ViewBag.Campus = new SelectList(db.Campus.Where(m => m.Dropped == false).ToList(), "Id", "Name");
 
             if (ModelState.IsValid)
-            {
-                db.Carnets.Add(carnet);
+            {                
                 try
                 {
-                    db.SaveChanges();
+                    CarnetRepo.save(carnet);
                 } catch (Exception e)
                 {
                     ViewBag.Error = "El campus ya posee este número de carnet.";
@@ -76,7 +80,7 @@ namespace SII.Controllers
         [Authorize(Roles = "Administrador")]
         public ActionResult Edit(int id = 0)
         {
-            Carnet carnet = db.Carnets.Find(id);
+            Carnet carnet = CarnetRepo.Find(id);
             ViewBag.Campus = new SelectList(db.Campus.Where(m => m.Dropped == false).ToList(), "Id", "Name");
 
             if (carnet == null)
@@ -97,10 +101,9 @@ namespace SII.Controllers
 
             if (ModelState.IsValid)
             {
-                db.Entry(carnet).State = EntityState.Modified;
                 try
                 {
-                    db.SaveChanges();
+                    CarnetRepo.save(carnet);
                 }
                 catch (Exception e)
                 {
@@ -132,12 +135,7 @@ namespace SII.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Carnet carnet = db.Carnets.Find(id);
-            carnet.Dropped = true;
-
-            db.Entry(carnet).State = EntityState.Modified;
-
-            db.SaveChanges();
+            CarnetRepo.delete(id);
             return RedirectToAction("Index");
         }
 
