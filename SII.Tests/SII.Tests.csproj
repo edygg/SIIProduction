@@ -148,8 +148,10 @@
     <Compile Include="Controllers\CampusControllerTest.cs" />
     <Compile Include="Controllers\AnnouncementTest.cs" />
     <Compile Include="Controllers\BarrierControllerTest.cs" />
-    <Compile Include="Controllers\UnitTest1.cs" />
+    <Compile Include="Controllers\DeparmentControllerTest.cs" />
     <Compile Include="Controllers\EntranceControllerTest.cs" />
+    <Compile Include="Controllers\CarnetControllerTest.cs" />
+    <Compile Include="Controllers\VisitorControllerTest.cs" />
     <Compile Include="Controllers\VisitControllerTest.cs" />
     <Compile Include="Models\CampusModelTest.cs" />
     <Compile Include="Models\AnnouncementModelTest.cs" />
