@@ -27,22 +27,6 @@ namespace SII.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
-            SIIContext db = new SIIContext();
-            db.Campus.AddOrUpdate(p => p.Code, new Campus { Code = "PRBUNO", Name = "Campus de prueba uno", Details = "Detalles de campus de prueba uno", CreatedAt = new DateTime(), CreatedBy = "Default", UpdatedBy = "Default", UpdatedAt = new DateTime() });
-            db.Campus.AddOrUpdate(p => p.Code, new Campus { Code = "PRBDOS", Name = "Campus de prueba dos", Details = "Detalles de campus de prueba dos", CreatedAt = new DateTime(), CreatedBy = "Default", UpdatedBy = "Default", UpdatedAt = new DateTime() });
-            db.Campus.AddOrUpdate(p => p.Code, new Campus { Code = "PRBTRS", Name = "Campus de prueba tres", Details = "Detalles de campus de prueba tres", CreatedAt = new DateTime(), CreatedBy = "Default", UpdatedBy = "Default", UpdatedAt = new DateTime() });
-            db.SaveChanges();
-
-            var campusTest = db.Campus.Where(m => m.Code == "PRBUNO").First();
-            db.Announcements.AddOrUpdate(p => p.Id, new Announcement { Id = 1, CampusId = campusTest.Id, InitialDate = DateTime.Now.Date, FinalDate = DateTime.Now.Date, SpecificDays = "LMXJVSD", CreatedAt = new DateTime(), CreatedBy = "Default", UpdatedBy = "Default", UpdatedAt = new DateTime() });
-            db.Visits.AddOrUpdate(p => p.Id, new Visit { FullName = "Persona de prueba uno", AnnouncementId = 1, TypeEntrance = "vehicular", CreatedAt = new DateTime(), CreatedBy = "Default", UpdatedBy = "Default", UpdatedAt = new DateTime() });
-            db.Visits.AddOrUpdate(p => p.Id, new Visit { FullName = "Persona de prueba dos", AnnouncementId = 1, TypeEntrance = "vehicular", CreatedAt = new DateTime(), CreatedBy = "Default", UpdatedBy = "Default", UpdatedAt = new DateTime() });
-            db.Visits.AddOrUpdate(p => p.Id, new Visit { FullName = "Persona de prueba tres", AnnouncementId = 1, TypeEntrance = "vehicular", CreatedAt = new DateTime(), CreatedBy = "Default", UpdatedBy = "Default", UpdatedAt = new DateTime() });
-            db.Visits.AddOrUpdate(p => p.Id, new Visit { FullName = "Persona de prueba cuatro", AnnouncementId = 1, TypeEntrance = "vehicular", CreatedAt = new DateTime(), CreatedBy = "Default", UpdatedBy = "Default", UpdatedAt = new DateTime() });
-            db.Visits.AddOrUpdate(p => p.Id, new Visit { FullName = "Persona de prueba cinco", AnnouncementId = 1, TypeEntrance = "vehicular", CreatedAt = new DateTime(), CreatedBy = "Default", UpdatedBy = "Default", UpdatedAt = new DateTime() });
-
-            db.SaveChanges();
-            db.Dispose();
         }
     }
 }
