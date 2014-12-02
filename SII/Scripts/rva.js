@@ -183,7 +183,7 @@
                 hasError = true;
                 txtArea.parent().children('small.error').remove();
                 txtArea.addClass("error");
-                txtArea.parent().append($('<small class="error">Los nombres ingresados</small>'));
+                txtArea.parent().append($('<small class="error">Uno o varios de los nombres ingresados no contienen de 5 a 100 caracteres solamente letras. Revise además saltos de línea innecesarios.</small>'));
                 $('.guardar').attr("disabled", "disabled");
             }
         });
@@ -220,7 +220,9 @@
         }
 
         if ($(this).attr('disabled')) {
-            return false;
+            if ($('.duplicate').length <= 1 && $('.multiple_names').val() == "") {
+                return false;
+            }
         }
 
         $('.parte2').hide();
@@ -272,9 +274,7 @@
     });
 
     $('.autorizar').on('click', function () {
-        if (confirm("Al momento autorizar la entrada a estas personas se hace responsable de los daños que pudiesen causar")) {
-            $('form').submit();
-        }
+        $('form').submit();
     });
     
 });
