@@ -295,6 +295,14 @@
     <Compile Include="Migrations\201412011709235_CreateUniqueIndexCarnet.Designer.cs">
       <DependentUpon>201412011709235_CreateUniqueIndexCarnet.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201412012158557_CreateGuardDetails.cs" />
+    <Compile Include="Migrations\201412012158557_CreateGuardDetails.Designer.cs">
+      <DependentUpon>201412012158557_CreateGuardDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412012346069_RemoveBarrierFromEntrance.cs" />
+    <Compile Include="Migrations\201412012346069_RemoveBarrierFromEntrance.Designer.cs">
+      <DependentUpon>201412012346069_RemoveBarrierFromEntrance.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Announcement.cs" />
@@ -309,6 +317,7 @@
     <Compile Include="Models\EFEntranceRepository.cs" />
     <Compile Include="Models\EFVisitRepository.cs" />
     <Compile Include="Models\Entrance.cs" />
+    <Compile Include="Models\GuardDetails.cs" />
     <Compile Include="Models\IAnnouncementRepository.cs" />
     <Compile Include="Models\IBarrierRepository.cs" />
     <Compile Include="Models\ICampusRepository.cs" />
@@ -685,6 +694,7 @@
     <Content Include="Scripts\datepicker\es_ES.js" />
     <Content Include="Scripts\Entrance.js" />
     <Content Include="Scripts\foundation.min.js" />
+    <Content Include="Scripts\GuardDetails.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -861,6 +871,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201412011709235_CreateUniqueIndexCarnet.resx">
       <DependentUpon>201412011709235_CreateUniqueIndexCarnet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412012158557_CreateGuardDetails.resx">
+      <DependentUpon>201412012158557_CreateGuardDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412012346069_RemoveBarrierFromEntrance.resx">
+      <DependentUpon>201412012346069_RemoveBarrierFromEntrance.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
