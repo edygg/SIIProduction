@@ -61,7 +61,7 @@ namespace SII.Controllers
                 id = id.Replace('-',' ');
                 id = id.Trim();
                 var n = (from p in db.IdCards
-                         where p.Id.Contains(id)
+                         where (p.Id == id)
                          select new
                          {
                              p.FirstName,

@@ -8,7 +8,7 @@
             }).done(function (data)
             {
                 //var nombre = JSON.parse(data);
-                if (data !== null && data !== 'undefined') {
+                if (data !== null && typeof data !== 'undefined') {
                     console.log(data);
                     $('#Name').val(data["FirstName"] + " " + ((data["MiddleName"] === "") ? "" : data["MiddleName"]) + " " + data["FirstLastName"] + " " + data["SecondLastName"]);
                 }
