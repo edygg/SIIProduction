@@ -77,18 +77,24 @@ namespace SII.Controllers
         {
 
             if(!String.IsNullOrEmpty(id)){
-
+                id = id.Replace('-',' ');
+                id = id.Trim();
                 var n = (from p in db.IdCards
-                         where p.Id.Contains(id)
+                         where (p.Id == id)
                          select new
                          {
                              p.FirstName,
                              p.MiddleName,
                              p.FirstLastName,
                              p.SecondLastName
-                         }).First();
-                
-                return Json(n, JsonRequestBehavior.AllowGet);
+                         }).FirstOrDefault();
+                if ( n == null){
+                    return null;
+                }
+                else
+                {
+                    return Json(n, JsonRequestBehavior.AllowGet);
+                }
             }
             return null;
            
