@@ -17,5 +17,7 @@ namespace SII.Models
         public int CampusId { get; set; }
         [Display(Name = "Ocupado")]
         public bool Taken { get; set; }
+
+        public ICollection<VisitorEntrance> VisitorEntrances { get; set; }
     }
 }

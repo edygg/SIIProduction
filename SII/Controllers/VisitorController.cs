@@ -12,20 +12,24 @@ namespace SII.Controllers
     public class VisitorController : Controller
     {
         private SIIContext db = new SIIContext();
+        private UsersContext users = new UsersContext();
 
         //
         // GET: /Visitor/
 
         public ActionResult Index()
         {
-            ViewBag.BarrierId = Request["barrera"];
+            var userId = users.UserProfiles.Where(m => m.UserName == User.Identity.Name).First().UserId;
+            var currentCampus = db.GuardsDetails.Where(m => m.UserId == userId).First().CampusId;
+
             ViewBag.Departments = new SelectList(db.Departments.Where(m => m.Dropped == false).ToList(), "Id", "Name");
+            ViewBag.Carnets = new SelectList(db.Carnets.Where(m => m.Dropped == false).Where(m => m.Taken == false).Where(m => m.CampusId == currentCampus).ToList(), "Id", "Number");
 
             var today = DateTime.Now.Date;
             var tomorrow = DateTime.Now.AddDays(1).Date;
 
             var visitors = (from visi in db.Visitors
-                            where (today <= visi.UpdatedAt) && (visi.UpdatedAt < tomorrow)
+                            where (today <= visi.UpdatedAt) && (visi.UpdatedAt < tomorrow) && (visi.ReturnCarnet == false)
                             select visi);
 
             var visitorEntrances = new List<VisitorEntrance>();
@@ -36,7 +40,7 @@ namespace SII.Controllers
 
                 var state = lastEntrance.State == "Entrada" ? "Salida" : "Entrada";
 
-                visitorEntrances.Add(new VisitorEntrance { VisitorId = v.Id, DepartmentId = lastEntrance.DepartmentId, Carnet = lastEntrance.Carnet, State = state, ReturnCarnet = false });
+                visitorEntrances.Add(new VisitorEntrance { VisitorId = v.Id, DepartmentId = lastEntrance.DepartmentId, CarnetId = lastEntrance.CarnetId, State = state });
             }
 
             ViewBag.VisitorEntrances = visitorEntrances;
@@ -48,6 +52,21 @@ namespace SII.Controllers
         {
             db.VisitorEntrances.Add(visitorEntrance);
             db.SaveChanges();
+            return RedirectToAction("Index", "Visitor");
+        }
+
+        public ActionResult ReturnCarnet(int CarnetId, int VisitorId)
+        {
+            var currentVisitor = db.Visitors.Where(m => m.Id == VisitorId).First();
+            var currentCarnet = db.Carnets.Where(m => m.Id == CarnetId).First();
+
+            currentVisitor.ReturnCarnet = true;
+            currentCarnet.Taken = false;
+
+            db.Entry(currentCarnet).State = EntityState.Modified;
+            db.Entry(currentVisitor).State = EntityState.Modified;
+            db.SaveChanges();
+
             return RedirectToAction("Index", "Visitor");
         }
 
@@ -105,18 +124,26 @@ namespace SII.Controllers
         {
             if (ModelState.IsValid)
             {
-                ViewBag.BarrierId = Request["BarrierId"];
+                var userId = users.UserProfiles.Where(m => m.UserName == User.Identity.Name).First().UserId;
+                var currentCampus = db.GuardsDetails.Where(m => m.UserId == userId).First().CampusId;
+
                 ViewBag.Departments = new SelectList(db.Departments.Where(m => m.Dropped == false).ToList(), "Id", "Name");
+                ViewBag.Carnets = new SelectList(db.Carnets.Where(m => m.Dropped == false).Where(m => m.Taken == false).Where(m => m.CampusId == currentCampus).ToList(), "Id", "Number");
                 db.Visitors.Add(visitor);
                 db.SaveChanges();
-                db.VisitorEntrances.Add(new VisitorEntrance { VisitorId = visitor.Id, DepartmentId = int.Parse(Request["DepartmentId"]), Carnet = int.Parse(Request["Carnet"]), State = "Entrada", ReturnCarnet = false });
+                db.VisitorEntrances.Add(new VisitorEntrance { VisitorId = visitor.Id, DepartmentId = int.Parse(Request["DepartmentId"]), CarnetId = int.Parse(Request["CarnetId"]), State = "Entrada" });
+                
+                var carnetId = int.Parse(Request["CarnetId"]);
+                var currentCarnet = db.Carnets.Where(m => m.Id == carnetId).First();
+                currentCarnet.Taken = true;
+                db.Entry(currentCarnet).State = EntityState.Modified;
                 db.SaveChanges();
 
                 var today = (new DateTime()).Date;
                 var tomorrow = (new DateTime()).AddDays(1).Date;
 
                 var visitors = (from visi in db.Visitors
-                                    where (today <= visi.UpdatedAt) && (visi.UpdatedAt < tomorrow)
+                                    where (today <= visi.UpdatedAt) && (visi.UpdatedAt < tomorrow) && (visi.ReturnCarnet == false)
                                     select visi);
 
                 var visitorEntrances = new List<VisitorEntrance>();
@@ -131,13 +158,13 @@ namespace SII.Controllers
                     }
 
                     var state = lastEntrance == "Entrada" ? "Salida" : "Entrada";
-                    visitorEntrances.Add(new VisitorEntrance { VisitorId = v.Id, DepartmentId = int.Parse(Request["DepartmentId"]), Carnet = int.Parse(Request["Carnet"]), State = state, ReturnCarnet = false });
+                    visitorEntrances.Add(new VisitorEntrance { VisitorId = v.Id, DepartmentId = int.Parse(Request["DepartmentId"]), CarnetId = int.Parse(Request["CarnetId"]), State = state });
                 }
 
                 ViewBag.VisitorEntrances = visitorEntrances;
 
                 ModelState.Clear();
-                return RedirectToAction("Index", "Visitor", new { barrera = Request["BarrierId"] }); ;
+                return RedirectToAction("Index", "Visitor");
             }
 
             return View(visitor);
@@ -209,6 +236,7 @@ namespace SII.Controllers
         protected override void Dispose(bool disposing)
         {
             db.Dispose();
+            users.Dispose();
             base.Dispose(disposing);
         }
     }

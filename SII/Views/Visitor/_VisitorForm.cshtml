@@ -58,7 +58,7 @@
                 <label class="right inline">No. carnet</label>
             </div>
             <div class="small-10 columns">
-                @Html.Editor("Carnet")
+                @Html.DropDownList("CarnetId", ViewBag.Carnets as SelectList)
             </div>
         </div>
 

@@ -307,6 +307,10 @@
     <Compile Include="Migrations\201412020018015_RemoveBarrierInEntrancesAndVisitorsEntrance.Designer.cs">
       <DependentUpon>201412020018015_RemoveBarrierInEntrancesAndVisitorsEntrance.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201412030009579_ChangesInVisitorAndVisitorEntrances.cs" />
+    <Compile Include="Migrations\201412030009579_ChangesInVisitorAndVisitorEntrances.Designer.cs">
+      <DependentUpon>201412030009579_ChangesInVisitorAndVisitorEntrances.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Announcement.cs" />
@@ -888,6 +892,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201412020018015_RemoveBarrierInEntrancesAndVisitorsEntrance.resx">
       <DependentUpon>201412020018015_RemoveBarrierInEntrancesAndVisitorsEntrance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412030009579_ChangesInVisitorAndVisitorEntrances.resx">
+      <DependentUpon>201412030009579_ChangesInVisitorAndVisitorEntrances.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

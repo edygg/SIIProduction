@@ -18,10 +18,7 @@ namespace SII.Models
 
         [Required]
         [Display(Name = "No. carnet")]
-        public int Carnet { get; set; }
-
-        [Display(Name = "Devolvió carnet")]
-        public bool ReturnCarnet { get; set; }
+        public int CarnetId { get; set; }
 
         [Display(Name = "Estado")]
         public String State { get; set; }
