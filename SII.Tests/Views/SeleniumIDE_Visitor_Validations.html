@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:32657" />
+<title>SeleniumIDE_Visitor_Validations</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">SeleniumIDE_Visitor_Validations</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/Account/Login</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=UserName</td>
+	<td>guardia2</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Password</td>
+	<td>guardia2123</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/Visitor</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=CarnetId</td>
+	<td>1 2 3 4 5</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=input.small.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=span.field-validation-error &gt; span</td>
+	<td>The Identidad field is required.</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='VisitorForm']/fieldset/div[3]/div[2]/span/span</td>
+	<td>The Nombre field is required.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Identity</td>
+	<td>0801198004521</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=input.small.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=span.field-validation-error &gt; span</td>
+	<td>El número de identidad no es válido.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Identity</td>
+	<td>0801-1980-04521</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Name</td>
+	<td>Pedro Fuentes</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.small.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Identity</td>
+	<td>0601-1984-05446</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Name</td>
+	<td>Manuel Midence</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.small.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Identity</td>
+	<td>0401-1990-03632</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Name</td>
+	<td>Kevin Irias</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.small.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=td</td>
+	<td>Pedro Fuentes</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(//tr[@id='visit-0']/td)[6]</td>
+	<td>Manuel Midence</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(//tr[@id='visit-0']/td)[11]</td>
+	<td>Kevin Irias</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>xpath=(//input[@value='Marcar'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>xpath=(//a[contains(text(),'Devolver carnet')])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Identity</td>
+	<td>0801-1977-02722</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Name</td>
+	<td>Daniela Guevara</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.small.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=td</td>
+	<td>Pedro Fuentes</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(//tr[@id='visit-0']/td)[6]</td>
+	<td>Kevin Irias</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(//tr[@id='visit-0']/td)[11]</td>
+	<td>Daniela Guevara</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Cerrar Sesión</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=UserName</td>
+	<td>guardia2</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Password</td>
+	<td>guardia2123</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/Visitor</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=td</td>
+	<td>Pedro Fuentes</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(//tr[@id='visit-0']/td)[6]</td>
+	<td>Kevin Irias</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>xpath=(//tr[@id='visit-0']/td)[11]</td>
+	<td>Daniela Guevara</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Cerrar Sesión</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

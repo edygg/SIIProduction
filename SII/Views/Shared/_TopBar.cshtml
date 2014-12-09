@@ -15,6 +15,9 @@
                     <a href="#">@User.Identity.Name</a>
                     <ul class="dropdown">
                         <li>
+                            @Html.ActionLink("Cambiar contraseña", "Manage", "Account")
+                        </li>
+                        <li>
                             <a href="javascript:document.getElementById('logoutForm').submit()">Cerrar Sesión</a>
                             @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
                             {

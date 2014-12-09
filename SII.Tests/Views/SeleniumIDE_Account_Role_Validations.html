@@ -13,6 +13,26 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
+	<td>/Account/Login</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=UserName</td>
+	<td>admin</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Password</td>
+	<td>admin123</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
 	<td>/Account/RoleAddToUser</td>
 	<td></td>
 </tr>
@@ -82,24 +102,79 @@
 	<td>Administrador</td>
 </tr>
 <tr>
-	<td>open</td>
-	<td>/Announcement/Register</td>
+	<td>type</td>
+	<td>id=UserName</td>
+	<td>guardia</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=RoleName</td>
+	<td>label=Guardia</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=Campus</td>
+	<td>label=Unitec Tegucigalpa</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=TypeEntrance</td>
+	<td>label=vehicular</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.small.button</td>
 	<td></td>
 </tr>
 <tr>
 	<td>verifyText</td>
-	<td>css=legend</td>
-	<td>Iniciar sesión</td>
+	<td>css=div.alert-box.round</td>
+	<td>Se ha asignado el rol correctamente.</td>
 </tr>
 <tr>
-	<td>open</td>
-	<td>/Campus/Create</td>
+	<td>clickAndWait</td>
+	<td>//input[@value='Obtener roles asignados']</td>
 	<td></td>
 </tr>
 <tr>
 	<td>verifyText</td>
-	<td>css=legend</td>
-	<td>Campus</td>
+	<td>css=ol &gt; li</td>
+	<td>Guardia</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=UserName</td>
+	<td>guardia2</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=RoleName</td>
+	<td>label=Guardia</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=Campus</td>
+	<td>label=Unitec Tegucigalpa</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.small.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=div.alert-box.round</td>
+	<td>Se ha asignado el rol correctamente.</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Obtener roles asignados']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=ol &gt; li</td>
+	<td>Guardia</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>

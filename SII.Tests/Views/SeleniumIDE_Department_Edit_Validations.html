@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:32657/" />
+<title>SeleniumIDE_Department_Edit_Validations</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">SeleniumIDE_Department_Edit_Validations</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/Department/Index</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Editar</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Name</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=input.small.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=span.field-validation-error &gt; span</td>
+	<td>The Nombre field is required.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Name</td>
+	<td>D</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=input.small.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=span.field-validation-error &gt; span</td>
+	<td>Ingrese un nombre que contenga de 2 a 100 caracteres letras solamente.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Name</td>
+	<td>Departamento de prueba *</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=input.small.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=span.field-validation-error &gt; span</td>
+	<td>Ingrese un nombre que contenga de 2 a 100 caracteres letras solamente.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Name</td>
+	<td>Departamento de prueba 1</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=input.small.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=span.field-validation-error &gt; span</td>
+	<td>Ingrese un nombre que contenga de 2 a 100 caracteres letras solamente.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Name</td>
+	<td>Departamento de prueba</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.small.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=td</td>
+	<td>Departamento de prueba</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Cerrar Sesión</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>
