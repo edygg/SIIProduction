@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:32657/" />
+<title>SeleniumIDE_Report_AnnouncementsByDateRange_Validations</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">SeleniumIDE_Report_AnnouncementsByDateRange_Validations</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/Account/Login</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=UserName</td>
+	<td>admin</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Password</td>
+	<td>admin123</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/Report/AnnouncementsByDateRange</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=input.small.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//section[@id='body']/div/div/div/div</td>
+	<td>El rango de fechas es un campo requerido.</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=InitialDate</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=button.picker__button--today</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=FinalDate</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#FinalDate_root &gt; div.picker__holder &gt; div.picker__frame &gt; div.picker__wrap &gt; div.picker__box &gt; div.picker__footer &gt; button.picker__button--today</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=Campus</td>
+	<td>label=Unitec San Pedro Sula</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.small.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=div.alert-box</td>
+	<td>No hay resultados que mostrar.</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=InitialDate</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//table[@id='InitialDate_table']/tbody/tr[2]/td[3]/div</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//table[@id='FinalDate_table']/tbody/tr[2]/td[3]/div</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=Campus</td>
+	<td>label=Unitec Tegucigalpa</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.small.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//section[@id='body']/div[2]/div/table/tbody/tr/td</td>
+	<td>Daniela</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//section[@id='body']/div[2]/div/table/tbody/tr[2]/td</td>
+	<td>Pedro</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//section[@id='body']/div[2]/div/table/tbody/tr[3]/td</td>
+	<td>Gerardo</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//section[@id='body']/div[2]/div/table/tbody/tr[4]/td</td>
+	<td>Miguel</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//section[@id='body']/div[2]/div/table/tbody/tr[5]/td</td>
+	<td>Alejandra</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//section[@id='body']/div[2]/div/table/tbody/tr[6]/td</td>
+	<td>Lester</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//section[@id='body']/div[2]/div/table/tbody/tr[7]/td</td>
+	<td>Fernando</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//section[@id='body']/div[2]/div/table/tbody/tr[8]/td</td>
+	<td>Mariela</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Cerrar Sesión</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>

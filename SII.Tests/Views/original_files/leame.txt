@@ -1,0 +1,2 @@
+Estos archivos estan aqui porque al momento de seleccionar la fecha de HOY despues de las 6:00pm se selecciona una fecha incorrecta (dia siguiente).
+Debido a que para la presentacion fue en la noche se usaron unos archivos que seleccionaban la fecha de HOY de forma explicita para que todo funcionara bien.
