@@ -24,6 +24,9 @@ namespace SII.Models
         [RegularExpression(@"^[A-Za-z\s]{5,100}$", ErrorMessage = "El nombre debe contener entre 5 y 100 caracteres solamente letras.")]
         public String Name { get; set; }
 
+        [Required]
+        public bool ReturnCarnet { get; set; }
+
         public ICollection<VisitorEntrance> VisitorEntrances { get; set; }
     }
 }

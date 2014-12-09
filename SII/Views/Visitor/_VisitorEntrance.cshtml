@@ -19,12 +19,11 @@
     @Html.AntiForgeryToken()
     @Html.HiddenFor(model => model.VisitorId)
     @Html.HiddenFor(model => model.DepartmentId)
-    @Html.HiddenFor(model => model.Carnet)
-    @Html.HiddenFor(model => model.ReturnCarnet)
     @Html.HiddenFor(model => model.State)
+    @Html.HiddenFor(model => model.CarnetId)
 
     <td>@Visitor.Name</td>
-    <td>@Model.Carnet</td>
+    <td>@db.Carnets.Where(m => m.Id == Model.CarnetId).First().Number</td>
     if (Model.State == "Entrada")
     {
         <td>Fuera del campus</td>
@@ -34,4 +33,5 @@
         <td>Dentro del campus</td>
     }
     <td><input type="submit" value="Marcar" class="tiny small button" /></td>
+    <td>@Html.ActionLink("Devolver carnet", "ReturnCarnet", new { CarnetId = Model.CarnetId, VisitorId = Model.VisitorId }, htmlAttributes: new { @class = "tiny small button"})</td>
 }

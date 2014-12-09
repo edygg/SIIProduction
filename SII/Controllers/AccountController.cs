@@ -10,6 +10,7 @@ using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
 using SII.Filters;
 using SII.Models;
+using System.Data;
 
 namespace SII.Controllers
 {
@@ -107,16 +108,16 @@ namespace SII.Controllers
             if (ownerAccount == User.Identity.Name)
             {
                 // Use a transaction to prevent the user from deleting their last login credential
-                using (var scope = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions { IsolationLevel = IsolationLevel.Serializable }))
-                {
-                    bool hasLocalAccount = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
-                    if (hasLocalAccount || OAuthWebSecurity.GetAccountsFromUserName(User.Identity.Name).Count > 1)
-                    {
-                        OAuthWebSecurity.DeleteAccount(provider, providerUserId);
-                        scope.Complete();
-                        message = ManageMessageId.RemoveLoginSuccess;
-                    }
-                }
+                //using (var scope = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions { IsolationLevel = IsolationLevel.Serializable }))
+                //{
+                //    bool hasLocalAccount = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
+                //    if (hasLocalAccount || OAuthWebSecurity.GetAccountsFromUserName(User.Identity.Name).Count > 1)
+                //    {
+                //        OAuthWebSecurity.DeleteAccount(provider, providerUserId);
+                //        scope.Complete();
+                //        message = ManageMessageId.RemoveLoginSuccess;
+                //    }
+                //}
             }
 
             return RedirectToAction("Manage", new { Message = message });
@@ -415,8 +416,22 @@ namespace SII.Controllers
             }
 
             if (Roles.GetRolesForUser(UserName).Count() > 0) {
-                ViewBag.Error = "El usuario ya posee un rol.";
-                return View();
+                if (Roles.IsUserInRole(UserName, "Guardia"))
+                {
+                    var userId = users.UserProfiles.Where(p => p.UserName == UserName).First().UserId;
+                    GuardDetails guardDetails = db.GuardsDetails.Where(m => m.UserId == userId).First();
+                    guardDetails.TypeEntrance = TypeEntrance;
+                    guardDetails.CampusId = int.Parse(Campus);
+                    db.Entry(guardDetails).State = EntityState.Modified;
+                    db.SaveChanges();
+                    ViewBag.ResultMessage = "Se ha reasignado el guardia correctamente.";
+                    return View();
+                }
+                else
+                {
+                    ViewBag.Error = "El usuario ya posee un rol.";
+                    return View();
+                }
             }
 
             if (Roles.IsUserInRole(UserName, RoleName))
