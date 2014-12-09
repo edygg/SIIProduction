@@ -125,7 +125,6 @@ namespace SII.Controllers
 
         //
         // GET: /Account/Manage
-        [Authorize(Roles = "Administrador")]
         public ActionResult Manage(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
@@ -140,7 +139,6 @@ namespace SII.Controllers
 
         //
         // POST: /Account/Manage
-        [Authorize(Roles = "Administrador")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Manage(LocalPasswordModel model)
@@ -416,7 +414,7 @@ namespace SII.Controllers
             }
 
             if (Roles.GetRolesForUser(UserName).Count() > 0) {
-                if (Roles.IsUserInRole(UserName, "Guardia"))
+                if (Roles.IsUserInRole(UserName, "Guardia") && RoleName == "Guardia")
                 {
                     var userId = users.UserProfiles.Where(p => p.UserName == UserName).First().UserId;
                     GuardDetails guardDetails = db.GuardsDetails.Where(m => m.UserId == userId).First();
