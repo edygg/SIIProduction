@@ -125,7 +125,6 @@ namespace SII.Controllers
 
         //
         // GET: /Account/Manage
-        [Authorize(Roles = "Administrador")]
         public ActionResult Manage(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
@@ -140,7 +139,6 @@ namespace SII.Controllers
 
         //
         // POST: /Account/Manage
-        [Authorize(Roles = "Administrador")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Manage(LocalPasswordModel model)
