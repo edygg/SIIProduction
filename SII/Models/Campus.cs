@@ -28,5 +28,6 @@ namespace SII.Models
         public ICollection<Barrier> Barriers { get; set; }
         public ICollection<Carnet> Carnets { get; set; }
         public ICollection<GuardDetails> GuardsEntrances { get; set; }
+        public ICollection<Visitor> Visitors { get; set; }
     }
 }

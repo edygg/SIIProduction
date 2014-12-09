@@ -1,0 +1,84 @@
+﻿@model IEnumerable<SII.Models.Visitor>
+
+@{
+    ViewBag.Title = "Reporte de visitas no anunciadas por rango de fechas";
+    SII.Models.SIIContext db = new SII.Models.SIIContext();
+}
+
+<div class="row">
+    <div class="small-12 columns">
+        <div class="errors">
+
+        </div>
+        @using (Html.BeginForm("VisitorsByDateRange", "Report", FormMethod.Post, htmlAttributes: new { @class = "date-range-form" }))
+        {
+            <div class="row">
+                <div class="small-4 columns">
+                    <fieldset>
+                        <legend>Desde</legend>
+                        <input class="text-box single-line datepicker" id="InitialDate" name="InitialDate" type="date" value="">
+                    </fieldset>
+                </div>
+                <div class="small-4 columns">
+                    <fieldset>
+                        <legend>Hasta</legend>
+                        <input class="text-box single-line datepicker" id="FinalDate" name="FinalDate" type="date" value="">
+                    </fieldset>
+                </div>
+                <div class="small-4 columns">
+                    <fieldset>
+                        <legend>Campus</legend>
+                        @Html.DropDownList("Campus", ViewBag.Campus as SelectList)
+                    </fieldset>
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-2 small-offset-5 columns">
+                    <input value="Generar" type="submit" class="small button" />
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<div class="row">
+    <div class="small-8 small-offset-2 columns">
+        @if (Model != null)
+        {
+            if (Model.Count() > 0)
+            {
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Identidad</th>
+                            <th>Nombre</th>
+                            <th>Fecha de ingresó</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Identity</td>
+                                <td>@item.Name</td>
+                                <td>@item.UpdatedAt</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <div class="alert-box">No hay resultados que mostrar.</div>
+            }
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/datepicker/legacy.js")
+    @Scripts.Render("~/Scripts/datepicker/picker.js")
+    @Scripts.Render("~/Scripts/datepicker/picker.date.js")
+    @Scripts.Render("~/Scripts/Reports.js")
+}

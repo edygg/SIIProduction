@@ -311,6 +311,10 @@
     <Compile Include="Migrations\201412030009579_ChangesInVisitorAndVisitorEntrances.Designer.cs">
       <DependentUpon>201412030009579_ChangesInVisitorAndVisitorEntrances.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201412092302337_CampusInVisitors.cs" />
+    <Compile Include="Migrations\201412092302337_CampusInVisitors.Designer.cs">
+      <DependentUpon>201412092302337_CampusInVisitors.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Announcement.cs" />
@@ -809,6 +813,7 @@
     <Content Include="Views\Carnet\Create.cshtml" />
     <Content Include="Views\Carnet\Edit.cshtml" />
     <Content Include="Views\Carnet\Delete.cshtml" />
+    <Content Include="Views\Report\VisitorsByDateRange.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -895,6 +900,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201412030009579_ChangesInVisitorAndVisitorEntrances.resx">
       <DependentUpon>201412030009579_ChangesInVisitorAndVisitorEntrances.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412092302337_CampusInVisitors.resx">
+      <DependentUpon>201412092302337_CampusInVisitors.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -135,6 +135,8 @@ namespace SII.Controllers
 
                 ViewBag.Departments = new SelectList(db.Departments.Where(m => m.Dropped == false).ToList(), "Id", "Name");
                 ViewBag.Carnets = new SelectList(db.Carnets.Where(m => m.Dropped == false).Where(m => m.Taken == false).Where(m => m.CampusId == currentCampus).ToList(), "Id", "Number");
+                var currentGuard = users.UserProfiles.Where(m => m.UserName == User.Identity.Name).First();
+                visitor.CampusId = db.GuardsDetails.Where(m => m.UserId == currentGuard.UserId).First().CampusId;
                 db.Visitors.Add(visitor);
                 db.SaveChanges();
                 db.VisitorEntrances.Add(new VisitorEntrance { VisitorId = visitor.Id, DepartmentId = int.Parse(Request["DepartmentId"]), CarnetId = int.Parse(Request["CarnetId"]), State = "Entrada" });

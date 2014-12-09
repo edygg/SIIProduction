@@ -27,6 +27,9 @@ namespace SII.Models
         [Required]
         public bool ReturnCarnet { get; set; }
 
+        [Required]
+        public int CampusId { get; set; }
+
         public ICollection<VisitorEntrance> VisitorEntrances { get; set; }
     }
 }
