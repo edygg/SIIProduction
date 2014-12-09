@@ -78,7 +78,7 @@ namespace SII.Controllers
 
             if(!String.IsNullOrEmpty(id)){
                 id = id.Replace('-',' ');
-                id = id.Trim();
+                id = id.ToString().Trim();
                 var n = (from p in db.IdCards
                          where (p.Id == id)
                          select new
@@ -89,7 +89,7 @@ namespace SII.Controllers
                              p.SecondLastName
                          }).FirstOrDefault();
                 if ( n == null){
-                    return null;
+                    return Json(true);
                 }
                 else
                 {
