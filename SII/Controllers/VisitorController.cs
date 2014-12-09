@@ -77,7 +77,7 @@ namespace SII.Controllers
         {
 
             if(!String.IsNullOrEmpty(id)){
-                id = id.Replace('-',' ');
+                id = id.Replace("-","");
                 id = id.ToString().Trim();
                 var n = (from p in db.IdCards
                          where (p.Id == id)
